@@ -1,0 +1,70 @@
+@layer components {
+  /* Buttons */
+  .btn {
+    @apply inline-flex cursor-pointer items-center justify-center gap-2 rounded-lg px-5 py-2.5 text-sm font-medium transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus disabled:cursor-not-allowed disabled:opacity-50;
+  }
+  .btn-sm {
+    @apply px-3 py-1.5 text-xs;
+  }
+  .btn-lg {
+    @apply px-6 py-3.5 text-base;
+  }
+  .btn-primary {
+    @apply bg-brand text-brand-ink hover:bg-brand-hover;
+  }
+  .btn-soft {
+    @apply bg-brand-soft text-brand-soft-ink hover:bg-brand-soft-hover;
+  }
+  .btn-outline {
+    @apply border border-line-strong bg-surface text-ink hover:bg-surface-sunken;
+  }
+
+    /* Navigation links (header, footer) */
+  .nav-link {
+    @apply inline-flex items-center gap-2 rounded-md text-sm text-ink-muted transition-colors duration-150 hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-focus;
+  }
+
+  /* Surfaces */
+  .card {
+    @apply rounded-card border border-line bg-surface p-6 shadow-card;
+  }
+
+  /* Form input */
+  .form-input {
+    @apply w-full rounded-md border border-line-strong bg-surface px-3 py-2 text-sm text-ink placeholder:text-ink-faint focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-focus;
+  }
+
+  /* Badges */
+  .badge {
+    @apply inline-flex items-center gap-1.5 rounded-full border border-transparent px-2.5 py-1 text-xs font-medium;
+  }
+  .badge-brand {
+    @apply bg-brand-soft text-brand-soft-ink;
+  }
+  .badge-outline {
+    @apply border-line bg-surface text-ink-muted;
+  }
+  .badge-pass {
+    @apply border-pass-line bg-pass-soft text-pass-ink;
+  }
+  .badge-warn {
+    @apply border-warn-line bg-warn-soft text-warn-ink;
+  }
+  .badge-refuse {
+    @apply border-refuse-line bg-refuse-soft text-refuse-ink;
+  }
+
+  /* Verdict cards (assumption checks, data flags, invalid upload) */
+  .verdict-card {
+    @apply rounded-card border p-4;
+  }
+  .verdict-pass {
+    @apply border-pass-line bg-pass-soft text-pass-ink;
+  }
+  .verdict-warn {
+    @apply border-warn-line bg-warn-soft text-warn-ink;
+  }
+  .verdict-refuse {
+    @apply border-refuse-line bg-refuse-soft text-refuse-ink;
+  }
+}

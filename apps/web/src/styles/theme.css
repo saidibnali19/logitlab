@@ -1,0 +1,67 @@
+@theme {
+  /* Surfaces */
+  --color-canvas: var(--color-slate-50);
+  --color-surface: var(--color-white);
+  --color-surface-sunken: var(--color-slate-100);
+
+  /* Text */
+  --color-ink: var(--color-slate-900);
+  --color-ink-muted: var(--color-slate-600);
+  --color-ink-faint: var(--color-slate-500);
+
+  /* Lines */
+  --color-line: var(--color-slate-200);
+  --color-line-strong: var(--color-slate-300);
+  --color-focus: var(--color-emerald-600);
+
+  /* Brand */
+  --color-brand: var(--color-emerald-700);
+  --color-brand-hover: var(--color-emerald-800);
+  --color-brand-ink: var(--color-white);
+  --color-brand-soft: var(--color-emerald-50);
+  --color-brand-soft-hover: var(--color-emerald-100);
+  --color-brand-soft-ink: var(--color-emerald-800);
+
+  /* Verdicts: pass, warn, refuse (solid, soft, ink, line) */
+  --color-pass: var(--color-green-600);
+  --color-pass-soft: var(--color-green-50);
+  --color-pass-ink: var(--color-green-800);
+  --color-pass-line: var(--color-green-200);
+
+  --color-warn: var(--color-amber-500);
+  --color-warn-soft: var(--color-amber-50);
+  --color-warn-ink: var(--color-amber-900);
+  --color-warn-line: var(--color-amber-200);
+
+  --color-refuse: var(--color-red-600);
+  --color-refuse-soft: var(--color-red-50);
+  --color-refuse-ink: var(--color-red-800);
+  --color-refuse-line: var(--color-red-200);
+
+  /* Charts: charts must only use these, never hex values */
+  --color-chart-1: var(--color-emerald-600);
+  --color-chart-2: var(--color-sky-600);
+  --color-chart-ref: var(--color-slate-400);
+  --color-chart-grid: var(--color-slate-200);
+  --color-chart-band: var(--color-emerald-200);
+
+  /* Shape and depth */
+  --radius-card: 0.75rem;
+  --shadow-card:
+    0 1px 2px rgb(15 23 42 / 0.04), 0 4px 12px rgb(15 23 42 / 0.05);
+  --shadow-lift: 0 12px 32px rgb(15 23 42 / 0.1);
+
+  /* Type scale (use as text-display, text-lead, text-title) */
+  --text-display: clamp(2.5rem, 1.5rem + 4vw, 4rem);
+  --text-display--line-height: 1.05;
+  --text-display--letter-spacing: -0.03em;
+  --text-display--font-weight: 700;
+
+  --text-lead: 1.25rem;
+  --text-lead--line-height: 1.6;
+
+  --text-title: 1.5rem;
+  --text-title--line-height: 2rem;
+  --text-title--letter-spacing: -0.01em;
+  --text-title--font-weight: 600;
+}

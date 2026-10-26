@@ -3,6 +3,7 @@ import { ComponentPlaceholder } from "@/components/ui/ComponentPlaceholder";
 export function ReportOutline() {
   return (
     <section
+      id="report-outline"
       aria-label="Report outline"
       className="border-t border-slate-200 bg-slate-100 py-16"
     >

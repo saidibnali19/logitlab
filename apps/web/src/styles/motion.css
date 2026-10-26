@@ -1,0 +1,88 @@
+@theme {
+  --animate-shake: shake 0.3s ease-in-out;
+
+  @keyframes shake {
+    0%,
+    100% {
+      transform: translateX(0);
+    }
+    25% {
+      transform: translateX(-5px);
+    }
+    75% {
+      transform: translateX(5px);
+    }
+  }
+}
+
+@keyframes revealUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes revealFade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* On-load reveals (hero) */
+@media (prefers-reduced-motion: no-preference) {
+  .reveal-up {
+    opacity: 0;
+    animation: revealUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+  .reveal-fade {
+    opacity: 0;
+    animation: revealFade 1.8s ease-out forwards;
+  }
+  .reveal-delay-100 {
+    animation-delay: 150ms;
+  }
+  .reveal-delay-200 {
+    animation-delay: 300ms;
+  }
+  .reveal-delay-300 {
+    animation-delay: 450ms;
+  }
+  .reveal-delay-400 {
+    animation-delay: 600ms;
+  }
+}
+
+/* Scroll-driven reveals (report sections below the fold) */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .scroll-reveal-up {
+      animation: revealUp linear both;
+      animation-timeline: view();
+      animation-range: entry 5% cover 25%;
+    }
+    .scroll-reveal-fade {
+      animation: revealFade linear both;
+      animation-timeline: view();
+      animation-range: entry 5% cover 30%;
+    }
+    .scroll-delay-100 {
+      animation-range: entry 10% cover 30%;
+    }
+    .scroll-delay-200 {
+      animation-range: entry 15% cover 35%;
+    }
+    .scroll-delay-300 {
+      animation-range: entry 20% cover 40%;
+    }
+    .scroll-delay-400 {
+      animation-range: entry 25% cover 45%;
+    }
+  }
+}
