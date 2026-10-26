@@ -87,4 +87,9 @@
   .dropzone-success {
     @apply border-solid border-pass-line bg-pass-soft text-pass-ink;
   }
+
+    /* Report outline cards (muted, become real anchors) */
+  .outline-card {
+    @apply flex h-full flex-col gap-2 rounded-card border border-line bg-surface/60 p-5 transition-colors duration-150 hover:border-line-strong hover:bg-surface focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus;
+  }
 }
