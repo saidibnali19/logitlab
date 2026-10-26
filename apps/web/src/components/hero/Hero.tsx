@@ -12,8 +12,10 @@ export function Hero() {
       className="mx-auto flex min-h-[calc(100vh-3.5rem)] max-w-5xl flex-col gap-6 px-6 py-12"
     >
       <HeroIntro />
-      <UploadZone />
-      <SampleDataButton />
+      <div className="reveal-up reveal-delay-300 mx-auto flex w-full max-w-2xl flex-col gap-6">
+        <UploadZone />
+        <SampleDataButton />
+      </div>
       <TrustLine />
       <ProductPreview />
       <ScrollCue />
