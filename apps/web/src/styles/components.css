@@ -67,4 +67,24 @@
   .verdict-refuse {
     @apply border-refuse-line bg-refuse-soft text-refuse-ink;
   }
+
+    /* Upload zone: base shape plus one class per visual state */
+  .dropzone {
+    @apply flex min-h-44 w-full flex-col items-center justify-center rounded-card border-2 p-8 text-center transition-colors duration-150 focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-focus;
+  }
+  .dropzone-idle {
+    @apply border-dashed border-brand/40 bg-surface text-ink hover:border-brand hover:bg-brand-soft/50;
+  }
+  .dropzone-hover {
+    @apply border-solid border-brand bg-brand-soft text-ink;
+  }
+  .dropzone-invalid {
+    @apply border-dashed border-refuse-line bg-refuse-soft text-refuse-ink;
+  }
+  .dropzone-loading {
+    @apply border-dashed border-line-strong bg-surface text-ink;
+  }
+  .dropzone-success {
+    @apply border-solid border-pass-line bg-pass-soft text-pass-ink;
+  }
 }
