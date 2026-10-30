@@ -1,7 +1,7 @@
 @layer components {
   /* Buttons */
   .btn {
-    @apply inline-flex cursor-pointer items-center justify-center gap-2 rounded-lg px-5 py-2.5 text-sm font-medium transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus disabled:cursor-not-allowed disabled:opacity-50;
+    @apply focus-visible:outline-focus inline-flex cursor-pointer items-center justify-center gap-2 rounded-lg px-5 py-2.5 text-sm font-medium transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 disabled:cursor-not-allowed disabled:opacity-50;
   }
   .btn-sm {
     @apply px-3 py-1.5 text-xs;
@@ -16,22 +16,22 @@
     @apply bg-brand-soft text-brand-soft-ink hover:bg-brand-soft-hover;
   }
   .btn-outline {
-    @apply border border-line-strong bg-surface text-ink hover:bg-surface-sunken;
+    @apply border-line-strong bg-surface text-ink hover:bg-surface-sunken border;
   }
 
-    /* Navigation links (header, footer) */
+  /* Navigation links (header, footer) */
   .nav-link {
-    @apply inline-flex items-center gap-2 rounded-md text-sm text-ink-muted transition-colors duration-150 hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-focus;
+    @apply text-ink-muted hover:text-ink focus-visible:outline-focus inline-flex items-center gap-2 rounded-md text-sm transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-4;
   }
 
   /* Surfaces */
   .card {
-    @apply rounded-card border border-line bg-surface p-6 shadow-card;
+    @apply rounded-card border-line bg-surface shadow-card border p-6;
   }
 
   /* Form input */
   .form-input {
-    @apply w-full rounded-md border border-line-strong bg-surface px-3 py-2 text-sm text-ink placeholder:text-ink-faint focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-focus;
+    @apply border-line-strong bg-surface text-ink placeholder:text-ink-faint focus-visible:outline-focus w-full rounded-md border px-3 py-2 text-sm focus-visible:outline-2 focus-visible:outline-offset-1;
   }
 
   /* Badges */
@@ -68,28 +68,28 @@
     @apply border-refuse-line bg-refuse-soft text-refuse-ink;
   }
 
-    /* Upload zone: base shape plus one class per visual state */
+  /* Upload zone: base shape plus one class per visual state */
   .dropzone {
-    @apply flex min-h-44 w-full flex-col items-center justify-center rounded-card border-2 p-8 text-center transition-colors duration-150 focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-focus;
+    @apply rounded-card focus-within:outline-focus flex min-h-44 w-full flex-col items-center justify-center border-2 p-8 text-center transition-colors duration-150 focus-within:outline-2 focus-within:outline-offset-2;
   }
   .dropzone-idle {
-    @apply border-dashed border-brand/40 bg-surface text-ink hover:border-brand hover:bg-brand-soft/50;
+    @apply border-brand/40 bg-surface text-ink hover:border-brand hover:bg-brand-soft/50 border-dashed;
   }
   .dropzone-hover {
-    @apply border-solid border-brand bg-brand-soft text-ink;
+    @apply border-brand bg-brand-soft text-ink border-solid;
   }
   .dropzone-invalid {
-    @apply border-dashed border-refuse-line bg-refuse-soft text-refuse-ink;
+    @apply border-refuse-line bg-refuse-soft text-refuse-ink border-dashed;
   }
   .dropzone-loading {
-    @apply border-dashed border-line-strong bg-surface text-ink;
+    @apply border-line-strong bg-surface text-ink border-dashed;
   }
   .dropzone-success {
-    @apply border-solid border-pass-line bg-pass-soft text-pass-ink;
+    @apply border-pass-line bg-pass-soft text-pass-ink border-solid;
   }
 
-    /* Report outline cards (muted, become real anchors) */
+  /* Report outline cards (muted, become real anchors) */
   .outline-card {
-    @apply flex h-full flex-col gap-2 rounded-card border border-line bg-surface/60 p-5 transition-colors duration-150 hover:border-line-strong hover:bg-surface focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus;
+    @apply rounded-card border-line bg-surface/60 hover:border-line-strong hover:bg-surface focus-visible:outline-focus flex h-full flex-col gap-2 border p-5 transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2;
   }
 }

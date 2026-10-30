@@ -45,6 +45,7 @@ export const PREVIEW_CHECKS: PreviewCheck[] = [
   {
     title: "Age linearity",
     verdict: "warn",
-    detail: "Non-linear in the logit. A spline is suggested instead of dropping it.",
+    detail:
+      "Non-linear in the logit. A spline is suggested instead of dropping it.",
   },
 ];
