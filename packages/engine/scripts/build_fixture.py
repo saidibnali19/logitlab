@@ -18,7 +18,7 @@ OUT = ENGINE / "out" / "result.partial.json"
 
 def main() -> None:
     df = pd.read_csv(CSV)
-    result, _ = run_analysis(df, "Framingham Heart Study", "sample")
+    result, prepared = run_analysis(df, "Framingham Heart Study", "sample")
     write_json(result, OUT)
 
     meta, glance, hygiene = result["meta"], result["dataGlance"], result["hygiene"]
@@ -38,6 +38,25 @@ def main() -> None:
         print(f"  {item['column']:<12}{item['method']:<8}fill={item['fillValue']}  skew={item['skewness']}")
     print("  Outliers kept:", [(o["column"], o["count"]) for o in hygiene["outlierPolicy"]["flagged"]])
     print(f"  Decision log entries: {len(hygiene['decisionLog'])}")
+    
+    
+    eda, assumptions = result["eda"], result["assumptions"]
+    print("\nKNOW YOUR DATA")
+    print(" ", eda["verdict"]["text"])
+
+    print("\nASSUMPTION CHECKS")
+    print("  Status:", meta["status"])
+    print(" ", assumptions["verdict"]["text"])
+    for check in assumptions["checks"]:
+        print(f"  {check['verdict']['level']:<7}{check['id']:<19}{check['verdict']['text']}")
+    print("  VIF:", {v["term"]: round(v["value"], 2) for v in assumptions["vif"]})
+    print("  Box-Tidwell:", {b["column"]: round(b["pValue"], 4) for b in assumptions["boxTidwell"]})
+    influence = assumptions["influence"]
+    print(f"  Cook's distance: max {influence['maxCooksD']:.4f}, {influence['count']} rows above 4/n")
+    for g in assumptions["groupTests"]:
+        print(f"  {g['id']}: {g['terms']}  chi2={g['statistic']:.1f} df={g['df']} p={g['pValue']:.2g}")
+    if prepared.fit is not None:
+        print(f"  Log-likelihood of the full model: {prepared.fit.llf:.4f}")
 
 
 if __name__ == "__main__":

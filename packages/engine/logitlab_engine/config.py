@@ -20,6 +20,16 @@ STRUCTURAL_AGREEMENT = 0.99  # "indicator equals (amount > 0)" agreement
 # Outliers
 IQR_FENCE = 1.5
 
+
+# Assumption checks
+MIN_EPV = 10  # events per term needed for a stable model
+REFUSE_EPV = 5  # below this the analysis is refused
+VIF_LIMIT = 5.0
+GROUP_CORRELATION = 0.6  # predictors correlated at least this much are tested together
+BOX_TIDWELL_ALPHA = 0.05  # divided by the number of continuous predictors tested
+COOKS_LIMIT = 1.0  # Cook's distance above this warns
+HISTOGRAM_BINS = 20
+
 TARGET_HINTS = (
     "chd",
     "target",

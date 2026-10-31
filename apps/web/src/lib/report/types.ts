@@ -199,6 +199,7 @@ export type AssumptionAction =
 export type AssumptionCheck = {
   id:
     | "binary-outcome"
+    | "independence"
     | "sample-size"
     | "multicollinearity"
     | "linearity"

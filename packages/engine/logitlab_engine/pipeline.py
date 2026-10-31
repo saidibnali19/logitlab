@@ -7,7 +7,11 @@ from dataclasses import dataclass
 import pandas as pd
 
 from . import config
+from .assumptions import build_assumptions
+from .design import build_design
+from .eda import eda_block
 from .hygiene import Imputer, hygiene_block
+from .logit import LogitFit
 from .profile import Profile, build_profile, choose_target, encode_target, glance_block
 
 
@@ -19,6 +23,10 @@ class Prepared:
     profile: Profile
     imputer: Imputer  # fitted on all rows (used for the inference model)
     imputed: pd.DataFrame  # data with gaps filled
+    design: pd.DataFrame | None = None  # design matrix with a constant first
+    terms: list[dict] | None = None  # the contract's Term list
+    y: pd.Series | None = None
+    fit: LogitFit | None = None  # the full-data logistic fit
 
 
 def prepare(df: pd.DataFrame, target: str | None = None) -> tuple[Prepared, int, int]:
@@ -57,9 +65,20 @@ def run_analysis(df: pd.DataFrame, dataset_name: str, source: str = "sample", ta
         "notes": config.sample_notes(rows) if source == "sample" else [],
     }
 
+    prepared.design, prepared.terms = build_design(prepared.imputed, profile)
+    prepared.y = prepared.data[profile.target]
+
+    assumptions, refusal, fit = build_assumptions(prepared.design, prepared.y, prepared.terms, prepared.imputed, profile)
+    prepared.fit = fit
+    if refusal is not None:
+        meta["status"] = "refused"
+        meta["refusal"] = refusal
+
     result = {
         "meta": meta,
         "dataGlance": glance_block(profile, rows),
         "hygiene": hygiene_block(prepared.data, profile, prepared.imputer, prepared.imputed, dropped, duplicates),
+        "eda": eda_block(prepared.imputed, profile),
+        "assumptions": assumptions,
     }
     return result, prepared
