@@ -11,6 +11,7 @@ import { ModelResults } from "@/components/report/ModelResults";
 import { ModelPerformance } from "@/components/report/ModelPerformance";
 import { WhatIfExplorer } from "@/components/report/WhatIfExplorer";
 import { TakeawaysExport } from "@/components/report/TakeawaysExport";
+import { ReportGate } from "@/components/report/ReportGate";
 
 export default function Home() {
   return (
@@ -18,16 +19,23 @@ export default function Home() {
       <SiteHeader />
       <ProgressRail />
       <main>
-        <Hero />
-        <ReportOutline />
-        <DataGlance />
-        <DataHygiene />
-        <ExploreData />
-        <AssumptionChecks />
-        <ModelResults />
-        <ModelPerformance />
-        <WhatIfExplorer />
-        <TakeawaysExport />
+        <ReportGate
+          intro={
+            <>
+              <Hero />
+              <ReportOutline />
+            </>
+          }
+        >
+          <DataGlance />
+          <DataHygiene />
+          <ExploreData />
+          <AssumptionChecks />
+          <ModelResults />
+          <ModelPerformance />
+          <WhatIfExplorer />
+          <TakeawaysExport />
+        </ReportGate>
       </main>
       <SiteFooter />
     </>

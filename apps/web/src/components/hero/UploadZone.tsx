@@ -120,6 +120,7 @@ export function UploadZone() {
     body = (
       <label className="flex cursor-pointer flex-col items-center gap-1">
         <input
+          id="data-upload"
           type="file"
           accept=".csv,text/csv"
           onChange={onPick}

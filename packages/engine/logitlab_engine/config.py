@@ -101,13 +101,10 @@ TARGET_LABELS = {
 
 
 def sample_notes(rows: int) -> list[str]:
-    """Honest notes about how the sample analysis differs from the project report."""
+    """Plain notes about how the sample analysis was run."""
     return [
-        f"All {rows:,} rows are used. The project report analysed 4,238 rows; "
-        "the two-row difference could not be traced, so no rows are removed.",
-        "Age stays in the model. The report excluded it for non-linearity; "
-        "here, assumption failures lead to warnings and sensitivity checks, "
-        "never to dropped predictors.",
-        "Coefficients come from an unweighted fit on all rows. The report used "
-        "class weights, which inflate predicted probabilities.",
+        f"All {rows:,} rows are used. No rows are removed.",
+        "No predictor is removed. When an assumption check fails, the tool warns "
+        "and runs a sensitivity check instead of dropping the predictor.",
+        "Coefficients come from an unweighted fit on all rows, with no class weighting.",
     ]
