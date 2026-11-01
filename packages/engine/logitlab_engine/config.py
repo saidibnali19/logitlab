@@ -30,6 +30,25 @@ BOX_TIDWELL_ALPHA = 0.05  # divided by the number of continuous predictors teste
 COOKS_LIMIT = 1.0  # Cook's distance above this warns
 HISTOGRAM_BINS = 20
 
+
+# Model and sensitivity
+CONFIDENCE_Z = 1.959964  # 95% interval
+SENSITIVITY_BT_P = 0.10  # predictors with a raw Box-Tidwell p below this get a spline comparison
+SPLINE_KNOT_QUANTILES = (0.05, 0.35, 0.65, 0.95)  # four knots give a 3-df natural spline
+CURVE_POINTS = 50
+BINNED_POINTS = 10
+MATTERS_DELTA_AIC = 4.0  # a spline must beat the line by more than this to matter
+MATTERS_OR_CHANGE = 0.10  # or move another odds ratio by more than this fraction
+INFLUENCE_REFIT_FRACTION = 0.01  # share of the most influential rows removed in the stretch refit
+
+
+# Performance
+SPLIT_SEED = 42
+TEST_FRACTION = 0.2
+CV_FOLDS = 5
+CURVE_MAX_POINTS = 100  # ROC and precision-recall curves are thinned to about this many points
+CALIBRATION_BINS = 10
+
 TARGET_HINTS = (
     "chd",
     "target",

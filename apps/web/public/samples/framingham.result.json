@@ -1,0 +1,6142 @@
+{
+  "meta": {
+    "schemaVersion": 1,
+    "engineVersion": "0.1.0",
+    "datasetName": "Framingham Heart Study",
+    "source": "sample",
+    "rows": 4240,
+    "columns": 16,
+    "events": 644,
+    "prevalence": 0.15188679245283018,
+    "status": "complete",
+    "refusal": null,
+    "notes": [
+      "All 4,240 rows are used. The project report analysed 4,238 rows; the two-row difference could not be traced, so no rows are removed.",
+      "Age stays in the model. The report excluded it for non-linearity; here, assumption failures lead to warnings and sensitivity checks, never to dropped predictors.",
+      "Coefficients come from an unweighted fit on all rows. The report used class weights, which inflate predicted probabilities."
+    ]
+  },
+  "dataGlance": {
+    "verdict": {
+      "level": "warn",
+      "text": "Target: TenYearCHD (15.2% positive). 15 usable predictors; 2 flag(s) worth reading."
+    },
+    "columns": [
+      {
+        "name": "male",
+        "label": "Male (vs female)",
+        "type": "binary",
+        "role": "predictor",
+        "roleReason": "A two-value indicator, coded 0 and 1.",
+        "roleSource": "auto",
+        "missing": 0,
+        "distinct": 2,
+        "levels": [
+          "0",
+          "1"
+        ]
+      },
+      {
+        "name": "age",
+        "label": "Age",
+        "type": "continuous",
+        "role": "predictor",
+        "roleReason": "A continuous measurement, used as a numeric predictor.",
+        "roleSource": "auto",
+        "missing": 0,
+        "distinct": 39,
+        "levels": null
+      },
+      {
+        "name": "education",
+        "label": "Education level",
+        "type": "categorical",
+        "role": "predictor",
+        "roleReason": "Categorical with 4 levels; coded as 3 indicator columns against the reference level '1'.",
+        "roleSource": "auto",
+        "missing": 105,
+        "distinct": 4,
+        "levels": [
+          "1",
+          "2",
+          "3",
+          "4"
+        ]
+      },
+      {
+        "name": "currentSmoker",
+        "label": "Current smoker",
+        "type": "binary",
+        "role": "predictor",
+        "roleReason": "A two-value indicator, coded 0 and 1.",
+        "roleSource": "auto",
+        "missing": 0,
+        "distinct": 2,
+        "levels": [
+          "0",
+          "1"
+        ]
+      },
+      {
+        "name": "cigsPerDay",
+        "label": "Cigarettes per day",
+        "type": "continuous",
+        "role": "predictor",
+        "roleReason": "A continuous measurement, used as a numeric predictor.",
+        "roleSource": "auto",
+        "missing": 29,
+        "distinct": 33,
+        "levels": null
+      },
+      {
+        "name": "BPMeds",
+        "label": "On BP medication",
+        "type": "binary",
+        "role": "predictor",
+        "roleReason": "A two-value indicator, coded 0 and 1.",
+        "roleSource": "auto",
+        "missing": 53,
+        "distinct": 2,
+        "levels": [
+          "0",
+          "1"
+        ]
+      },
+      {
+        "name": "prevalentStroke",
+        "label": "Prior stroke",
+        "type": "binary",
+        "role": "predictor",
+        "roleReason": "A two-value indicator, coded 0 and 1.",
+        "roleSource": "auto",
+        "missing": 0,
+        "distinct": 2,
+        "levels": [
+          "0",
+          "1"
+        ]
+      },
+      {
+        "name": "prevalentHyp",
+        "label": "Hypertension",
+        "type": "binary",
+        "role": "predictor",
+        "roleReason": "A two-value indicator, coded 0 and 1.",
+        "roleSource": "auto",
+        "missing": 0,
+        "distinct": 2,
+        "levels": [
+          "0",
+          "1"
+        ]
+      },
+      {
+        "name": "diabetes",
+        "label": "Diabetes",
+        "type": "binary",
+        "role": "predictor",
+        "roleReason": "A two-value indicator, coded 0 and 1.",
+        "roleSource": "auto",
+        "missing": 0,
+        "distinct": 2,
+        "levels": [
+          "0",
+          "1"
+        ]
+      },
+      {
+        "name": "totChol",
+        "label": "Total cholesterol",
+        "type": "continuous",
+        "role": "predictor",
+        "roleReason": "A continuous measurement, used as a numeric predictor.",
+        "roleSource": "auto",
+        "missing": 50,
+        "distinct": 248,
+        "levels": null
+      },
+      {
+        "name": "sysBP",
+        "label": "Systolic BP",
+        "type": "continuous",
+        "role": "predictor",
+        "roleReason": "A continuous measurement, used as a numeric predictor.",
+        "roleSource": "auto",
+        "missing": 0,
+        "distinct": 234,
+        "levels": null
+      },
+      {
+        "name": "diaBP",
+        "label": "Diastolic BP",
+        "type": "continuous",
+        "role": "predictor",
+        "roleReason": "A continuous measurement, used as a numeric predictor.",
+        "roleSource": "auto",
+        "missing": 0,
+        "distinct": 146,
+        "levels": null
+      },
+      {
+        "name": "BMI",
+        "label": "BMI",
+        "type": "continuous",
+        "role": "predictor",
+        "roleReason": "A continuous measurement, used as a numeric predictor.",
+        "roleSource": "auto",
+        "missing": 19,
+        "distinct": 1364,
+        "levels": null
+      },
+      {
+        "name": "heartRate",
+        "label": "Heart rate",
+        "type": "continuous",
+        "role": "predictor",
+        "roleReason": "A continuous measurement, used as a numeric predictor.",
+        "roleSource": "auto",
+        "missing": 1,
+        "distinct": 73,
+        "levels": null
+      },
+      {
+        "name": "glucose",
+        "label": "Glucose",
+        "type": "continuous",
+        "role": "predictor",
+        "roleReason": "A continuous measurement, used as a numeric predictor.",
+        "roleSource": "auto",
+        "missing": 388,
+        "distinct": 143,
+        "levels": null
+      },
+      {
+        "name": "TenYearCHD",
+        "label": "10-year CHD",
+        "type": "binary",
+        "role": "target",
+        "roleReason": "Exactly two distinct values, and the name suggests an outcome (it is also the last column).",
+        "roleSource": "auto",
+        "missing": 0,
+        "distinct": 2,
+        "levels": [
+          "No CHD within 10 years",
+          "CHD within 10 years"
+        ]
+      }
+    ],
+    "target": {
+      "name": "TenYearCHD",
+      "reason": "Exactly two distinct values, and the name suggests an outcome (it is also the last column).",
+      "negativeLabel": "No CHD within 10 years",
+      "positiveLabel": "CHD within 10 years",
+      "counts": {
+        "negative": 3596,
+        "positive": 644
+      }
+    },
+    "flags": [
+      {
+        "column": "currentSmoker",
+        "related": [
+          "cigsPerDay"
+        ],
+        "kind": "redundant",
+        "level": "warn",
+        "message": "'Current smoker' matches 'Cigarettes per day above zero' in 100.0% of rows where both are known, so the two carry almost the same information. Both are kept and tested jointly, because their separate odds ratios will be imprecise."
+      },
+      {
+        "column": "prevalentStroke",
+        "related": [],
+        "kind": "rare",
+        "level": "warn",
+        "message": "Only 25 rows (0.6%) have 'Prior stroke' = 1. The estimate for it will be imprecise, so expect a wide confidence interval."
+      }
+    ]
+  },
+  "hygiene": {
+    "verdict": {
+      "level": "warn",
+      "text": "582 of 4,240 rows (13.7%) had at least one gap, across 7 columns. 'Glucose' had the most (9.2%). Every gap was filled by a rule chosen from the column's own distribution; section 04 checks whether the filling changes the results."
+    },
+    "rowsWithMissing": 582,
+    "completeCases": 3658,
+    "missingness": [
+      {
+        "column": "glucose",
+        "label": "Glucose",
+        "count": 388,
+        "fraction": 0.09150943396226414
+      },
+      {
+        "column": "education",
+        "label": "Education level",
+        "count": 105,
+        "fraction": 0.024764150943396228
+      },
+      {
+        "column": "BPMeds",
+        "label": "On BP medication",
+        "count": 53,
+        "fraction": 0.0125
+      },
+      {
+        "column": "totChol",
+        "label": "Total cholesterol",
+        "count": 50,
+        "fraction": 0.01179245283018868
+      },
+      {
+        "column": "cigsPerDay",
+        "label": "Cigarettes per day",
+        "count": 29,
+        "fraction": 0.006839622641509434
+      },
+      {
+        "column": "BMI",
+        "label": "BMI",
+        "count": 19,
+        "fraction": 0.004481132075471698
+      },
+      {
+        "column": "heartRate",
+        "label": "Heart rate",
+        "count": 1,
+        "fraction": 0.0002358490566037736
+      }
+    ],
+    "imputations": [
+      {
+        "column": "glucose",
+        "label": "Glucose",
+        "method": "median",
+        "skewness": 6.214948349534676,
+        "fillValue": 78.0,
+        "reason": "Skewness is 6.21, beyond ±1, so a few extreme values would drag the mean. The median (78) is the robust choice.",
+        "before": {
+          "mean": 81.96365524402907,
+          "median": 78.0,
+          "sd": 23.954334811344744
+        },
+        "after": {
+          "mean": 81.60094339622641,
+          "median": 78.0,
+          "sd": 22.860339880961675
+        }
+      },
+      {
+        "column": "education",
+        "label": "Education level",
+        "method": "mode",
+        "skewness": null,
+        "fillValue": "1",
+        "reason": "'Education level' is categorical, so the most common value (1) is used.",
+        "before": null,
+        "after": null
+      },
+      {
+        "column": "BPMeds",
+        "label": "On BP medication",
+        "method": "mode",
+        "skewness": null,
+        "fillValue": "0",
+        "reason": "'On BP medication' is categorical, so the most common value (0) is used.",
+        "before": null,
+        "after": null
+      },
+      {
+        "column": "totChol",
+        "label": "Total cholesterol",
+        "method": "mean",
+        "skewness": 0.871880563476535,
+        "fillValue": 236.69952267303103,
+        "reason": "Skewness is 0.87, close to symmetric, so the mean (236.70) is a fair fill value.",
+        "before": {
+          "mean": 236.69952267303103,
+          "median": 234.0,
+          "sd": 44.591283868607
+        },
+        "after": {
+          "mean": 236.69952267303103,
+          "median": 234.0,
+          "sd": 44.327521446557704
+        }
+      },
+      {
+        "column": "cigsPerDay",
+        "label": "Cigarettes per day",
+        "method": "median",
+        "skewness": 1.2470523561848126,
+        "fillValue": 20.0,
+        "reason": "'Current smoker' is known for every row. All 29 missing values belong to rows where it is 1, so the overall median (0) would have contradicted what is already known. Rows where it is 0 get 0; the others get the median among positive values (20).",
+        "before": {
+          "mean": 9.005936832106388,
+          "median": 0.0,
+          "sd": 11.922461800609081
+        },
+        "after": {
+          "mean": 9.081132075471698,
+          "median": 0.0,
+          "sd": 11.916118824638177
+        }
+      },
+      {
+        "column": "BMI",
+        "label": "BMI",
+        "method": "mean",
+        "skewness": 0.9821832986950585,
+        "fillValue": 25.80080075811419,
+        "reason": "Skewness is 0.98, close to symmetric, so the mean (25.80) is a fair fill value.",
+        "before": {
+          "mean": 25.80080075811419,
+          "median": 25.4,
+          "sd": 4.079840168944383
+        },
+        "after": {
+          "mean": 25.800800758114192,
+          "median": 25.41,
+          "sd": 4.07068659264745
+        }
+      },
+      {
+        "column": "heartRate",
+        "label": "Heart rate",
+        "method": "mean",
+        "skewness": 0.6443718160367711,
+        "fillValue": 75.87898089171975,
+        "reason": "Skewness is 0.64, close to symmetric, so the mean (75.88) is a fair fill value.",
+        "before": {
+          "mean": 75.87898089171975,
+          "median": 75.0,
+          "sd": 12.025347984469386
+        },
+        "after": {
+          "mean": 75.87898089171975,
+          "median": 75.0,
+          "sd": 12.023929482785363
+        }
+      }
+    ],
+    "outlierPolicy": {
+      "method": "1.5 × IQR fences",
+      "flagged": [
+        {
+          "column": "glucose",
+          "count": 188
+        },
+        {
+          "column": "sysBP",
+          "count": 126
+        },
+        {
+          "column": "BMI",
+          "count": 97
+        },
+        {
+          "column": "diaBP",
+          "count": 77
+        },
+        {
+          "column": "heartRate",
+          "count": 76
+        },
+        {
+          "column": "totChol",
+          "count": 56
+        },
+        {
+          "column": "cigsPerDay",
+          "count": 12
+        }
+      ],
+      "action": "kept",
+      "reason": "Extreme values were kept. A value outside the fences is unusual, not necessarily wrong, and in clinical data the extremes are often the high-risk cases a model should learn from."
+    },
+    "decisionLog": [
+      {
+        "id": "d01",
+        "step": "ingest",
+        "decision": "Read 4,240 rows and 16 columns.",
+        "reason": "Every row is used unless the outcome is missing.",
+        "automatic": true,
+        "alternative": null
+      },
+      {
+        "id": "d02",
+        "step": "ingest",
+        "decision": "No exact duplicate rows were found.",
+        "reason": "Nothing needed removing.",
+        "automatic": true,
+        "alternative": null
+      },
+      {
+        "id": "d03",
+        "step": "roles",
+        "decision": "Chose 'TenYearCHD' as the outcome.",
+        "reason": "Exactly two distinct values, and the name suggests an outcome (it is also the last column).",
+        "automatic": true,
+        "alternative": "Choose a different outcome column"
+      },
+      {
+        "id": "d04",
+        "step": "imputation",
+        "decision": "Filled 388 missing values in 'glucose' with the median.",
+        "reason": "Skewness is 6.21, beyond ±1, so a few extreme values would drag the mean. The median (78) is the robust choice.",
+        "automatic": true,
+        "alternative": "Use a different fill method"
+      },
+      {
+        "id": "d05",
+        "step": "imputation",
+        "decision": "Filled 105 missing values in 'education' with the mode.",
+        "reason": "'Education level' is categorical, so the most common value (1) is used.",
+        "automatic": true,
+        "alternative": "Use a different fill method"
+      },
+      {
+        "id": "d06",
+        "step": "imputation",
+        "decision": "Filled 53 missing values in 'BPMeds' with the mode.",
+        "reason": "'On BP medication' is categorical, so the most common value (0) is used.",
+        "automatic": true,
+        "alternative": "Use a different fill method"
+      },
+      {
+        "id": "d07",
+        "step": "imputation",
+        "decision": "Filled 50 missing values in 'totChol' with the mean.",
+        "reason": "Skewness is 0.87, close to symmetric, so the mean (236.70) is a fair fill value.",
+        "automatic": true,
+        "alternative": "Use a different fill method"
+      },
+      {
+        "id": "d08",
+        "step": "imputation",
+        "decision": "Filled 29 missing values in 'cigsPerDay' with the median.",
+        "reason": "'Current smoker' is known for every row. All 29 missing values belong to rows where it is 1, so the overall median (0) would have contradicted what is already known. Rows where it is 0 get 0; the others get the median among positive values (20).",
+        "automatic": true,
+        "alternative": "Use a different fill method"
+      },
+      {
+        "id": "d09",
+        "step": "imputation",
+        "decision": "Filled 19 missing values in 'BMI' with the mean.",
+        "reason": "Skewness is 0.98, close to symmetric, so the mean (25.80) is a fair fill value.",
+        "automatic": true,
+        "alternative": "Use a different fill method"
+      },
+      {
+        "id": "d10",
+        "step": "imputation",
+        "decision": "Filled 1 missing value in 'heartRate' with the mean.",
+        "reason": "Skewness is 0.64, close to symmetric, so the mean (75.88) is a fair fill value.",
+        "automatic": true,
+        "alternative": "Use a different fill method"
+      },
+      {
+        "id": "d11",
+        "step": "imputation",
+        "decision": "For the hold-out evaluation, fill values are re-learned from the training rows only.",
+        "reason": "Learning them from all rows would let information from the test rows leak into the evaluation.",
+        "automatic": true,
+        "alternative": null
+      },
+      {
+        "id": "d12",
+        "step": "outliers",
+        "decision": "Flagged unusual values but kept them: glucose (188), sysBP (126), BMI (97), diaBP (77), heartRate (76), totChol (56), cigsPerDay (12).",
+        "reason": "Extreme values were kept. A value outside the fences is unusual, not necessarily wrong, and in clinical data the extremes are often the high-risk cases a model should learn from.",
+        "automatic": true,
+        "alternative": "Cap values at the fences"
+      },
+      {
+        "id": "d13",
+        "step": "encoding",
+        "decision": "Coded 'education' as 3 indicator columns against level '1'.",
+        "reason": "A categorical predictor needs one indicator per level except a reference level.",
+        "automatic": true,
+        "alternative": "Choose a different reference level"
+      }
+    ]
+  },
+  "eda": {
+    "verdict": {
+      "level": "info",
+      "text": "8 continuous and 7 categorical predictors summarised. The strongest overlap is between 'Systolic BP' and 'Diastolic BP' (r = 0.78)."
+    },
+    "continuous": [
+      {
+        "column": "age",
+        "label": "Age",
+        "mean": 49.58018867924528,
+        "median": 49.0,
+        "sd": 8.57294217547334,
+        "min": 32.0,
+        "max": 70.0,
+        "skewness": 0.22886703381211185
+      },
+      {
+        "column": "cigsPerDay",
+        "label": "Cigarettes per day",
+        "mean": 9.081132075471698,
+        "median": 0.0,
+        "sd": 11.916118824638177,
+        "min": 0.0,
+        "max": 70.0,
+        "skewness": 1.2269308597641886
+      },
+      {
+        "column": "totChol",
+        "label": "Total cholesterol",
+        "mean": 236.69952267303103,
+        "median": 234.0,
+        "sd": 44.327521446557704,
+        "min": 107.0,
+        "max": 696.0,
+        "skewness": 0.8770635824722378
+      },
+      {
+        "column": "sysBP",
+        "label": "Systolic BP",
+        "mean": 132.35459905660377,
+        "median": 128.0,
+        "sd": 22.033299608849184,
+        "min": 83.5,
+        "max": 295.0,
+        "skewness": 1.1452850355293098
+      },
+      {
+        "column": "diaBP",
+        "label": "Diastolic BP",
+        "mean": 82.89775943396226,
+        "median": 82.0,
+        "sd": 11.91039448330595,
+        "min": 48.0,
+        "max": 142.5,
+        "skewness": 0.7132502128477369
+      },
+      {
+        "column": "BMI",
+        "label": "BMI",
+        "mean": 25.800800758114192,
+        "median": 25.41,
+        "sd": 4.07068659264745,
+        "min": 15.54,
+        "max": 56.8,
+        "skewness": 0.9843898005553384
+      },
+      {
+        "column": "heartRate",
+        "label": "Heart rate",
+        "mean": 75.87898089171975,
+        "median": 75.0,
+        "sd": 12.023929482785363,
+        "min": 44.0,
+        "max": 143.0,
+        "skewness": 0.6444477629098113
+      },
+      {
+        "column": "glucose",
+        "label": "Glucose",
+        "mean": 81.60094339622641,
+        "median": 78.0,
+        "sd": 22.860339880961675,
+        "min": 40.0,
+        "max": 394.0,
+        "skewness": 6.542927965691853
+      }
+    ],
+    "categorical": [
+      {
+        "column": "TenYearCHD",
+        "label": "10-year CHD",
+        "levels": [
+          {
+            "level": "No CHD within 10 years",
+            "n": 3596,
+            "fraction": 0.8481132075471698
+          },
+          {
+            "level": "CHD within 10 years",
+            "n": 644,
+            "fraction": 0.15188679245283018
+          }
+        ]
+      },
+      {
+        "column": "male",
+        "label": "Male (vs female)",
+        "levels": [
+          {
+            "level": "0",
+            "n": 2420,
+            "fraction": 0.5707547169811321
+          },
+          {
+            "level": "1",
+            "n": 1820,
+            "fraction": 0.42924528301886794
+          }
+        ]
+      },
+      {
+        "column": "education",
+        "label": "Education level",
+        "levels": [
+          {
+            "level": "1",
+            "n": 1825,
+            "fraction": 0.43042452830188677
+          },
+          {
+            "level": "2",
+            "n": 1253,
+            "fraction": 0.2955188679245283
+          },
+          {
+            "level": "3",
+            "n": 689,
+            "fraction": 0.1625
+          },
+          {
+            "level": "4",
+            "n": 473,
+            "fraction": 0.11155660377358491
+          }
+        ]
+      },
+      {
+        "column": "currentSmoker",
+        "label": "Current smoker",
+        "levels": [
+          {
+            "level": "0",
+            "n": 2145,
+            "fraction": 0.5058962264150944
+          },
+          {
+            "level": "1",
+            "n": 2095,
+            "fraction": 0.49410377358490565
+          }
+        ]
+      },
+      {
+        "column": "BPMeds",
+        "label": "On BP medication",
+        "levels": [
+          {
+            "level": "0",
+            "n": 4116,
+            "fraction": 0.970754716981132
+          },
+          {
+            "level": "1",
+            "n": 124,
+            "fraction": 0.029245283018867925
+          }
+        ]
+      },
+      {
+        "column": "prevalentStroke",
+        "label": "Prior stroke",
+        "levels": [
+          {
+            "level": "0",
+            "n": 4215,
+            "fraction": 0.9941037735849056
+          },
+          {
+            "level": "1",
+            "n": 25,
+            "fraction": 0.00589622641509434
+          }
+        ]
+      },
+      {
+        "column": "prevalentHyp",
+        "label": "Hypertension",
+        "levels": [
+          {
+            "level": "0",
+            "n": 2923,
+            "fraction": 0.6893867924528302
+          },
+          {
+            "level": "1",
+            "n": 1317,
+            "fraction": 0.3106132075471698
+          }
+        ]
+      },
+      {
+        "column": "diabetes",
+        "label": "Diabetes",
+        "levels": [
+          {
+            "level": "0",
+            "n": 4131,
+            "fraction": 0.9742924528301887
+          },
+          {
+            "level": "1",
+            "n": 109,
+            "fraction": 0.025707547169811322
+          }
+        ]
+      }
+    ],
+    "histograms": [
+      {
+        "column": "age",
+        "label": "Age",
+        "edges": [
+          32.0,
+          33.9,
+          35.8,
+          37.7,
+          39.6,
+          41.5,
+          43.4,
+          45.3,
+          47.2,
+          49.1,
+          51.0,
+          52.9,
+          54.8,
+          56.7,
+          58.6,
+          60.5,
+          62.4,
+          64.3,
+          66.2,
+          68.1,
+          70.0
+        ],
+        "negative": [
+          0.00167,
+          0.01613,
+          0.047,
+          0.08343,
+          0.09455,
+          0.08676,
+          0.08287,
+          0.07898,
+          0.0723,
+          0.03254,
+          0.06507,
+          0.06396,
+          0.06034,
+          0.05089,
+          0.04839,
+          0.04422,
+          0.04171,
+          0.01669,
+          0.01057,
+          0.00195
+        ],
+        "positive": [
+          0.0,
+          0.00311,
+          0.01087,
+          0.02174,
+          0.04037,
+          0.04193,
+          0.04658,
+          0.06056,
+          0.06988,
+          0.03571,
+          0.09472,
+          0.06366,
+          0.07919,
+          0.08851,
+          0.08696,
+          0.07764,
+          0.0823,
+          0.05435,
+          0.03882,
+          0.00311
+        ]
+      },
+      {
+        "column": "cigsPerDay",
+        "label": "Cigarettes per day",
+        "edges": [
+          0.0,
+          3.5,
+          7.0,
+          10.5,
+          14.0,
+          17.5,
+          21.0,
+          24.5,
+          28.0,
+          31.5,
+          35.0,
+          38.5,
+          42.0,
+          45.5,
+          49.0,
+          52.5,
+          56.0,
+          59.5,
+          63.0,
+          66.5,
+          70.0
+        ],
+        "negative": [
+          0.5559,
+          0.03643,
+          0.0723,
+          0.0025,
+          0.05172,
+          0.1802,
+          0.00139,
+          0.01196,
+          0.0495,
+          0.0,
+          0.00501,
+          0.01585,
+          0.01307,
+          0.0,
+          0.00139,
+          0.0,
+          0.0,
+          0.0025,
+          0.0,
+          0.00028
+        ],
+        "positive": [
+          0.51398,
+          0.0264,
+          0.0559,
+          0.00311,
+          0.0559,
+          0.1941,
+          0.00155,
+          0.01863,
+          0.06366,
+          0.0,
+          0.00776,
+          0.03571,
+          0.01863,
+          0.0,
+          0.00155,
+          0.0,
+          0.0,
+          0.00311,
+          0.0,
+          0.0
+        ]
+      },
+      {
+        "column": "totChol",
+        "label": "Total cholesterol",
+        "edges": [
+          107.0,
+          136.45,
+          165.9,
+          195.35,
+          224.8,
+          254.25,
+          283.7,
+          313.15,
+          342.6,
+          372.05,
+          401.5,
+          430.95,
+          460.4,
+          489.85,
+          519.3,
+          548.75,
+          578.2,
+          607.65,
+          637.1,
+          666.55,
+          696.0
+        ],
+        "negative": [
+          0.00167,
+          0.03921,
+          0.14043,
+          0.23554,
+          0.28671,
+          0.16908,
+          0.08287,
+          0.02976,
+          0.01057,
+          0.00278,
+          0.00083,
+          0.00028,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.00028
+        ],
+        "positive": [
+          0.00466,
+          0.02174,
+          0.09472,
+          0.2205,
+          0.26708,
+          0.21273,
+          0.11491,
+          0.03727,
+          0.01708,
+          0.00155,
+          0.00155,
+          0.00311,
+          0.00155,
+          0.0,
+          0.0,
+          0.0,
+          0.00155,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      {
+        "column": "sysBP",
+        "label": "Systolic BP",
+        "edges": [
+          83.5,
+          94.075,
+          104.65,
+          115.225,
+          125.8,
+          136.375,
+          146.95,
+          157.525,
+          168.1,
+          178.675,
+          189.25,
+          199.825,
+          210.4,
+          220.975,
+          231.55,
+          242.125,
+          252.7,
+          263.275,
+          273.85,
+          284.425,
+          295.0
+        ],
+        "negative": [
+          0.00362,
+          0.05117,
+          0.19049,
+          0.22581,
+          0.21496,
+          0.1307,
+          0.07953,
+          0.04922,
+          0.02419,
+          0.01585,
+          0.0089,
+          0.00362,
+          0.00111,
+          0.00028,
+          0.00028,
+          0.00028,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "positive": [
+          0.00466,
+          0.0295,
+          0.0823,
+          0.14286,
+          0.19099,
+          0.1677,
+          0.12578,
+          0.09317,
+          0.0559,
+          0.04037,
+          0.0295,
+          0.02174,
+          0.00932,
+          0.0,
+          0.00155,
+          0.00311,
+          0.0,
+          0.0,
+          0.0,
+          0.00155
+        ]
+      },
+      {
+        "column": "diaBP",
+        "label": "Diastolic BP",
+        "edges": [
+          48.0,
+          52.725,
+          57.45,
+          62.175,
+          66.9,
+          71.625,
+          76.35,
+          81.075,
+          85.8,
+          90.525,
+          95.25,
+          99.975,
+          104.7,
+          109.425,
+          114.15,
+          118.875,
+          123.6,
+          128.325,
+          133.05,
+          137.775,
+          142.5
+        ],
+        "negative": [
+          0.00083,
+          0.0025,
+          0.0228,
+          0.03615,
+          0.10512,
+          0.14683,
+          0.19605,
+          0.15128,
+          0.14155,
+          0.07981,
+          0.04616,
+          0.03003,
+          0.02169,
+          0.01001,
+          0.00334,
+          0.0025,
+          0.00111,
+          0.00139,
+          0.00056,
+          0.00028
+        ],
+        "positive": [
+          0.00311,
+          0.00621,
+          0.01242,
+          0.03416,
+          0.05901,
+          0.11025,
+          0.13975,
+          0.13665,
+          0.13975,
+          0.12578,
+          0.06211,
+          0.06988,
+          0.03106,
+          0.02484,
+          0.01398,
+          0.01242,
+          0.00776,
+          0.00621,
+          0.00311,
+          0.00155
+        ]
+      },
+      {
+        "column": "BMI",
+        "label": "BMI",
+        "edges": [
+          15.54,
+          17.603,
+          19.666,
+          21.729,
+          23.792,
+          25.855,
+          27.918,
+          29.981,
+          32.044,
+          34.107,
+          36.17,
+          38.233,
+          40.296,
+          42.359,
+          44.422,
+          46.485,
+          48.548,
+          50.611,
+          52.674,
+          54.737,
+          56.8
+        ],
+        "negative": [
+          0.00445,
+          0.03281,
+          0.10539,
+          0.19021,
+          0.23137,
+          0.19021,
+          0.12458,
+          0.06118,
+          0.02753,
+          0.01613,
+          0.00528,
+          0.00612,
+          0.00195,
+          0.00139,
+          0.00111,
+          0.0,
+          0.0,
+          0.00028,
+          0.0,
+          0.0
+        ],
+        "positive": [
+          0.00932,
+          0.02795,
+          0.0823,
+          0.14752,
+          0.20652,
+          0.18789,
+          0.17547,
+          0.06677,
+          0.04814,
+          0.01242,
+          0.00932,
+          0.01708,
+          0.00466,
+          0.00311,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.00155
+        ]
+      },
+      {
+        "column": "heartRate",
+        "label": "Heart rate",
+        "edges": [
+          44.0,
+          48.95,
+          53.9,
+          58.85,
+          63.8,
+          68.75,
+          73.7,
+          78.65,
+          83.6,
+          88.55,
+          93.5,
+          98.45,
+          103.4,
+          108.35,
+          113.3,
+          118.25,
+          123.2,
+          128.15,
+          133.1,
+          138.05,
+          143.0
+        ],
+        "negative": [
+          0.00278,
+          0.01251,
+          0.03281,
+          0.0965,
+          0.1332,
+          0.1624,
+          0.18854,
+          0.1332,
+          0.09816,
+          0.05256,
+          0.03949,
+          0.02809,
+          0.00723,
+          0.00806,
+          0.00083,
+          0.00195,
+          0.00083,
+          0.00028,
+          0.0,
+          0.00056
+        ],
+        "positive": [
+          0.0,
+          0.00932,
+          0.03416,
+          0.07919,
+          0.15683,
+          0.15062,
+          0.17547,
+          0.13665,
+          0.07298,
+          0.08851,
+          0.04658,
+          0.02019,
+          0.00776,
+          0.01553,
+          0.00311,
+          0.00311,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      {
+        "column": "glucose",
+        "label": "Glucose",
+        "edges": [
+          40.0,
+          57.7,
+          75.4,
+          93.1,
+          110.8,
+          128.5,
+          146.2,
+          163.9,
+          181.6,
+          199.3,
+          217.0,
+          234.7,
+          252.4,
+          270.1,
+          287.8,
+          305.5,
+          323.2,
+          340.9,
+          358.6,
+          376.3,
+          394.0
+        ],
+        "negative": [
+          0.01529,
+          0.35984,
+          0.50667,
+          0.08315,
+          0.02308,
+          0.00473,
+          0.00083,
+          0.00167,
+          0.00111,
+          0.00083,
+          0.00056,
+          0.00056,
+          0.00056,
+          0.0,
+          0.00028,
+          0.0,
+          0.0,
+          0.00028,
+          0.00028,
+          0.00028
+        ],
+        "positive": [
+          0.01863,
+          0.32919,
+          0.45497,
+          0.1118,
+          0.03106,
+          0.01087,
+          0.00776,
+          0.00311,
+          0.0,
+          0.00932,
+          0.0,
+          0.00311,
+          0.00621,
+          0.00155,
+          0.00311,
+          0.00155,
+          0.00311,
+          0.0,
+          0.00155,
+          0.00311
+        ]
+      }
+    ],
+    "outcomeRates": [
+      {
+        "column": "male",
+        "label": "Male (vs female)",
+        "levels": [
+          {
+            "level": "0",
+            "n": 2420,
+            "rate": 0.1243801652892562
+          },
+          {
+            "level": "1",
+            "n": 1820,
+            "rate": 0.18846153846153846
+          }
+        ]
+      },
+      {
+        "column": "education",
+        "label": "Education level",
+        "levels": [
+          {
+            "level": "1",
+            "n": 1825,
+            "rate": 0.18575342465753425
+          },
+          {
+            "level": "2",
+            "n": 1253,
+            "rate": 0.11731843575418995
+          },
+          {
+            "level": "3",
+            "n": 689,
+            "rate": 0.12772133526850507
+          },
+          {
+            "level": "4",
+            "n": 473,
+            "rate": 0.14799154334038056
+          }
+        ]
+      },
+      {
+        "column": "currentSmoker",
+        "label": "Current smoker",
+        "levels": [
+          {
+            "level": "0",
+            "n": 2145,
+            "rate": 0.14498834498834498
+          },
+          {
+            "level": "1",
+            "n": 2095,
+            "rate": 0.15894988066825777
+          }
+        ]
+      },
+      {
+        "column": "BPMeds",
+        "label": "On BP medication",
+        "levels": [
+          {
+            "level": "0",
+            "n": 4116,
+            "rate": 0.14650145772594753
+          },
+          {
+            "level": "1",
+            "n": 124,
+            "rate": 0.33064516129032256
+          }
+        ]
+      },
+      {
+        "column": "prevalentStroke",
+        "label": "Prior stroke",
+        "levels": [
+          {
+            "level": "0",
+            "n": 4215,
+            "rate": 0.1501779359430605
+          },
+          {
+            "level": "1",
+            "n": 25,
+            "rate": 0.44
+          }
+        ]
+      },
+      {
+        "column": "prevalentHyp",
+        "label": "Hypertension",
+        "levels": [
+          {
+            "level": "0",
+            "n": 2923,
+            "rate": 0.1091344509066028
+          },
+          {
+            "level": "1",
+            "n": 1317,
+            "rate": 0.24677296886864086
+          }
+        ]
+      },
+      {
+        "column": "diabetes",
+        "label": "Diabetes",
+        "levels": [
+          {
+            "level": "0",
+            "n": 4131,
+            "rate": 0.14621157104817237
+          },
+          {
+            "level": "1",
+            "n": 109,
+            "rate": 0.3669724770642202
+          }
+        ]
+      }
+    ],
+    "correlation": {
+      "columns": [
+        "male",
+        "age",
+        "education",
+        "currentSmoker",
+        "cigsPerDay",
+        "BPMeds",
+        "prevalentStroke",
+        "prevalentHyp",
+        "diabetes",
+        "totChol",
+        "sysBP",
+        "diaBP",
+        "BMI",
+        "heartRate",
+        "glucose"
+      ],
+      "labels": [
+        "Male (vs female)",
+        "Age",
+        "Education level",
+        "Current smoker",
+        "Cigarettes per day",
+        "On BP medication",
+        "Prior stroke",
+        "Hypertension",
+        "Diabetes",
+        "Total cholesterol",
+        "Systolic BP",
+        "Diastolic BP",
+        "BMI",
+        "Heart rate",
+        "Glucose"
+      ],
+      "matrix": [
+        [
+          1.0,
+          -0.029,
+          0.0134,
+          0.197,
+          0.3158,
+          -0.0515,
+          -0.0046,
+          0.0059,
+          0.0157,
+          -0.0701,
+          -0.0359,
+          0.0582,
+          0.0817,
+          -0.1169,
+          0.01
+        ],
+        [
+          -0.029,
+          1.0,
+          -0.1653,
+          -0.2137,
+          -0.1921,
+          0.121,
+          0.0577,
+          0.3068,
+          0.1013,
+          0.2607,
+          0.3941,
+          0.2056,
+          0.1356,
+          -0.0128,
+          0.1179
+        ],
+        [
+          0.0134,
+          -0.1653,
+          1.0,
+          0.0194,
+          0.0103,
+          -0.0102,
+          -0.0329,
+          -0.0786,
+          -0.0382,
+          -0.024,
+          -0.1261,
+          -0.0623,
+          -0.1397,
+          -0.0496,
+          -0.0347
+        ],
+        [
+          0.197,
+          -0.2137,
+          0.0194,
+          1.0,
+          0.7712,
+          -0.0483,
+          -0.033,
+          -0.1037,
+          -0.0443,
+          -0.0462,
+          -0.1303,
+          -0.1079,
+          -0.1675,
+          0.0627,
+          -0.0551
+        ],
+        [
+          0.3158,
+          -0.1921,
+          0.0103,
+          0.7712,
+          1.0,
+          -0.0466,
+          -0.0331,
+          -0.0672,
+          -0.038,
+          -0.0251,
+          -0.0882,
+          -0.0558,
+          -0.0925,
+          0.0761,
+          -0.0553
+        ],
+        [
+          -0.0515,
+          0.121,
+          -0.0102,
+          -0.0483,
+          -0.0466,
+          1.0,
+          0.1146,
+          0.2586,
+          0.0514,
+          0.0788,
+          0.2515,
+          0.1923,
+          0.0997,
+          0.0151,
+          0.0491
+        ],
+        [
+          -0.0046,
+          0.0577,
+          -0.0329,
+          -0.033,
+          -0.0331,
+          0.1146,
+          1.0,
+          0.0748,
+          0.007,
+          0.0001,
+          0.057,
+          0.0452,
+          0.0249,
+          -0.0177,
+          0.0187
+        ],
+        [
+          0.0059,
+          0.3068,
+          -0.0786,
+          -0.1037,
+          -0.0672,
+          0.2586,
+          0.0748,
+          1.0,
+          0.0778,
+          0.1627,
+          0.6967,
+          0.6158,
+          0.3006,
+          0.1468,
+          0.0834
+        ],
+        [
+          0.0157,
+          0.1013,
+          -0.0382,
+          -0.0443,
+          -0.038,
+          0.0514,
+          0.007,
+          0.0778,
+          1.0,
+          0.0402,
+          0.1113,
+          0.0503,
+          0.0863,
+          0.049,
+          0.6065
+        ],
+        [
+          -0.0701,
+          0.2607,
+          -0.024,
+          -0.0462,
+          -0.0251,
+          0.0788,
+          0.0001,
+          0.1627,
+          0.0402,
+          1.0,
+          0.2074,
+          0.1634,
+          0.115,
+          0.0907,
+          0.0456
+        ],
+        [
+          -0.0359,
+          0.3941,
+          -0.1261,
+          -0.1303,
+          -0.0882,
+          0.2515,
+          0.057,
+          0.6967,
+          0.1113,
+          0.2074,
+          1.0,
+          0.784,
+          0.3252,
+          0.1821,
+          0.1351
+        ],
+        [
+          0.0582,
+          0.2056,
+          -0.0623,
+          -0.1079,
+          -0.0558,
+          0.1923,
+          0.0452,
+          0.6158,
+          0.0503,
+          0.1634,
+          0.784,
+          1.0,
+          0.3763,
+          0.181,
+          0.0589
+        ],
+        [
+          0.0817,
+          0.1356,
+          -0.1397,
+          -0.1675,
+          -0.0925,
+          0.0997,
+          0.0249,
+          0.3006,
+          0.0863,
+          0.115,
+          0.3252,
+          0.3763,
+          1.0,
+          0.0673,
+          0.0823
+        ],
+        [
+          -0.1169,
+          -0.0128,
+          -0.0496,
+          0.0627,
+          0.0761,
+          0.0151,
+          -0.0177,
+          0.1468,
+          0.049,
+          0.0907,
+          0.1821,
+          0.181,
+          0.0673,
+          1.0,
+          0.0874
+        ],
+        [
+          0.01,
+          0.1179,
+          -0.0347,
+          -0.0551,
+          -0.0553,
+          0.0491,
+          0.0187,
+          0.0834,
+          0.6065,
+          0.0456,
+          0.1351,
+          0.0589,
+          0.0823,
+          0.0874,
+          1.0
+        ]
+      ]
+    }
+  },
+  "assumptions": {
+    "verdict": {
+      "level": "pass",
+      "text": "6 checks passed, 1 assumed rather than tested. No predictor was removed."
+    },
+    "checks": [
+      {
+        "id": "binary-outcome",
+        "title": "Binary outcome",
+        "verdict": {
+          "level": "pass",
+          "text": "The outcome has exactly two values."
+        },
+        "action": "kept",
+        "detail": "'TenYearCHD' takes exactly two values: No CHD within 10 years and CHD within 10 years.",
+        "remedies": []
+      },
+      {
+        "id": "independence",
+        "title": "Independent observations",
+        "verdict": {
+          "level": "info",
+          "text": "Assumed, not tested."
+        },
+        "action": "kept",
+        "detail": "This depends on how the data were collected: one row per person, with no repeated measurements. A CSV cannot prove it, so it is stated here rather than silently assumed.",
+        "remedies": []
+      },
+      {
+        "id": "sample-size",
+        "title": "Sample size",
+        "verdict": {
+          "level": "pass",
+          "text": "37.9 events per term."
+        },
+        "action": "kept",
+        "detail": "644 events across 17 model terms gives 37.9 per term; at least 10 is the usual guideline.",
+        "remedies": []
+      },
+      {
+        "id": "separation",
+        "title": "Separation",
+        "verdict": {
+          "level": "pass",
+          "text": "The model converged normally."
+        },
+        "action": "kept",
+        "detail": "No predictor separates the outcome perfectly.",
+        "remedies": []
+      },
+      {
+        "id": "multicollinearity",
+        "title": "Multicollinearity",
+        "verdict": {
+          "level": "pass",
+          "text": "Highest VIF is 3.74 (limit 5)."
+        },
+        "action": "kept",
+        "detail": "'Systolic BP' has the highest variance inflation factor, 3.74. 3 group(s) of related predictors were found (correlation of at least 0.6). They are all kept and tested together below.",
+        "remedies": []
+      },
+      {
+        "id": "linearity",
+        "title": "Linearity in the logit",
+        "verdict": {
+          "level": "pass",
+          "text": "No continuous predictor is non-linear (smallest p = 0.022, for Diastolic BP)."
+        },
+        "action": "kept",
+        "detail": "Each continuous predictor was tested with a Box-Tidwell term. The threshold is 0.05 divided by the 8 tests, which is 0.0063. 1 more fall between that and 0.05: Diastolic BP. Cigarettes per day contains zeros, so 1 was added before taking logarithms.",
+        "remedies": []
+      },
+      {
+        "id": "influence",
+        "title": "Influential observations",
+        "verdict": {
+          "level": "pass",
+          "text": "No row is highly influential (largest Cook's distance 0.012)."
+        },
+        "action": "kept",
+        "detail": "388 of 4,240 rows exceed the common 4/n guideline (0.00094), which is expected in a large sample. The largest Cook's distance is 0.012; values above 1 would be a concern. No row was removed.",
+        "remedies": []
+      }
+    ],
+    "epv": {
+      "events": 644,
+      "terms": 17,
+      "value": 37.88235294117647,
+      "minimum": 10
+    },
+    "vif": [
+      {
+        "term": "male",
+        "label": "Male (vs female)",
+        "value": 1.2150180345796453
+      },
+      {
+        "term": "age",
+        "label": "Age",
+        "value": 1.4103187297476447
+      },
+      {
+        "term": "education[2]",
+        "label": "Education level: 2 vs 1",
+        "value": 1.2749525645640993
+      },
+      {
+        "term": "education[3]",
+        "label": "Education level: 3 vs 1",
+        "value": 1.204368316858922
+      },
+      {
+        "term": "education[4]",
+        "label": "Education level: 4 vs 1",
+        "value": 1.1643893977338475
+      },
+      {
+        "term": "currentSmoker",
+        "label": "Current smoker",
+        "value": 2.55961090277451
+      },
+      {
+        "term": "cigsPerDay",
+        "label": "Cigarettes per day",
+        "value": 2.6866185841579555
+      },
+      {
+        "term": "BPMeds",
+        "label": "On BP medication",
+        "value": 1.101322718887299
+      },
+      {
+        "term": "prevalentStroke",
+        "label": "Prior stroke",
+        "value": 1.0191806973459565
+      },
+      {
+        "term": "prevalentHyp",
+        "label": "Hypertension",
+        "value": 2.0534406586616774
+      },
+      {
+        "term": "diabetes",
+        "label": "Diabetes",
+        "value": 1.5896072696634536
+      },
+      {
+        "term": "totChol",
+        "label": "Total cholesterol",
+        "value": 1.1081213367359208
+      },
+      {
+        "term": "sysBP",
+        "label": "Systolic BP",
+        "value": 3.7378236204047317
+      },
+      {
+        "term": "diaBP",
+        "label": "Diastolic BP",
+        "value": 2.963990530777972
+      },
+      {
+        "term": "BMI",
+        "label": "BMI",
+        "value": 1.2426990142602214
+      },
+      {
+        "term": "heartRate",
+        "label": "Heart rate",
+        "value": 1.0977033670022343
+      },
+      {
+        "term": "glucose",
+        "label": "Glucose",
+        "value": 1.6115066399199927
+      }
+    ],
+    "boxTidwell": [
+      {
+        "column": "age",
+        "label": "Age",
+        "pValue": 0.05698555548244436,
+        "level": "pass"
+      },
+      {
+        "column": "cigsPerDay",
+        "label": "Cigarettes per day",
+        "pValue": 0.10042512035206601,
+        "level": "pass"
+      },
+      {
+        "column": "totChol",
+        "label": "Total cholesterol",
+        "pValue": 0.32981534160723414,
+        "level": "pass"
+      },
+      {
+        "column": "sysBP",
+        "label": "Systolic BP",
+        "pValue": 0.453852868256718,
+        "level": "pass"
+      },
+      {
+        "column": "diaBP",
+        "label": "Diastolic BP",
+        "pValue": 0.022330122909390362,
+        "level": "info"
+      },
+      {
+        "column": "BMI",
+        "label": "BMI",
+        "pValue": 0.29251316047903064,
+        "level": "pass"
+      },
+      {
+        "column": "heartRate",
+        "label": "Heart rate",
+        "pValue": 0.5574007366128051,
+        "level": "pass"
+      },
+      {
+        "column": "glucose",
+        "label": "Glucose",
+        "pValue": 0.38610463857236177,
+        "level": "pass"
+      }
+    ],
+    "influence": {
+      "threshold": 0.0009433962264150943,
+      "count": 388,
+      "maxCooksD": 0.01152029909597811,
+      "flagged": [
+        {
+          "row": 3972,
+          "cooksD": 0.01152029909597811
+        },
+        {
+          "row": 3928,
+          "cooksD": 0.008084805164666838
+        },
+        {
+          "row": 2472,
+          "cooksD": 0.00769292925075575
+        },
+        {
+          "row": 2407,
+          "cooksD": 0.006973750217481916
+        },
+        {
+          "row": 4036,
+          "cooksD": 0.006803866407952814
+        }
+      ]
+    },
+    "groupTests": [
+      {
+        "id": "group-1",
+        "label": "Current smoker and Cigarettes per day",
+        "terms": [
+          "currentSmoker",
+          "cigsPerDay"
+        ],
+        "reason": "Correlated at |r| ≥ 0.6; the strongest pair is Current smoker and Cigarettes per day (r = 0.77).",
+        "maxVif": 2.6866185841579555,
+        "statistic": 29.771339045831994,
+        "df": 2,
+        "pValue": 3.429539954199528e-07,
+        "significant": true,
+        "interpretation": "Together they show clear evidence of an association with the outcome (χ² = 29.8, df = 2, p < 0.001). Because they overlap, read their separate odds ratios as a set rather than one by one."
+      },
+      {
+        "id": "group-2",
+        "label": "Hypertension, Systolic BP and Diastolic BP",
+        "terms": [
+          "prevalentHyp",
+          "sysBP",
+          "diaBP"
+        ],
+        "reason": "Correlated at |r| ≥ 0.6; the strongest pair is Systolic BP and Diastolic BP (r = 0.78).",
+        "maxVif": 3.7378236204047317,
+        "statistic": 57.17456630053833,
+        "df": 3,
+        "pValue": 2.358566783499745e-12,
+        "significant": true,
+        "interpretation": "Together they show clear evidence of an association with the outcome (χ² = 57.2, df = 3, p < 0.001). Because they overlap, read their separate odds ratios as a set rather than one by one."
+      },
+      {
+        "id": "group-3",
+        "label": "Diabetes and Glucose",
+        "terms": [
+          "diabetes",
+          "glucose"
+        ],
+        "reason": "Correlated at |r| ≥ 0.6; the strongest pair is Diabetes and Glucose (r = 0.61).",
+        "maxVif": 1.6115066399199927,
+        "statistic": 21.92412600085193,
+        "df": 2,
+        "pValue": 1.7347485319627793e-05,
+        "significant": true,
+        "interpretation": "Together they show clear evidence of an association with the outcome (χ² = 21.9, df = 2, p < 0.001). Because they overlap, read their separate odds ratios as a set rather than one by one."
+      }
+    ]
+  },
+  "model": {
+    "verdict": {
+      "level": "info",
+      "text": "6 of 17 terms show clear evidence of an association with the outcome; 11 do not. A term with no clear evidence stays in the model."
+    },
+    "description": "Unweighted logistic regression on all 4,240 rows",
+    "intercept": -8.001162312203645,
+    "terms": [
+      {
+        "name": "male",
+        "column": "male",
+        "label": "Male (vs female)",
+        "kind": "binary",
+        "reference": null,
+        "unit": null,
+        "mean": null,
+        "sd": null
+      },
+      {
+        "name": "age",
+        "column": "age",
+        "label": "Age",
+        "kind": "continuous",
+        "reference": null,
+        "unit": "years",
+        "mean": 49.58018867924528,
+        "sd": 8.57294217547334
+      },
+      {
+        "name": "education[2]",
+        "column": "education",
+        "label": "Education level: 2 vs 1",
+        "kind": "level",
+        "reference": "1",
+        "unit": null,
+        "mean": null,
+        "sd": null
+      },
+      {
+        "name": "education[3]",
+        "column": "education",
+        "label": "Education level: 3 vs 1",
+        "kind": "level",
+        "reference": "1",
+        "unit": null,
+        "mean": null,
+        "sd": null
+      },
+      {
+        "name": "education[4]",
+        "column": "education",
+        "label": "Education level: 4 vs 1",
+        "kind": "level",
+        "reference": "1",
+        "unit": null,
+        "mean": null,
+        "sd": null
+      },
+      {
+        "name": "currentSmoker",
+        "column": "currentSmoker",
+        "label": "Current smoker",
+        "kind": "binary",
+        "reference": null,
+        "unit": null,
+        "mean": null,
+        "sd": null
+      },
+      {
+        "name": "cigsPerDay",
+        "column": "cigsPerDay",
+        "label": "Cigarettes per day",
+        "kind": "continuous",
+        "reference": null,
+        "unit": "cigarettes",
+        "mean": 9.081132075471698,
+        "sd": 11.916118824638177
+      },
+      {
+        "name": "BPMeds",
+        "column": "BPMeds",
+        "label": "On BP medication",
+        "kind": "binary",
+        "reference": null,
+        "unit": null,
+        "mean": null,
+        "sd": null
+      },
+      {
+        "name": "prevalentStroke",
+        "column": "prevalentStroke",
+        "label": "Prior stroke",
+        "kind": "binary",
+        "reference": null,
+        "unit": null,
+        "mean": null,
+        "sd": null
+      },
+      {
+        "name": "prevalentHyp",
+        "column": "prevalentHyp",
+        "label": "Hypertension",
+        "kind": "binary",
+        "reference": null,
+        "unit": null,
+        "mean": null,
+        "sd": null
+      },
+      {
+        "name": "diabetes",
+        "column": "diabetes",
+        "label": "Diabetes",
+        "kind": "binary",
+        "reference": null,
+        "unit": null,
+        "mean": null,
+        "sd": null
+      },
+      {
+        "name": "totChol",
+        "column": "totChol",
+        "label": "Total cholesterol",
+        "kind": "continuous",
+        "reference": null,
+        "unit": "mg/dL",
+        "mean": 236.69952267303103,
+        "sd": 44.327521446557704
+      },
+      {
+        "name": "sysBP",
+        "column": "sysBP",
+        "label": "Systolic BP",
+        "kind": "continuous",
+        "reference": null,
+        "unit": "mmHg",
+        "mean": 132.35459905660377,
+        "sd": 22.033299608849184
+      },
+      {
+        "name": "diaBP",
+        "column": "diaBP",
+        "label": "Diastolic BP",
+        "kind": "continuous",
+        "reference": null,
+        "unit": "mmHg",
+        "mean": 82.89775943396226,
+        "sd": 11.91039448330595
+      },
+      {
+        "name": "BMI",
+        "column": "BMI",
+        "label": "BMI",
+        "kind": "continuous",
+        "reference": null,
+        "unit": "kg/m²",
+        "mean": 25.800800758114192,
+        "sd": 4.07068659264745
+      },
+      {
+        "name": "heartRate",
+        "column": "heartRate",
+        "label": "Heart rate",
+        "kind": "continuous",
+        "reference": null,
+        "unit": "bpm",
+        "mean": 75.87898089171975,
+        "sd": 12.023929482785363
+      },
+      {
+        "name": "glucose",
+        "column": "glucose",
+        "label": "Glucose",
+        "kind": "continuous",
+        "reference": null,
+        "unit": "mg/dL",
+        "mean": 81.60094339622641,
+        "sd": 22.860339880961675
+      }
+    ],
+    "coefficients": [
+      {
+        "term": "male",
+        "label": "Male (vs female)",
+        "beta": 0.4881953478811676,
+        "se": 0.1012028027553593,
+        "z": 4.823931102593052,
+        "pValue": 1.4075605593315014e-06,
+        "orRaw": 1.6293731134708602,
+        "orRawLo": 1.336215678090455,
+        "orRawHi": 1.986847472629343,
+        "orStd": 1.6293731134708602,
+        "orStdLo": 1.336215678090455,
+        "orStdHi": 1.986847472629343,
+        "significant": true,
+        "interpretation": "With the other predictors held fixed, Male (vs female) goes with 63% higher odds of CHD within 10 years (OR 1.63, 95% CI 1.34 to 1.99, p < 0.001)."
+      },
+      {
+        "term": "age",
+        "label": "Age",
+        "beta": 0.060536390742725175,
+        "se": 0.006283133557036756,
+        "z": 9.634745178212523,
+        "pValue": 5.703332908282895e-22,
+        "orRaw": 1.0624062586196956,
+        "orRawLo": 1.049403256181246,
+        "orRawHi": 1.075570379361732,
+        "orStd": 1.6803044165861105,
+        "orStdLo": 1.5119521535561704,
+        "orStdHi": 1.8674023022209982,
+        "significant": true,
+        "interpretation": "With the other predictors held fixed, each extra 1 years of Age goes with 6% higher odds of CHD within 10 years (OR 1.06, 95% CI 1.05 to 1.08, p < 0.001). Per 1 SD (8.6 years): OR 1.68 (95% CI 1.51 to 1.87)."
+      },
+      {
+        "term": "education[2]",
+        "label": "Education level: 2 vs 1",
+        "beta": -0.19196921866877767,
+        "se": 0.11516468290770124,
+        "z": -1.66691049566499,
+        "pValue": 0.09553220357951335,
+        "orRaw": 0.8253322729267507,
+        "orRawLo": 0.658567767456238,
+        "orRawHi": 1.0343253866880155,
+        "orStd": 0.8253322729267507,
+        "orStdLo": 0.658567767456238,
+        "orStdHi": 1.0343253866880155,
+        "significant": false,
+        "interpretation": "There is no clear evidence that Education level: 2 vs 1 is associated with CHD within 10 years once the other predictors are accounted for (OR 0.83, 95% CI 0.66 to 1.03, p = 0.096). The data fit both a small increase and a small decrease, so this does not prove it has no effect."
+      },
+      {
+        "term": "education[3]",
+        "label": "Education level: 3 vs 1",
+        "beta": -0.0929182775241207,
+        "se": 0.13886189523768372,
+        "z": -0.6691416487228309,
+        "pValue": 0.5034051243527856,
+        "orRaw": 0.9112679683278044,
+        "orRawLo": 0.6941393173494163,
+        "orRawHi": 1.196315047058878,
+        "orStd": 0.9112679683278044,
+        "orStdLo": 0.6941393173494163,
+        "orStdHi": 1.196315047058878,
+        "significant": false,
+        "interpretation": "There is no clear evidence that Education level: 3 vs 1 is associated with CHD within 10 years once the other predictors are accounted for (OR 0.91, 95% CI 0.69 to 1.20, p = 0.503). The data fit both a small increase and a small decrease, so this does not prove it has no effect."
+      },
+      {
+        "term": "education[4]",
+        "label": "Education level: 4 vs 1",
+        "beta": 0.03074545537555796,
+        "se": 0.15253231336280668,
+        "z": 0.20156683326783464,
+        "pValue": 0.8402553761982201,
+        "orRaw": 1.0312229782099858,
+        "orRawLo": 0.7647453413857442,
+        "orRawHi": 1.3905554872179,
+        "orStd": 1.0312229782099858,
+        "orStdLo": 0.7647453413857442,
+        "orStdHi": 1.3905554872179,
+        "significant": false,
+        "interpretation": "There is no clear evidence that Education level: 4 vs 1 is associated with CHD within 10 years once the other predictors are accounted for (OR 1.03, 95% CI 0.76 to 1.39, p = 0.840). The data fit both a small increase and a small decrease, so this does not prove it has no effect."
+      },
+      {
+        "term": "currentSmoker",
+        "label": "Current smoker",
+        "beta": 0.029085144744916594,
+        "se": 0.1452040976052624,
+        "z": 0.20030526152219624,
+        "pValue": 0.8412418478371712,
+        "orRaw": 1.0295122483012167,
+        "orRawLo": 0.774521655254063,
+        "orRawHi": 1.3684516917148728,
+        "orStd": 1.0295122483012167,
+        "orStdLo": 0.774521655254063,
+        "orStdHi": 1.3684516917148728,
+        "significant": false,
+        "interpretation": "There is no clear evidence that Current smoker is associated with CHD within 10 years once the other predictors are accounted for (OR 1.03, 95% CI 0.77 to 1.37, p = 0.841). The data fit both a small increase and a small decrease, so this does not prove it has no effect."
+      },
+      {
+        "term": "cigsPerDay",
+        "label": "Cigarettes per day",
+        "beta": 0.02050778964914854,
+        "se": 0.00574506136388485,
+        "z": 3.5696380508773244,
+        "pValue": 0.00035747479732467133,
+        "orRaw": 1.0207195192591598,
+        "orRawLo": 1.0092905680704374,
+        "orRawHi": 1.0322778890012765,
+        "orStd": 1.276820825513953,
+        "orStdLo": 1.1164973384131869,
+        "orStdHi": 1.4601659711819317,
+        "significant": true,
+        "interpretation": "With the other predictors held fixed, each extra 1 cigarettes of Cigarettes per day goes with 2% higher odds of CHD within 10 years (OR 1.02, 95% CI 1.01 to 1.03, p < 0.001). Per 1 SD (11.9 cigarettes): OR 1.28 (95% CI 1.12 to 1.46)."
+      },
+      {
+        "term": "BPMeds",
+        "label": "On BP medication",
+        "beta": 0.25069515797118336,
+        "se": 0.22046029268151934,
+        "z": 1.1371442672143315,
+        "pValue": 0.25547798100377483,
+        "orRaw": 1.2849183275124347,
+        "orRawLo": 0.8341024194110788,
+        "orRawHi": 1.979391343263407,
+        "orStd": 1.2849183275124347,
+        "orStdLo": 0.8341024194110788,
+        "orStdHi": 1.979391343263407,
+        "significant": false,
+        "interpretation": "There is no clear evidence that On BP medication is associated with CHD within 10 years once the other predictors are accounted for (OR 1.28, 95% CI 0.83 to 1.98, p = 0.255). The data fit both a small increase and a small decrease, so this does not prove it has no effect."
+      },
+      {
+        "term": "prevalentStroke",
+        "label": "Prior stroke",
+        "beta": 0.970392856110632,
+        "se": 0.443918742546568,
+        "z": 2.1859695550224165,
+        "pValue": 0.028817832794891595,
+        "orRaw": 2.6389809955459747,
+        "orRawLo": 1.1055335861294109,
+        "orRawHi": 6.299420281961122,
+        "orStd": 2.6389809955459747,
+        "orStdLo": 1.1055335861294109,
+        "orStdHi": 6.299420281961122,
+        "significant": true,
+        "interpretation": "With the other predictors held fixed, Prior stroke goes with 2.64 times the odds of CHD within 10 years (OR 2.64, 95% CI 1.11 to 6.30, p = 0.029)."
+      },
+      {
+        "term": "prevalentHyp",
+        "label": "Hypertension",
+        "beta": 0.23199208496600637,
+        "se": 0.12865530992417923,
+        "z": 1.8032064522072728,
+        "pValue": 0.0713557975476482,
+        "orRaw": 1.2611097470623087,
+        "orRawLo": 0.9800343166956464,
+        "orRawHi": 1.6227980663961432,
+        "orStd": 1.2611097470623087,
+        "orStdLo": 0.9800343166956464,
+        "orStdHi": 1.6227980663961432,
+        "significant": false,
+        "interpretation": "There is no clear evidence that Hypertension is associated with CHD within 10 years once the other predictors are accounted for (OR 1.26, 95% CI 0.98 to 1.62, p = 0.071). The data fit both a small increase and a small decrease, so this does not prove it has no effect."
+      },
+      {
+        "term": "diabetes",
+        "label": "Diabetes",
+        "beta": 0.1800480592686308,
+        "se": 0.29482597462286747,
+        "z": 0.6106926619981257,
+        "pValue": 0.541403064879999,
+        "orRaw": 1.1972749018952984,
+        "orRawLo": 0.6717962141132358,
+        "orRawHi": 2.1337827760767585,
+        "orStd": 1.1972749018952984,
+        "orStdLo": 0.6717962141132358,
+        "orStdHi": 2.1337827760767585,
+        "significant": false,
+        "interpretation": "There is no clear evidence that Diabetes is associated with CHD within 10 years once the other predictors are accounted for (OR 1.20, 95% CI 0.67 to 2.13, p = 0.541). The data fit both a small increase and a small decrease, so this does not prove it has no effect."
+      },
+      {
+        "term": "totChol",
+        "label": "Total cholesterol",
+        "beta": 0.0018815645877269663,
+        "se": 0.0010277454507227146,
+        "z": 1.8307690745834415,
+        "pValue": 0.06713501807545423,
+        "orRaw": 1.0018833358411108,
+        "orRawLo": 0.9998672293179539,
+        "orRawHi": 1.0039035075895233,
+        "orStd": 1.0869820499481415,
+        "orStdLo": 0.9941315013108684,
+        "orStdHi": 1.1885047152730708,
+        "significant": false,
+        "interpretation": "There is no clear evidence that Total cholesterol is associated with CHD within 10 years once the other predictors are accounted for (OR 1.00, 95% CI 1.00 to 1.00, p = 0.067). The data fit both a small increase and a small decrease, so this does not prove it has no effect."
+      },
+      {
+        "term": "sysBP",
+        "label": "Systolic BP",
+        "beta": 0.014229538173001542,
+        "se": 0.0035460241924787405,
+        "z": 4.012814747057553,
+        "pValue": 5.9998999219411976e-05,
+        "orRaw": 1.0143312599633396,
+        "orRawLo": 1.0073060180775497,
+        "orRawHi": 1.0214054979066016,
+        "orStd": 1.3682378593245195,
+        "orStdLo": 1.1739692026146915,
+        "orStdHi": 1.5946541319136953,
+        "significant": true,
+        "interpretation": "With the other predictors held fixed, each extra 1 mmHg of Systolic BP goes with 1% higher odds of CHD within 10 years (OR 1.01, 95% CI 1.01 to 1.02, p < 0.001). Per 1 SD (22.0 mmHg): OR 1.37 (95% CI 1.17 to 1.59)."
+      },
+      {
+        "term": "diaBP",
+        "label": "Diastolic BP",
+        "beta": -0.0030192129810141547,
+        "se": 0.005984218472821385,
+        "z": -0.50452920372586,
+        "pValue": 0.6138895455120335,
+        "orRaw": 0.9969853402589451,
+        "orRawLo": 0.9853601543005193,
+        "orRawHi": 1.0087476790624277,
+        "orStd": 0.9646788628564055,
+        "orStdLo": 0.8389071207070695,
+        "orStdHi": 1.1093067223670372,
+        "significant": false,
+        "interpretation": "There is no clear evidence that Diastolic BP is associated with CHD within 10 years once the other predictors are accounted for (OR 1.00, 95% CI 0.99 to 1.01, p = 0.614). The data fit both a small increase and a small decrease, so this does not prove it has no effect."
+      },
+      {
+        "term": "BMI",
+        "label": "BMI",
+        "beta": 0.0019650108011869307,
+        "se": 0.0118444754513922,
+        "z": 0.165901040468277,
+        "pValue": 0.8682348286672098,
+        "orRaw": 1.0019669427001048,
+        "orRawLo": 0.9789744501654521,
+        "orRawHi": 1.0254994439273917,
+        "orStd": 1.0080310201387075,
+        "orStdLo": 0.9171346224149272,
+        "orStdHi": 1.1079360790963253,
+        "significant": false,
+        "interpretation": "There is no clear evidence that BMI is associated with CHD within 10 years once the other predictors are accounted for (OR 1.00, 95% CI 0.98 to 1.03, p = 0.868). The data fit both a small increase and a small decrease, so this does not prove it has no effect."
+      },
+      {
+        "term": "heartRate",
+        "label": "Heart rate",
+        "beta": -0.001178900577557794,
+        "se": 0.0038856530555388524,
+        "z": -0.30339831186866145,
+        "pValue": 0.7615863320187712,
+        "orRaw": 0.9988217940527346,
+        "orRawLo": 0.9912439190470136,
+        "orRawHi": 1.0064576005004537,
+        "orStd": 0.9859249751246548,
+        "orStdLo": 0.8996530055430887,
+        "orStdHi": 1.0804699707391745,
+        "significant": false,
+        "interpretation": "There is no clear evidence that Heart rate is associated with CHD within 10 years once the other predictors are accounted for (OR 1.00, 95% CI 0.99 to 1.01, p = 0.762). The data fit both a small increase and a small decrease, so this does not prove it has no effect."
+      },
+      {
+        "term": "glucose",
+        "label": "Glucose",
+        "beta": 0.006738237163631416,
+        "se": 0.0021422236320439957,
+        "z": 3.145440589319869,
+        "pValue": 0.0016583687350452134,
+        "orRaw": 1.0067609901599872,
+        "orRawLo": 1.0025427833686045,
+        "orRawHi": 1.0109969450902325,
+        "orStd": 1.1665356712752775,
+        "orStdLo": 1.0597734008664148,
+        "orStdHi": 1.2840532431226712,
+        "significant": true,
+        "interpretation": "With the other predictors held fixed, each extra 1 mg/dL of Glucose goes with 1% higher odds of CHD within 10 years (OR 1.01, 95% CI 1.00 to 1.01, p = 0.002). Per 1 SD (22.9 mg/dL): OR 1.17 (95% CI 1.06 to 1.28)."
+      }
+    ],
+    "fit": {
+      "n": 4240,
+      "llrChi2": 404.5992275673775,
+      "llrDf": 17,
+      "llrPValue": 2.0252792066496072e-75,
+      "mcFaddenR2": 0.11200881817700536,
+      "aic": 3243.609473072578
+    },
+    "counts": {
+      "significant": 6,
+      "notSignificant": 11
+    },
+    "exclusions": []
+  },
+  "sensitivity": {
+    "verdict": {
+      "level": "warn",
+      "text": "2 of 4 sensitivity checks changed something. See below."
+    },
+    "linearity": [
+      {
+        "column": "diaBP",
+        "label": "Diastolic BP",
+        "boxTidwellP": 0.022330122909390362,
+        "primaryAic": 3243.609473072578,
+        "alternativeAic": 3240.422740212548,
+        "deltaAic": 3.1867328600301335,
+        "lrPValue": 0.027505578783893096,
+        "maxOrChange": 0.029085830015224554,
+        "matters": false,
+        "verdict": {
+          "level": "pass",
+          "text": "Allowing a curve for Diastolic BP improves the fit only slightly (AIC better by 3.2, p = 0.028), and no other odds ratio moves by more than 2.9%. The straight-line version is reasonable."
+        },
+        "binned": [
+          {
+            "x": 64.86824324324324,
+            "logit": -1.9903038615288968,
+            "n": 444
+          },
+          {
+            "x": 71.46842105263158,
+            "logit": -2.322387720290225,
+            "n": 475
+          },
+          {
+            "x": 74.90589887640449,
+            "logit": -1.803244419094952,
+            "n": 356
+          },
+          {
+            "x": 78.8062787136294,
+            "logit": -2.066604394919155,
+            "n": 653
+          },
+          {
+            "x": 81.49837133550488,
+            "logit": -1.8878175922235676,
+            "n": 307
+          },
+          {
+            "x": 83.93402777777777,
+            "logit": -1.7611108344896105,
+            "n": 432
+          },
+          {
+            "x": 86.4788961038961,
+            "logit": -2.211691375753973,
+            "n": 308
+          },
+          {
+            "x": 89.82446808510639,
+            "logit": -1.3691322237175048,
+            "n": 470
+          },
+          {
+            "x": 95.15,
+            "logit": -1.3189235500048073,
+            "n": 390
+          },
+          {
+            "x": 107.08518518518518,
+            "logit": -0.9102640240072947,
+            "n": 405
+          }
+        ],
+        "linearCurve": [
+          {
+            "x": 60.0,
+            "y": -1.9096
+          },
+          {
+            "x": 61.1837,
+            "y": -1.9132
+          },
+          {
+            "x": 62.3673,
+            "y": -1.9168
+          },
+          {
+            "x": 63.551,
+            "y": -1.9203
+          },
+          {
+            "x": 64.7347,
+            "y": -1.9239
+          },
+          {
+            "x": 65.9184,
+            "y": -1.9275
+          },
+          {
+            "x": 67.102,
+            "y": -1.931
+          },
+          {
+            "x": 68.2857,
+            "y": -1.9346
+          },
+          {
+            "x": 69.4694,
+            "y": -1.9382
+          },
+          {
+            "x": 70.6531,
+            "y": -1.9418
+          },
+          {
+            "x": 71.8367,
+            "y": -1.9453
+          },
+          {
+            "x": 73.0204,
+            "y": -1.9489
+          },
+          {
+            "x": 74.2041,
+            "y": -1.9525
+          },
+          {
+            "x": 75.3878,
+            "y": -1.9561
+          },
+          {
+            "x": 76.5714,
+            "y": -1.9596
+          },
+          {
+            "x": 77.7551,
+            "y": -1.9632
+          },
+          {
+            "x": 78.9388,
+            "y": -1.9668
+          },
+          {
+            "x": 80.1224,
+            "y": -1.9704
+          },
+          {
+            "x": 81.3061,
+            "y": -1.9739
+          },
+          {
+            "x": 82.4898,
+            "y": -1.9775
+          },
+          {
+            "x": 83.6735,
+            "y": -1.9811
+          },
+          {
+            "x": 84.8571,
+            "y": -1.9847
+          },
+          {
+            "x": 86.0408,
+            "y": -1.9882
+          },
+          {
+            "x": 87.2245,
+            "y": -1.9918
+          },
+          {
+            "x": 88.4082,
+            "y": -1.9954
+          },
+          {
+            "x": 89.5918,
+            "y": -1.9989
+          },
+          {
+            "x": 90.7755,
+            "y": -2.0025
+          },
+          {
+            "x": 91.9592,
+            "y": -2.0061
+          },
+          {
+            "x": 93.1429,
+            "y": -2.0097
+          },
+          {
+            "x": 94.3265,
+            "y": -2.0132
+          },
+          {
+            "x": 95.5102,
+            "y": -2.0168
+          },
+          {
+            "x": 96.6939,
+            "y": -2.0204
+          },
+          {
+            "x": 97.8776,
+            "y": -2.024
+          },
+          {
+            "x": 99.0612,
+            "y": -2.0275
+          },
+          {
+            "x": 100.2449,
+            "y": -2.0311
+          },
+          {
+            "x": 101.4286,
+            "y": -2.0347
+          },
+          {
+            "x": 102.6122,
+            "y": -2.0383
+          },
+          {
+            "x": 103.7959,
+            "y": -2.0418
+          },
+          {
+            "x": 104.9796,
+            "y": -2.0454
+          },
+          {
+            "x": 106.1633,
+            "y": -2.049
+          },
+          {
+            "x": 107.3469,
+            "y": -2.0526
+          },
+          {
+            "x": 108.5306,
+            "y": -2.0561
+          },
+          {
+            "x": 109.7143,
+            "y": -2.0597
+          },
+          {
+            "x": 110.898,
+            "y": -2.0633
+          },
+          {
+            "x": 112.0816,
+            "y": -2.0669
+          },
+          {
+            "x": 113.2653,
+            "y": -2.0704
+          },
+          {
+            "x": 114.449,
+            "y": -2.074
+          },
+          {
+            "x": 115.6327,
+            "y": -2.0776
+          },
+          {
+            "x": 116.8163,
+            "y": -2.0811
+          },
+          {
+            "x": 118.0,
+            "y": -2.0847
+          }
+        ],
+        "splineCurve": [
+          {
+            "x": 60.0,
+            "y": -1.4611
+          },
+          {
+            "x": 61.1837,
+            "y": -1.511
+          },
+          {
+            "x": 62.3673,
+            "y": -1.5608
+          },
+          {
+            "x": 63.551,
+            "y": -1.6107
+          },
+          {
+            "x": 64.7347,
+            "y": -1.6605
+          },
+          {
+            "x": 65.9184,
+            "y": -1.7104
+          },
+          {
+            "x": 67.102,
+            "y": -1.7601
+          },
+          {
+            "x": 68.2857,
+            "y": -1.8091
+          },
+          {
+            "x": 69.4694,
+            "y": -1.8567
+          },
+          {
+            "x": 70.6531,
+            "y": -1.902
+          },
+          {
+            "x": 71.8367,
+            "y": -1.9443
+          },
+          {
+            "x": 73.0204,
+            "y": -1.9828
+          },
+          {
+            "x": 74.2041,
+            "y": -2.0167
+          },
+          {
+            "x": 75.3878,
+            "y": -2.0454
+          },
+          {
+            "x": 76.5714,
+            "y": -2.0679
+          },
+          {
+            "x": 77.7551,
+            "y": -2.0836
+          },
+          {
+            "x": 78.9388,
+            "y": -2.0919
+          },
+          {
+            "x": 80.1224,
+            "y": -2.0934
+          },
+          {
+            "x": 81.3061,
+            "y": -2.0895
+          },
+          {
+            "x": 82.4898,
+            "y": -2.0814
+          },
+          {
+            "x": 83.6735,
+            "y": -2.0704
+          },
+          {
+            "x": 84.8571,
+            "y": -2.0579
+          },
+          {
+            "x": 86.0408,
+            "y": -2.045
+          },
+          {
+            "x": 87.2245,
+            "y": -2.0329
+          },
+          {
+            "x": 88.4082,
+            "y": -2.0217
+          },
+          {
+            "x": 89.5918,
+            "y": -2.0114
+          },
+          {
+            "x": 90.7755,
+            "y": -2.0018
+          },
+          {
+            "x": 91.9592,
+            "y": -1.9929
+          },
+          {
+            "x": 93.1429,
+            "y": -1.9846
+          },
+          {
+            "x": 94.3265,
+            "y": -1.977
+          },
+          {
+            "x": 95.5102,
+            "y": -1.9699
+          },
+          {
+            "x": 96.6939,
+            "y": -1.9632
+          },
+          {
+            "x": 97.8776,
+            "y": -1.957
+          },
+          {
+            "x": 99.0612,
+            "y": -1.9511
+          },
+          {
+            "x": 100.2449,
+            "y": -1.9455
+          },
+          {
+            "x": 101.4286,
+            "y": -1.9401
+          },
+          {
+            "x": 102.6122,
+            "y": -1.9348
+          },
+          {
+            "x": 103.7959,
+            "y": -1.9297
+          },
+          {
+            "x": 104.9796,
+            "y": -1.9246
+          },
+          {
+            "x": 106.1633,
+            "y": -1.9195
+          },
+          {
+            "x": 107.3469,
+            "y": -1.9144
+          },
+          {
+            "x": 108.5306,
+            "y": -1.9093
+          },
+          {
+            "x": 109.7143,
+            "y": -1.9042
+          },
+          {
+            "x": 110.898,
+            "y": -1.8991
+          },
+          {
+            "x": 112.0816,
+            "y": -1.894
+          },
+          {
+            "x": 113.2653,
+            "y": -1.8889
+          },
+          {
+            "x": 114.449,
+            "y": -1.8838
+          },
+          {
+            "x": 115.6327,
+            "y": -1.8787
+          },
+          {
+            "x": 116.8163,
+            "y": -1.8736
+          },
+          {
+            "x": 118.0,
+            "y": -1.8685
+          }
+        ]
+      },
+      {
+        "column": "age",
+        "label": "Age",
+        "boxTidwellP": 0.05698555548244436,
+        "primaryAic": 3243.609473072578,
+        "alternativeAic": 3242.696926763647,
+        "deltaAic": 0.9125463089312689,
+        "lrPValue": 0.08575394788971812,
+        "maxOrChange": 0.02089024159981917,
+        "matters": false,
+        "verdict": {
+          "level": "pass",
+          "text": "Allowing a curve for Age improves the fit only slightly (AIC better by 0.9, p = 0.086), and no other odds ratio moves by more than 2.1%. The straight-line version is reasonable."
+        },
+        "binned": [
+          {
+            "x": 37.42625899280576,
+            "logit": -3.1224586495916946,
+            "n": 556
+          },
+          {
+            "x": 40.47540983606557,
+            "logit": -2.5532703925973905,
+            "n": 366
+          },
+          {
+            "x": 42.97227722772277,
+            "logit": -2.3638856188578417,
+            "n": 505
+          },
+          {
+            "x": 45.52906976744186,
+            "logit": -2.333257392527129,
+            "n": 344
+          },
+          {
+            "x": 47.97982062780269,
+            "logit": -1.7093823276093238,
+            "n": 446
+          },
+          {
+            "x": 51.02068965517241,
+            "logit": -1.4254581768875914,
+            "n": 435
+          },
+          {
+            "x": 54.01442307692308,
+            "logit": -1.6801595686095134,
+            "n": 416
+          },
+          {
+            "x": 56.98347107438016,
+            "logit": -1.1962507582320256,
+            "n": 363
+          },
+          {
+            "x": 60.430523917995444,
+            "logit": -1.1414978802061986,
+            "n": 439
+          },
+          {
+            "x": 64.74864864864865,
+            "logit": -0.7939518796819109,
+            "n": 370
+          }
+        ],
+        "linearCurve": [
+          {
+            "x": 35.0,
+            "y": -2.8614
+          },
+          {
+            "x": 35.6531,
+            "y": -2.8218
+          },
+          {
+            "x": 36.3061,
+            "y": -2.7823
+          },
+          {
+            "x": 36.9592,
+            "y": -2.7428
+          },
+          {
+            "x": 37.6122,
+            "y": -2.7032
+          },
+          {
+            "x": 38.2653,
+            "y": -2.6637
+          },
+          {
+            "x": 38.9184,
+            "y": -2.6242
+          },
+          {
+            "x": 39.5714,
+            "y": -2.5846
+          },
+          {
+            "x": 40.2245,
+            "y": -2.5451
+          },
+          {
+            "x": 40.8776,
+            "y": -2.5056
+          },
+          {
+            "x": 41.5306,
+            "y": -2.466
+          },
+          {
+            "x": 42.1837,
+            "y": -2.4265
+          },
+          {
+            "x": 42.8367,
+            "y": -2.387
+          },
+          {
+            "x": 43.4898,
+            "y": -2.3474
+          },
+          {
+            "x": 44.1429,
+            "y": -2.3079
+          },
+          {
+            "x": 44.7959,
+            "y": -2.2684
+          },
+          {
+            "x": 45.449,
+            "y": -2.2288
+          },
+          {
+            "x": 46.102,
+            "y": -2.1893
+          },
+          {
+            "x": 46.7551,
+            "y": -2.1498
+          },
+          {
+            "x": 47.4082,
+            "y": -2.1102
+          },
+          {
+            "x": 48.0612,
+            "y": -2.0707
+          },
+          {
+            "x": 48.7143,
+            "y": -2.0312
+          },
+          {
+            "x": 49.3673,
+            "y": -1.9916
+          },
+          {
+            "x": 50.0204,
+            "y": -1.9521
+          },
+          {
+            "x": 50.6735,
+            "y": -1.9126
+          },
+          {
+            "x": 51.3265,
+            "y": -1.873
+          },
+          {
+            "x": 51.9796,
+            "y": -1.8335
+          },
+          {
+            "x": 52.6327,
+            "y": -1.794
+          },
+          {
+            "x": 53.2857,
+            "y": -1.7544
+          },
+          {
+            "x": 53.9388,
+            "y": -1.7149
+          },
+          {
+            "x": 54.5918,
+            "y": -1.6754
+          },
+          {
+            "x": 55.2449,
+            "y": -1.6358
+          },
+          {
+            "x": 55.898,
+            "y": -1.5963
+          },
+          {
+            "x": 56.551,
+            "y": -1.5567
+          },
+          {
+            "x": 57.2041,
+            "y": -1.5172
+          },
+          {
+            "x": 57.8571,
+            "y": -1.4777
+          },
+          {
+            "x": 58.5102,
+            "y": -1.4381
+          },
+          {
+            "x": 59.1633,
+            "y": -1.3986
+          },
+          {
+            "x": 59.8163,
+            "y": -1.3591
+          },
+          {
+            "x": 60.4694,
+            "y": -1.3195
+          },
+          {
+            "x": 61.1224,
+            "y": -1.28
+          },
+          {
+            "x": 61.7755,
+            "y": -1.2405
+          },
+          {
+            "x": 62.4286,
+            "y": -1.2009
+          },
+          {
+            "x": 63.0816,
+            "y": -1.1614
+          },
+          {
+            "x": 63.7347,
+            "y": -1.1219
+          },
+          {
+            "x": 64.3878,
+            "y": -1.0823
+          },
+          {
+            "x": 65.0408,
+            "y": -1.0428
+          },
+          {
+            "x": 65.6939,
+            "y": -1.0033
+          },
+          {
+            "x": 66.3469,
+            "y": -0.9637
+          },
+          {
+            "x": 67.0,
+            "y": -0.9242
+          }
+        ],
+        "splineCurve": [
+          {
+            "x": 35.0,
+            "y": -3.3219
+          },
+          {
+            "x": 35.6531,
+            "y": -3.24
+          },
+          {
+            "x": 36.3061,
+            "y": -3.158
+          },
+          {
+            "x": 36.9592,
+            "y": -3.076
+          },
+          {
+            "x": 37.6122,
+            "y": -2.9941
+          },
+          {
+            "x": 38.2653,
+            "y": -2.9125
+          },
+          {
+            "x": 38.9184,
+            "y": -2.8316
+          },
+          {
+            "x": 39.5714,
+            "y": -2.7517
+          },
+          {
+            "x": 40.2245,
+            "y": -2.6731
+          },
+          {
+            "x": 40.8776,
+            "y": -2.5963
+          },
+          {
+            "x": 41.5306,
+            "y": -2.5215
+          },
+          {
+            "x": 42.1837,
+            "y": -2.4491
+          },
+          {
+            "x": 42.8367,
+            "y": -2.3794
+          },
+          {
+            "x": 43.4898,
+            "y": -2.3128
+          },
+          {
+            "x": 44.1429,
+            "y": -2.2496
+          },
+          {
+            "x": 44.7959,
+            "y": -2.1902
+          },
+          {
+            "x": 45.449,
+            "y": -2.1349
+          },
+          {
+            "x": 46.102,
+            "y": -2.0835
+          },
+          {
+            "x": 46.7551,
+            "y": -2.0358
+          },
+          {
+            "x": 47.4082,
+            "y": -1.9914
+          },
+          {
+            "x": 48.0612,
+            "y": -1.9499
+          },
+          {
+            "x": 48.7143,
+            "y": -1.911
+          },
+          {
+            "x": 49.3673,
+            "y": -1.8744
+          },
+          {
+            "x": 50.0204,
+            "y": -1.8397
+          },
+          {
+            "x": 50.6735,
+            "y": -1.8065
+          },
+          {
+            "x": 51.3265,
+            "y": -1.7746
+          },
+          {
+            "x": 51.9796,
+            "y": -1.7436
+          },
+          {
+            "x": 52.6327,
+            "y": -1.713
+          },
+          {
+            "x": 53.2857,
+            "y": -1.6827
+          },
+          {
+            "x": 53.9388,
+            "y": -1.6524
+          },
+          {
+            "x": 54.5918,
+            "y": -1.622
+          },
+          {
+            "x": 55.2449,
+            "y": -1.5917
+          },
+          {
+            "x": 55.898,
+            "y": -1.5613
+          },
+          {
+            "x": 56.551,
+            "y": -1.5309
+          },
+          {
+            "x": 57.2041,
+            "y": -1.5005
+          },
+          {
+            "x": 57.8571,
+            "y": -1.4702
+          },
+          {
+            "x": 58.5102,
+            "y": -1.4398
+          },
+          {
+            "x": 59.1633,
+            "y": -1.4094
+          },
+          {
+            "x": 59.8163,
+            "y": -1.379
+          },
+          {
+            "x": 60.4694,
+            "y": -1.3485
+          },
+          {
+            "x": 61.1224,
+            "y": -1.3181
+          },
+          {
+            "x": 61.7755,
+            "y": -1.2877
+          },
+          {
+            "x": 62.4286,
+            "y": -1.2573
+          },
+          {
+            "x": 63.0816,
+            "y": -1.2269
+          },
+          {
+            "x": 63.7347,
+            "y": -1.1964
+          },
+          {
+            "x": 64.3878,
+            "y": -1.166
+          },
+          {
+            "x": 65.0408,
+            "y": -1.1356
+          },
+          {
+            "x": 65.6939,
+            "y": -1.1052
+          },
+          {
+            "x": 66.3469,
+            "y": -1.0747
+          },
+          {
+            "x": 67.0,
+            "y": -1.0443
+          }
+        ]
+      }
+    ],
+    "completeCase": {
+      "primaryN": 4240,
+      "completeCaseN": 3658,
+      "verdict": {
+        "level": "warn",
+        "text": "Using only the 3,658 complete rows changes whether there is clear evidence for Prior stroke and Total cholesterol, and moves the odds ratio for Prior stroke by 23%. The way gaps were filled matters for these results."
+      },
+      "rows": [
+        {
+          "term": "male",
+          "label": "Male (vs female)",
+          "orPrimary": 1.6293731134708602,
+          "orCompleteCase": 1.7073890810424417,
+          "change": 0.047880971477056784,
+          "sameSignificance": true
+        },
+        {
+          "term": "age",
+          "label": "Age",
+          "orPrimary": 1.6803044165861105,
+          "orCompleteCase": 1.7048673880186738,
+          "change": 0.014618167511853632,
+          "sameSignificance": true
+        },
+        {
+          "term": "education[2]",
+          "label": "Education level: 2 vs 1",
+          "orPrimary": 0.8253322729267507,
+          "orCompleteCase": 0.82546218735243,
+          "change": 0.00015740863400220379,
+          "sameSignificance": true
+        },
+        {
+          "term": "education[3]",
+          "label": "Education level: 3 vs 1",
+          "orPrimary": 0.9112679683278044,
+          "orCompleteCase": 0.8220656704092008,
+          "change": -0.09788810867816602,
+          "sameSignificance": true
+        },
+        {
+          "term": "education[4]",
+          "label": "Education level: 4 vs 1",
+          "orPrimary": 1.0312229782099858,
+          "orCompleteCase": 0.9421176720596364,
+          "change": -0.08640740948676288,
+          "sameSignificance": true
+        },
+        {
+          "term": "currentSmoker",
+          "label": "Current smoker",
+          "orPrimary": 1.0295122483012167,
+          "orCompleteCase": 1.0757696509326635,
+          "change": 0.044931376686169124,
+          "sameSignificance": true
+        },
+        {
+          "term": "cigsPerDay",
+          "label": "Cigarettes per day",
+          "orPrimary": 1.276820825513953,
+          "orCompleteCase": 1.2393110454963159,
+          "change": -0.029377481372563387,
+          "sameSignificance": true
+        },
+        {
+          "term": "BPMeds",
+          "label": "On BP medication",
+          "orPrimary": 1.2849183275124347,
+          "orCompleteCase": 1.179636152223647,
+          "change": -0.0819368616934674,
+          "sameSignificance": true
+        },
+        {
+          "term": "prevalentStroke",
+          "label": "Prior stroke",
+          "orPrimary": 2.6389809955459747,
+          "orCompleteCase": 2.0235776998930484,
+          "change": -0.23319731998509768,
+          "sameSignificance": false
+        },
+        {
+          "term": "prevalentHyp",
+          "label": "Hypertension",
+          "orPrimary": 1.2611097470623087,
+          "orCompleteCase": 1.2629162148059294,
+          "change": 0.0014324429319722363,
+          "sameSignificance": true
+        },
+        {
+          "term": "diabetes",
+          "label": "Diabetes",
+          "orPrimary": 1.1972749018952984,
+          "orCompleteCase": 1.0262592613822006,
+          "change": -0.1428374053798157,
+          "sameSignificance": true
+        },
+        {
+          "term": "totChol",
+          "label": "Total cholesterol",
+          "orPrimary": 1.0869820499481415,
+          "orCompleteCase": 1.1111212816309934,
+          "change": 0.02220757158225711,
+          "sameSignificance": false
+        },
+        {
+          "term": "sysBP",
+          "label": "Systolic BP",
+          "orPrimary": 1.3682378593245195,
+          "orCompleteCase": 1.4057294743261488,
+          "change": 0.027401386934387595,
+          "sameSignificance": true
+        },
+        {
+          "term": "diaBP",
+          "label": "Diastolic BP",
+          "orPrimary": 0.9646788628564055,
+          "orCompleteCase": 0.9521004602411227,
+          "change": -0.013038953272012429,
+          "sameSignificance": true
+        },
+        {
+          "term": "BMI",
+          "label": "BMI",
+          "orPrimary": 1.0080310201387075,
+          "orCompleteCase": 1.0214559320932122,
+          "change": 0.013317955188181988,
+          "sameSignificance": true
+        },
+        {
+          "term": "heartRate",
+          "label": "Heart rate",
+          "orPrimary": 0.9859249751246548,
+          "orCompleteCase": 0.9645288404344607,
+          "change": -0.021701585039458883,
+          "sameSignificance": true
+        },
+        {
+          "term": "glucose",
+          "label": "Glucose",
+          "orPrimary": 1.1665356712752775,
+          "orCompleteCase": 1.179333795771478,
+          "change": 0.010971052845910328,
+          "sameSignificance": true
+        }
+      ]
+    },
+    "influence": {
+      "removed": 42,
+      "maxOrChange": 0.48416796303808685,
+      "verdict": {
+        "level": "warn",
+        "text": "Removing the 42 most influential rows moves the odds ratio for Diabetes by 48%. That estimate rests on a few rows, so read it with caution. This is only a check: no row was removed from the model."
+      }
+    }
+  },
+  "performance": {
+    "verdict": {
+      "level": "warn",
+      "text": "Modest discrimination. On the unseen test rows the model scores AUC 0.70 (5-fold cross-validation 0.73, 95% CI 0.69 to 0.78). At the chosen cut-off of 0.15 it catches 60% of cases and clears 68% of non-cases."
+    },
+    "split": {
+      "trainRows": 3392,
+      "testRows": 848,
+      "testEvents": 129,
+      "testFraction": 0.2,
+      "seed": 42
+    },
+    "auc": {
+      "test": 0.6981595885758642,
+      "cvMean": 0.7309804828572768,
+      "cvLo": 0.6856759372100385,
+      "cvHi": 0.7762850285045151,
+      "folds": 5
+    },
+    "roc": [
+      {
+        "x": 0.0,
+        "y": 0.0
+      },
+      {
+        "x": 0.0,
+        "y": 0.0155
+      },
+      {
+        "x": 0.0014,
+        "y": 0.031
+      },
+      {
+        "x": 0.0028,
+        "y": 0.0388
+      },
+      {
+        "x": 0.0153,
+        "y": 0.0465
+      },
+      {
+        "x": 0.0181,
+        "y": 0.0543
+      },
+      {
+        "x": 0.025,
+        "y": 0.062
+      },
+      {
+        "x": 0.0278,
+        "y": 0.0698
+      },
+      {
+        "x": 0.0292,
+        "y": 0.0775
+      },
+      {
+        "x": 0.0334,
+        "y": 0.093
+      },
+      {
+        "x": 0.0417,
+        "y": 0.1085
+      },
+      {
+        "x": 0.0445,
+        "y": 0.124
+      },
+      {
+        "x": 0.0487,
+        "y": 0.1318
+      },
+      {
+        "x": 0.0501,
+        "y": 0.1395
+      },
+      {
+        "x": 0.0529,
+        "y": 0.155
+      },
+      {
+        "x": 0.0612,
+        "y": 0.1705
+      },
+      {
+        "x": 0.0626,
+        "y": 0.186
+      },
+      {
+        "x": 0.0682,
+        "y": 0.2016
+      },
+      {
+        "x": 0.0834,
+        "y": 0.2248
+      },
+      {
+        "x": 0.089,
+        "y": 0.2326
+      },
+      {
+        "x": 0.0904,
+        "y": 0.2403
+      },
+      {
+        "x": 0.0932,
+        "y": 0.2481
+      },
+      {
+        "x": 0.096,
+        "y": 0.2636
+      },
+      {
+        "x": 0.1043,
+        "y": 0.2791
+      },
+      {
+        "x": 0.1099,
+        "y": 0.3023
+      },
+      {
+        "x": 0.1252,
+        "y": 0.3101
+      },
+      {
+        "x": 0.1266,
+        "y": 0.3178
+      },
+      {
+        "x": 0.1307,
+        "y": 0.3333
+      },
+      {
+        "x": 0.1321,
+        "y": 0.3411
+      },
+      {
+        "x": 0.1474,
+        "y": 0.3488
+      },
+      {
+        "x": 0.1558,
+        "y": 0.3566
+      },
+      {
+        "x": 0.1586,
+        "y": 0.3643
+      },
+      {
+        "x": 0.1599,
+        "y": 0.3798
+      },
+      {
+        "x": 0.1711,
+        "y": 0.3876
+      },
+      {
+        "x": 0.1725,
+        "y": 0.3953
+      },
+      {
+        "x": 0.1766,
+        "y": 0.4031
+      },
+      {
+        "x": 0.1822,
+        "y": 0.4109
+      },
+      {
+        "x": 0.185,
+        "y": 0.4264
+      },
+      {
+        "x": 0.1892,
+        "y": 0.4341
+      },
+      {
+        "x": 0.1919,
+        "y": 0.4419
+      },
+      {
+        "x": 0.1933,
+        "y": 0.4496
+      },
+      {
+        "x": 0.2003,
+        "y": 0.4574
+      },
+      {
+        "x": 0.2128,
+        "y": 0.4729
+      },
+      {
+        "x": 0.2309,
+        "y": 0.4806
+      },
+      {
+        "x": 0.2323,
+        "y": 0.4884
+      },
+      {
+        "x": 0.2364,
+        "y": 0.4961
+      },
+      {
+        "x": 0.2378,
+        "y": 0.5039
+      },
+      {
+        "x": 0.2392,
+        "y": 0.5194
+      },
+      {
+        "x": 0.2448,
+        "y": 0.5271
+      },
+      {
+        "x": 0.2476,
+        "y": 0.5349
+      },
+      {
+        "x": 0.2517,
+        "y": 0.5581
+      },
+      {
+        "x": 0.2643,
+        "y": 0.5659
+      },
+      {
+        "x": 0.2712,
+        "y": 0.5814
+      },
+      {
+        "x": 0.2782,
+        "y": 0.5891
+      },
+      {
+        "x": 0.2893,
+        "y": 0.5969
+      },
+      {
+        "x": 0.3032,
+        "y": 0.6047
+      },
+      {
+        "x": 0.3282,
+        "y": 0.6124
+      },
+      {
+        "x": 0.3352,
+        "y": 0.6202
+      },
+      {
+        "x": 0.3463,
+        "y": 0.6279
+      },
+      {
+        "x": 0.3491,
+        "y": 0.6357
+      },
+      {
+        "x": 0.3588,
+        "y": 0.6434
+      },
+      {
+        "x": 0.3755,
+        "y": 0.6512
+      },
+      {
+        "x": 0.3783,
+        "y": 0.6589
+      },
+      {
+        "x": 0.3825,
+        "y": 0.6822
+      },
+      {
+        "x": 0.3839,
+        "y": 0.6899
+      },
+      {
+        "x": 0.3853,
+        "y": 0.6977
+      },
+      {
+        "x": 0.3936,
+        "y": 0.7054
+      },
+      {
+        "x": 0.4131,
+        "y": 0.7132
+      },
+      {
+        "x": 0.4256,
+        "y": 0.7209
+      },
+      {
+        "x": 0.4409,
+        "y": 0.7287
+      },
+      {
+        "x": 0.4687,
+        "y": 0.7364
+      },
+      {
+        "x": 0.4896,
+        "y": 0.7519
+      },
+      {
+        "x": 0.491,
+        "y": 0.7597
+      },
+      {
+        "x": 0.4924,
+        "y": 0.7752
+      },
+      {
+        "x": 0.4979,
+        "y": 0.7829
+      },
+      {
+        "x": 0.5216,
+        "y": 0.7907
+      },
+      {
+        "x": 0.5369,
+        "y": 0.8062
+      },
+      {
+        "x": 0.5424,
+        "y": 0.814
+      },
+      {
+        "x": 0.5452,
+        "y": 0.8217
+      },
+      {
+        "x": 0.5535,
+        "y": 0.8295
+      },
+      {
+        "x": 0.573,
+        "y": 0.8372
+      },
+      {
+        "x": 0.5758,
+        "y": 0.845
+      },
+      {
+        "x": 0.5814,
+        "y": 0.8527
+      },
+      {
+        "x": 0.6022,
+        "y": 0.8605
+      },
+      {
+        "x": 0.6773,
+        "y": 0.876
+      },
+      {
+        "x": 0.6898,
+        "y": 0.8837
+      },
+      {
+        "x": 0.694,
+        "y": 0.8915
+      },
+      {
+        "x": 0.7316,
+        "y": 0.8992
+      },
+      {
+        "x": 0.7344,
+        "y": 0.907
+      },
+      {
+        "x": 0.7594,
+        "y": 0.9147
+      },
+      {
+        "x": 0.7636,
+        "y": 0.9302
+      },
+      {
+        "x": 0.7914,
+        "y": 0.938
+      },
+      {
+        "x": 0.8025,
+        "y": 0.9457
+      },
+      {
+        "x": 0.822,
+        "y": 0.9535
+      },
+      {
+        "x": 0.8261,
+        "y": 0.9612
+      },
+      {
+        "x": 0.8289,
+        "y": 0.969
+      },
+      {
+        "x": 0.8915,
+        "y": 0.9767
+      },
+      {
+        "x": 0.9179,
+        "y": 0.9845
+      },
+      {
+        "x": 0.9986,
+        "y": 0.9922
+      },
+      {
+        "x": 1.0,
+        "y": 1.0
+      }
+    ],
+    "pr": [
+      {
+        "x": 1.0,
+        "y": 0.1521
+      },
+      {
+        "x": 0.9922,
+        "y": 0.1526
+      },
+      {
+        "x": 0.9922,
+        "y": 0.154
+      },
+      {
+        "x": 0.9922,
+        "y": 0.1557
+      },
+      {
+        "x": 0.9922,
+        "y": 0.1572
+      },
+      {
+        "x": 0.9922,
+        "y": 0.159
+      },
+      {
+        "x": 0.9922,
+        "y": 0.1606
+      },
+      {
+        "x": 0.9922,
+        "y": 0.1624
+      },
+      {
+        "x": 0.9845,
+        "y": 0.163
+      },
+      {
+        "x": 0.9845,
+        "y": 0.1647
+      },
+      {
+        "x": 0.9767,
+        "y": 0.1654
+      },
+      {
+        "x": 0.9767,
+        "y": 0.1671
+      },
+      {
+        "x": 0.9767,
+        "y": 0.1691
+      },
+      {
+        "x": 0.969,
+        "y": 0.1696
+      },
+      {
+        "x": 0.969,
+        "y": 0.1717
+      },
+      {
+        "x": 0.9612,
+        "y": 0.1722
+      },
+      {
+        "x": 0.9457,
+        "y": 0.1716
+      },
+      {
+        "x": 0.9457,
+        "y": 0.1738
+      },
+      {
+        "x": 0.938,
+        "y": 0.1744
+      },
+      {
+        "x": 0.9302,
+        "y": 0.1752
+      },
+      {
+        "x": 0.9302,
+        "y": 0.1773
+      },
+      {
+        "x": 0.9225,
+        "y": 0.1781
+      },
+      {
+        "x": 0.9147,
+        "y": 0.1788
+      },
+      {
+        "x": 0.9147,
+        "y": 0.1813
+      },
+      {
+        "x": 0.8992,
+        "y": 0.1807
+      },
+      {
+        "x": 0.8992,
+        "y": 0.183
+      },
+      {
+        "x": 0.8992,
+        "y": 0.1856
+      },
+      {
+        "x": 0.8992,
+        "y": 0.188
+      },
+      {
+        "x": 0.8837,
+        "y": 0.1875
+      },
+      {
+        "x": 0.876,
+        "y": 0.1883
+      },
+      {
+        "x": 0.876,
+        "y": 0.1912
+      },
+      {
+        "x": 0.876,
+        "y": 0.1942
+      },
+      {
+        "x": 0.876,
+        "y": 0.1969
+      },
+      {
+        "x": 0.876,
+        "y": 0.2
+      },
+      {
+        "x": 0.876,
+        "y": 0.2029
+      },
+      {
+        "x": 0.876,
+        "y": 0.2062
+      },
+      {
+        "x": 0.8527,
+        "y": 0.2037
+      },
+      {
+        "x": 0.8527,
+        "y": 0.2072
+      },
+      {
+        "x": 0.845,
+        "y": 0.2084
+      },
+      {
+        "x": 0.8295,
+        "y": 0.2082
+      },
+      {
+        "x": 0.8295,
+        "y": 0.2119
+      },
+      {
+        "x": 0.814,
+        "y": 0.2113
+      },
+      {
+        "x": 0.7984,
+        "y": 0.2111
+      },
+      {
+        "x": 0.7984,
+        "y": 0.2146
+      },
+      {
+        "x": 0.7907,
+        "y": 0.2166
+      },
+      {
+        "x": 0.7907,
+        "y": 0.2203
+      },
+      {
+        "x": 0.7752,
+        "y": 0.2203
+      },
+      {
+        "x": 0.7519,
+        "y": 0.218
+      },
+      {
+        "x": 0.7519,
+        "y": 0.222
+      },
+      {
+        "x": 0.7287,
+        "y": 0.2196
+      },
+      {
+        "x": 0.7287,
+        "y": 0.2238
+      },
+      {
+        "x": 0.7287,
+        "y": 0.2287
+      },
+      {
+        "x": 0.7209,
+        "y": 0.2308
+      },
+      {
+        "x": 0.7132,
+        "y": 0.2335
+      },
+      {
+        "x": 0.7054,
+        "y": 0.2364
+      },
+      {
+        "x": 0.7054,
+        "y": 0.2414
+      },
+      {
+        "x": 0.6977,
+        "y": 0.2446
+      },
+      {
+        "x": 0.6744,
+        "y": 0.2417
+      },
+      {
+        "x": 0.6512,
+        "y": 0.2393
+      },
+      {
+        "x": 0.6512,
+        "y": 0.2449
+      },
+      {
+        "x": 0.6434,
+        "y": 0.2485
+      },
+      {
+        "x": 0.6279,
+        "y": 0.2492
+      },
+      {
+        "x": 0.6124,
+        "y": 0.2492
+      },
+      {
+        "x": 0.6047,
+        "y": 0.2532
+      },
+      {
+        "x": 0.6047,
+        "y": 0.26
+      },
+      {
+        "x": 0.5969,
+        "y": 0.2646
+      },
+      {
+        "x": 0.5891,
+        "y": 0.2686
+      },
+      {
+        "x": 0.5814,
+        "y": 0.2737
+      },
+      {
+        "x": 0.5659,
+        "y": 0.2744
+      },
+      {
+        "x": 0.5581,
+        "y": 0.2802
+      },
+      {
+        "x": 0.5426,
+        "y": 0.2823
+      },
+      {
+        "x": 0.5271,
+        "y": 0.2833
+      },
+      {
+        "x": 0.4961,
+        "y": 0.2771
+      },
+      {
+        "x": 0.4729,
+        "y": 0.2735
+      },
+      {
+        "x": 0.4729,
+        "y": 0.285
+      },
+      {
+        "x": 0.4574,
+        "y": 0.2864
+      },
+      {
+        "x": 0.4496,
+        "y": 0.2944
+      },
+      {
+        "x": 0.4264,
+        "y": 0.2926
+      },
+      {
+        "x": 0.4109,
+        "y": 0.2944
+      },
+      {
+        "x": 0.3876,
+        "y": 0.2924
+      },
+      {
+        "x": 0.3798,
+        "y": 0.3006
+      },
+      {
+        "x": 0.3488,
+        "y": 0.2922
+      },
+      {
+        "x": 0.3411,
+        "y": 0.3014
+      },
+      {
+        "x": 0.3333,
+        "y": 0.3139
+      },
+      {
+        "x": 0.3023,
+        "y": 0.3047
+      },
+      {
+        "x": 0.3023,
+        "y": 0.325
+      },
+      {
+        "x": 0.2791,
+        "y": 0.3243
+      },
+      {
+        "x": 0.2636,
+        "y": 0.3301
+      },
+      {
+        "x": 0.2326,
+        "y": 0.3191
+      },
+      {
+        "x": 0.2248,
+        "y": 0.3372
+      },
+      {
+        "x": 0.2171,
+        "y": 0.3636
+      },
+      {
+        "x": 0.186,
+        "y": 0.3478
+      },
+      {
+        "x": 0.155,
+        "y": 0.3333
+      },
+      {
+        "x": 0.124,
+        "y": 0.3137
+      },
+      {
+        "x": 0.1008,
+        "y": 0.3023
+      },
+      {
+        "x": 0.093,
+        "y": 0.3529
+      },
+      {
+        "x": 0.062,
+        "y": 0.3077
+      },
+      {
+        "x": 0.0465,
+        "y": 0.3529
+      },
+      {
+        "x": 0.0388,
+        "y": 0.5556
+      },
+      {
+        "x": 0.0,
+        "y": 1.0
+      }
+    ],
+    "prBaseline": 0.15212264150943397,
+    "calibration": {
+      "bins": [
+        {
+          "predicted": 0.027680882348905915,
+          "observed": 0.03529411764705882,
+          "n": 85
+        },
+        {
+          "predicted": 0.0443530839122828,
+          "observed": 0.07058823529411765,
+          "n": 85
+        },
+        {
+          "predicted": 0.06099074160680438,
+          "observed": 0.08235294117647059,
+          "n": 85
+        },
+        {
+          "predicted": 0.07758915454927136,
+          "observed": 0.07142857142857142,
+          "n": 84
+        },
+        {
+          "predicted": 0.09866031411414532,
+          "observed": 0.15294117647058825,
+          "n": 85
+        },
+        {
+          "predicted": 0.12457013618657313,
+          "observed": 0.12941176470588237,
+          "n": 85
+        },
+        {
+          "predicted": 0.15478534964070906,
+          "observed": 0.13095238095238096,
+          "n": 84
+        },
+        {
+          "predicted": 0.19757910470232842,
+          "observed": 0.25882352941176473,
+          "n": 85
+        },
+        {
+          "predicted": 0.27039254341351854,
+          "observed": 0.24705882352941178,
+          "n": 85
+        },
+        {
+          "predicted": 0.42918461131580554,
+          "observed": 0.3411764705882353,
+          "n": 85
+        }
+      ],
+      "slope": 0.7412232685998061,
+      "intercept": -0.3714754145449403,
+      "hosmerLemeshow": {
+        "statistic": 10.417375223567989,
+        "df": 8,
+        "pValue": 0.23694443734986032
+      }
+    },
+    "threshold": {
+      "chosen": 0.15,
+      "method": "balanced-accuracy",
+      "tunedOn": "cross-validation"
+    },
+    "atChosen": {
+      "threshold": 0.15,
+      "sensitivity": 0.6046511627906976,
+      "specificity": 0.6815020862308763,
+      "precision": 0.254071661237785,
+      "balancedAccuracy": 0.643076624510787,
+      "counts": {
+        "tp": 78,
+        "fp": 229,
+        "tn": 490,
+        "fn": 51
+      }
+    },
+    "thresholdTable": [
+      {
+        "threshold": 0.01,
+        "sensitivity": 1.0,
+        "specificity": 0.0,
+        "precision": 0.15212264150943397,
+        "balancedAccuracy": 0.5,
+        "counts": {
+          "tp": 129,
+          "fp": 719,
+          "tn": 0,
+          "fn": 0
+        }
+      },
+      {
+        "threshold": 0.02,
+        "sensitivity": 0.9922480620155039,
+        "specificity": 0.015299026425591099,
+        "precision": 0.15311004784688995,
+        "balancedAccuracy": 0.5037735442205474,
+        "counts": {
+          "tp": 128,
+          "fp": 708,
+          "tn": 11,
+          "fn": 1
+        }
+      },
+      {
+        "threshold": 0.03,
+        "sensitivity": 0.9922480620155039,
+        "specificity": 0.059805285118219746,
+        "precision": 0.15920398009950248,
+        "balancedAccuracy": 0.5260266735668618,
+        "counts": {
+          "tp": 128,
+          "fp": 676,
+          "tn": 43,
+          "fn": 1
+        }
+      },
+      {
+        "threshold": 0.04,
+        "sensitivity": 0.9767441860465116,
+        "specificity": 0.14325452016689846,
+        "precision": 0.16981132075471697,
+        "balancedAccuracy": 0.559999353106705,
+        "counts": {
+          "tp": 126,
+          "fp": 616,
+          "tn": 103,
+          "fn": 3
+        }
+      },
+      {
+        "threshold": 0.05,
+        "sensitivity": 0.937984496124031,
+        "specificity": 0.20305980528511822,
+        "precision": 0.17435158501440923,
+        "balancedAccuracy": 0.5705221507045746,
+        "counts": {
+          "tp": 121,
+          "fp": 573,
+          "tn": 146,
+          "fn": 8
+        }
+      },
+      {
+        "threshold": 0.06,
+        "sensitivity": 0.9069767441860465,
+        "specificity": 0.26564673157162727,
+        "precision": 0.1813953488372093,
+        "balancedAccuracy": 0.5863117378788368,
+        "counts": {
+          "tp": 117,
+          "fp": 528,
+          "tn": 191,
+          "fn": 12
+        }
+      },
+      {
+        "threshold": 0.07,
+        "sensitivity": 0.875968992248062,
+        "specificity": 0.33518776077885953,
+        "precision": 0.19120135363790186,
+        "balancedAccuracy": 0.6055783765134608,
+        "counts": {
+          "tp": 113,
+          "fp": 478,
+          "tn": 241,
+          "fn": 16
+        }
+      },
+      {
+        "threshold": 0.08,
+        "sensitivity": 0.8604651162790697,
+        "specificity": 0.4019471488178025,
+        "precision": 0.20517560073937152,
+        "balancedAccuracy": 0.6312061325484362,
+        "counts": {
+          "tp": 111,
+          "fp": 430,
+          "tn": 289,
+          "fn": 18
+        }
+      },
+      {
+        "threshold": 0.09,
+        "sensitivity": 0.8217054263565892,
+        "specificity": 0.4534075104311544,
+        "precision": 0.2124248496993988,
+        "balancedAccuracy": 0.6375564683938718,
+        "counts": {
+          "tp": 106,
+          "fp": 393,
+          "tn": 326,
+          "fn": 23
+        }
+      },
+      {
+        "threshold": 0.1,
+        "sensitivity": 0.7906976744186046,
+        "specificity": 0.502086230876217,
+        "precision": 0.2217391304347826,
+        "balancedAccuracy": 0.6463919526474108,
+        "counts": {
+          "tp": 102,
+          "fp": 358,
+          "tn": 361,
+          "fn": 27
+        }
+      },
+      {
+        "threshold": 0.11,
+        "sensitivity": 0.7286821705426356,
+        "specificity": 0.5438108484005564,
+        "precision": 0.22274881516587677,
+        "balancedAccuracy": 0.636246509471596,
+        "counts": {
+          "tp": 94,
+          "fp": 328,
+          "tn": 391,
+          "fn": 35
+        }
+      },
+      {
+        "threshold": 0.12,
+        "sensitivity": 0.7131782945736435,
+        "specificity": 0.5799721835883171,
+        "precision": 0.233502538071066,
+        "balancedAccuracy": 0.6465752390809802,
+        "counts": {
+          "tp": 92,
+          "fp": 302,
+          "tn": 417,
+          "fn": 37
+        }
+      },
+      {
+        "threshold": 0.13,
+        "sensitivity": 0.689922480620155,
+        "specificity": 0.6161335187760779,
+        "precision": 0.24383561643835616,
+        "balancedAccuracy": 0.6530279996981165,
+        "counts": {
+          "tp": 89,
+          "fp": 276,
+          "tn": 443,
+          "fn": 40
+        }
+      },
+      {
+        "threshold": 0.14,
+        "sensitivity": 0.6434108527131783,
+        "specificity": 0.6453407510431154,
+        "precision": 0.2455621301775148,
+        "balancedAccuracy": 0.6443758018781469,
+        "counts": {
+          "tp": 83,
+          "fp": 255,
+          "tn": 464,
+          "fn": 46
+        }
+      },
+      {
+        "threshold": 0.15,
+        "sensitivity": 0.6046511627906976,
+        "specificity": 0.6815020862308763,
+        "precision": 0.254071661237785,
+        "balancedAccuracy": 0.643076624510787,
+        "counts": {
+          "tp": 78,
+          "fp": 229,
+          "tn": 490,
+          "fn": 51
+        }
+      },
+      {
+        "threshold": 0.16,
+        "sensitivity": 0.5891472868217055,
+        "specificity": 0.7148817802503477,
+        "precision": 0.2704626334519573,
+        "balancedAccuracy": 0.6520145335360266,
+        "counts": {
+          "tp": 76,
+          "fp": 205,
+          "tn": 514,
+          "fn": 53
+        }
+      },
+      {
+        "threshold": 0.17,
+        "sensitivity": 0.5581395348837209,
+        "specificity": 0.741307371349096,
+        "precision": 0.27906976744186046,
+        "balancedAccuracy": 0.6497234531164084,
+        "counts": {
+          "tp": 72,
+          "fp": 186,
+          "tn": 533,
+          "fn": 57
+        }
+      },
+      {
+        "threshold": 0.18,
+        "sensitivity": 0.5271317829457365,
+        "specificity": 0.7579972183588317,
+        "precision": 0.2809917355371901,
+        "balancedAccuracy": 0.6425645006522841,
+        "counts": {
+          "tp": 68,
+          "fp": 174,
+          "tn": 545,
+          "fn": 61
+        }
+      },
+      {
+        "threshold": 0.19,
+        "sensitivity": 0.4806201550387597,
+        "specificity": 0.7732962447844228,
+        "precision": 0.27555555555555555,
+        "balancedAccuracy": 0.6269581999115913,
+        "counts": {
+          "tp": 62,
+          "fp": 163,
+          "tn": 556,
+          "fn": 67
+        }
+      },
+      {
+        "threshold": 0.2,
+        "sensitivity": 0.4573643410852713,
+        "specificity": 0.7927677329624478,
+        "precision": 0.28365384615384615,
+        "balancedAccuracy": 0.6250660370238595,
+        "counts": {
+          "tp": 59,
+          "fp": 149,
+          "tn": 570,
+          "fn": 70
+        }
+      },
+      {
+        "threshold": 0.21,
+        "sensitivity": 0.4263565891472868,
+        "specificity": 0.8150208623087621,
+        "precision": 0.2925531914893617,
+        "balancedAccuracy": 0.6206887257280245,
+        "counts": {
+          "tp": 55,
+          "fp": 133,
+          "tn": 586,
+          "fn": 74
+        }
+      },
+      {
+        "threshold": 0.22,
+        "sensitivity": 0.4108527131782946,
+        "specificity": 0.8233657858136301,
+        "precision": 0.29444444444444445,
+        "balancedAccuracy": 0.6171092494959624,
+        "counts": {
+          "tp": 53,
+          "fp": 127,
+          "tn": 592,
+          "fn": 76
+        }
+      },
+      {
+        "threshold": 0.23,
+        "sensitivity": 0.3875968992248062,
+        "specificity": 0.8331015299026425,
+        "precision": 0.29411764705882354,
+        "balancedAccuracy": 0.6103492145637244,
+        "counts": {
+          "tp": 50,
+          "fp": 120,
+          "tn": 599,
+          "fn": 79
+        }
+      },
+      {
+        "threshold": 0.24,
+        "sensitivity": 0.3488372093023256,
+        "specificity": 0.847009735744089,
+        "precision": 0.2903225806451613,
+        "balancedAccuracy": 0.5979234725232073,
+        "counts": {
+          "tp": 45,
+          "fp": 110,
+          "tn": 609,
+          "fn": 84
+        }
+      },
+      {
+        "threshold": 0.25,
+        "sensitivity": 0.34108527131782945,
+        "specificity": 0.8539638386648123,
+        "precision": 0.2953020134228188,
+        "balancedAccuracy": 0.5975245549913208,
+        "counts": {
+          "tp": 44,
+          "fp": 105,
+          "tn": 614,
+          "fn": 85
+        }
+      },
+      {
+        "threshold": 0.26,
+        "sensitivity": 0.3333333333333333,
+        "specificity": 0.8678720445062587,
+        "precision": 0.3115942028985507,
+        "balancedAccuracy": 0.600602688919796,
+        "counts": {
+          "tp": 43,
+          "fp": 95,
+          "tn": 624,
+          "fn": 86
+        }
+      },
+      {
+        "threshold": 0.27,
+        "sensitivity": 0.3023255813953488,
+        "specificity": 0.8789986091794159,
+        "precision": 0.30952380952380953,
+        "balancedAccuracy": 0.5906620952873823,
+        "counts": {
+          "tp": 39,
+          "fp": 87,
+          "tn": 632,
+          "fn": 90
+        }
+      },
+      {
+        "threshold": 0.28,
+        "sensitivity": 0.3023255813953488,
+        "specificity": 0.8873435326842837,
+        "precision": 0.325,
+        "balancedAccuracy": 0.5948345570398162,
+        "counts": {
+          "tp": 39,
+          "fp": 81,
+          "tn": 638,
+          "fn": 90
+        }
+      },
+      {
+        "threshold": 0.29,
+        "sensitivity": 0.27906976744186046,
+        "specificity": 0.9040333796940194,
+        "precision": 0.34285714285714286,
+        "balancedAccuracy": 0.59155157356794,
+        "counts": {
+          "tp": 36,
+          "fp": 69,
+          "tn": 650,
+          "fn": 93
+        }
+      },
+      {
+        "threshold": 0.3,
+        "sensitivity": 0.26356589147286824,
+        "specificity": 0.9040333796940194,
+        "precision": 0.3300970873786408,
+        "balancedAccuracy": 0.5837996355834438,
+        "counts": {
+          "tp": 34,
+          "fp": 69,
+          "tn": 650,
+          "fn": 95
+        }
+      },
+      {
+        "threshold": 0.31,
+        "sensitivity": 0.23255813953488372,
+        "specificity": 0.9123783031988874,
+        "precision": 0.3225806451612903,
+        "balancedAccuracy": 0.5724682213668856,
+        "counts": {
+          "tp": 30,
+          "fp": 63,
+          "tn": 656,
+          "fn": 99
+        }
+      },
+      {
+        "threshold": 0.32,
+        "sensitivity": 0.2248062015503876,
+        "specificity": 0.9248956884561892,
+        "precision": 0.3493975903614458,
+        "balancedAccuracy": 0.5748509450032884,
+        "counts": {
+          "tp": 29,
+          "fp": 54,
+          "tn": 665,
+          "fn": 100
+        }
+      },
+      {
+        "threshold": 0.33,
+        "sensitivity": 0.2248062015503876,
+        "specificity": 0.9318497913769124,
+        "precision": 0.3717948717948718,
+        "balancedAccuracy": 0.57832799646365,
+        "counts": {
+          "tp": 29,
+          "fp": 49,
+          "tn": 670,
+          "fn": 100
+        }
+      },
+      {
+        "threshold": 0.34,
+        "sensitivity": 0.20155038759689922,
+        "specificity": 0.9360222531293463,
+        "precision": 0.3611111111111111,
+        "balancedAccuracy": 0.5687863203631227,
+        "counts": {
+          "tp": 26,
+          "fp": 46,
+          "tn": 673,
+          "fn": 103
+        }
+      },
+      {
+        "threshold": 0.35,
+        "sensitivity": 0.17829457364341086,
+        "specificity": 0.9374130737134909,
+        "precision": 0.3382352941176471,
+        "balancedAccuracy": 0.5578538236784509,
+        "counts": {
+          "tp": 23,
+          "fp": 45,
+          "tn": 674,
+          "fn": 106
+        }
+      },
+      {
+        "threshold": 0.36,
+        "sensitivity": 0.15503875968992248,
+        "specificity": 0.9443671766342142,
+        "precision": 0.3333333333333333,
+        "balancedAccuracy": 0.5497029681620683,
+        "counts": {
+          "tp": 20,
+          "fp": 40,
+          "tn": 679,
+          "fn": 109
+        }
+      },
+      {
+        "threshold": 0.37,
+        "sensitivity": 0.13953488372093023,
+        "specificity": 0.9485396383866481,
+        "precision": 0.32727272727272727,
+        "balancedAccuracy": 0.5440372610537891,
+        "counts": {
+          "tp": 18,
+          "fp": 37,
+          "tn": 682,
+          "fn": 111
+        }
+      },
+      {
+        "threshold": 0.38,
+        "sensitivity": 0.12403100775193798,
+        "specificity": 0.9513212795549374,
+        "precision": 0.3137254901960784,
+        "balancedAccuracy": 0.5376761436534376,
+        "counts": {
+          "tp": 16,
+          "fp": 35,
+          "tn": 684,
+          "fn": 113
+        }
+      },
+      {
+        "threshold": 0.39,
+        "sensitivity": 0.10852713178294573,
+        "specificity": 0.9568845618915159,
+        "precision": 0.3111111111111111,
+        "balancedAccuracy": 0.5327058468372309,
+        "counts": {
+          "tp": 14,
+          "fp": 31,
+          "tn": 688,
+          "fn": 115
+        }
+      },
+      {
+        "threshold": 0.4,
+        "sensitivity": 0.10077519379844961,
+        "specificity": 0.9596662030598053,
+        "precision": 0.30952380952380953,
+        "balancedAccuracy": 0.5302206984291274,
+        "counts": {
+          "tp": 13,
+          "fp": 29,
+          "tn": 690,
+          "fn": 116
+        }
+      },
+      {
+        "threshold": 0.41,
+        "sensitivity": 0.10077519379844961,
+        "specificity": 0.9638386648122392,
+        "precision": 0.3333333333333333,
+        "balancedAccuracy": 0.5323069293053444,
+        "counts": {
+          "tp": 13,
+          "fp": 26,
+          "tn": 693,
+          "fn": 116
+        }
+      },
+      {
+        "threshold": 0.42,
+        "sensitivity": 0.10077519379844961,
+        "specificity": 0.9652294853963839,
+        "precision": 0.34210526315789475,
+        "balancedAccuracy": 0.5330023395974167,
+        "counts": {
+          "tp": 13,
+          "fp": 25,
+          "tn": 694,
+          "fn": 116
+        }
+      },
+      {
+        "threshold": 0.43,
+        "sensitivity": 0.09302325581395349,
+        "specificity": 0.9680111265646731,
+        "precision": 0.34285714285714286,
+        "balancedAccuracy": 0.5305171911893133,
+        "counts": {
+          "tp": 12,
+          "fp": 23,
+          "tn": 696,
+          "fn": 117
+        }
+      },
+      {
+        "threshold": 0.44,
+        "sensitivity": 0.07751937984496124,
+        "specificity": 0.9707927677329624,
+        "precision": 0.3225806451612903,
+        "balancedAccuracy": 0.5241560737889618,
+        "counts": {
+          "tp": 10,
+          "fp": 21,
+          "tn": 698,
+          "fn": 119
+        }
+      },
+      {
+        "threshold": 0.45,
+        "sensitivity": 0.06976744186046512,
+        "specificity": 0.972183588317107,
+        "precision": 0.3103448275862069,
+        "balancedAccuracy": 0.520975515088786,
+        "counts": {
+          "tp": 9,
+          "fp": 20,
+          "tn": 699,
+          "fn": 120
+        }
+      },
+      {
+        "threshold": 0.46,
+        "sensitivity": 0.06201550387596899,
+        "specificity": 0.9763560500695411,
+        "precision": 0.32,
+        "balancedAccuracy": 0.519185776972755,
+        "counts": {
+          "tp": 8,
+          "fp": 17,
+          "tn": 702,
+          "fn": 121
+        }
+      },
+      {
+        "threshold": 0.47,
+        "sensitivity": 0.06201550387596899,
+        "specificity": 0.9791376912378303,
+        "precision": 0.34782608695652173,
+        "balancedAccuracy": 0.5205765975568997,
+        "counts": {
+          "tp": 8,
+          "fp": 15,
+          "tn": 704,
+          "fn": 121
+        }
+      },
+      {
+        "threshold": 0.48,
+        "sensitivity": 0.05426356589147287,
+        "specificity": 0.9819193324061196,
+        "precision": 0.35,
+        "balancedAccuracy": 0.5180914491487962,
+        "counts": {
+          "tp": 7,
+          "fp": 13,
+          "tn": 706,
+          "fn": 122
+        }
+      },
+      {
+        "threshold": 0.49,
+        "sensitivity": 0.05426356589147287,
+        "specificity": 0.9847009735744089,
+        "precision": 0.3888888888888889,
+        "balancedAccuracy": 0.5194822697329409,
+        "counts": {
+          "tp": 7,
+          "fp": 11,
+          "tn": 708,
+          "fn": 122
+        }
+      },
+      {
+        "threshold": 0.5,
+        "sensitivity": 0.046511627906976744,
+        "specificity": 0.9860917941585535,
+        "precision": 0.375,
+        "balancedAccuracy": 0.5163017110327651,
+        "counts": {
+          "tp": 6,
+          "fp": 10,
+          "tn": 709,
+          "fn": 123
+        }
+      },
+      {
+        "threshold": 0.51,
+        "sensitivity": 0.046511627906976744,
+        "specificity": 0.9874826147426982,
+        "precision": 0.4,
+        "balancedAccuracy": 0.5169971213248374,
+        "counts": {
+          "tp": 6,
+          "fp": 9,
+          "tn": 710,
+          "fn": 123
+        }
+      },
+      {
+        "threshold": 0.52,
+        "sensitivity": 0.046511627906976744,
+        "specificity": 0.9874826147426982,
+        "precision": 0.4,
+        "balancedAccuracy": 0.5169971213248374,
+        "counts": {
+          "tp": 6,
+          "fp": 9,
+          "tn": 710,
+          "fn": 123
+        }
+      },
+      {
+        "threshold": 0.53,
+        "sensitivity": 0.046511627906976744,
+        "specificity": 0.9888734353268428,
+        "precision": 0.42857142857142855,
+        "balancedAccuracy": 0.5176925316169098,
+        "counts": {
+          "tp": 6,
+          "fp": 8,
+          "tn": 711,
+          "fn": 123
+        }
+      },
+      {
+        "threshold": 0.54,
+        "sensitivity": 0.03875968992248062,
+        "specificity": 0.9902642559109874,
+        "precision": 0.4166666666666667,
+        "balancedAccuracy": 0.514511972916734,
+        "counts": {
+          "tp": 5,
+          "fp": 7,
+          "tn": 712,
+          "fn": 124
+        }
+      },
+      {
+        "threshold": 0.55,
+        "sensitivity": 0.03875968992248062,
+        "specificity": 0.9902642559109874,
+        "precision": 0.4166666666666667,
+        "balancedAccuracy": 0.514511972916734,
+        "counts": {
+          "tp": 5,
+          "fp": 7,
+          "tn": 712,
+          "fn": 124
+        }
+      },
+      {
+        "threshold": 0.56,
+        "sensitivity": 0.03875968992248062,
+        "specificity": 0.9916550764951322,
+        "precision": 0.45454545454545453,
+        "balancedAccuracy": 0.5152073832088064,
+        "counts": {
+          "tp": 5,
+          "fp": 6,
+          "tn": 713,
+          "fn": 124
+        }
+      },
+      {
+        "threshold": 0.57,
+        "sensitivity": 0.03875968992248062,
+        "specificity": 0.9958275382475661,
+        "precision": 0.625,
+        "balancedAccuracy": 0.5172936140850234,
+        "counts": {
+          "tp": 5,
+          "fp": 3,
+          "tn": 716,
+          "fn": 124
+        }
+      },
+      {
+        "threshold": 0.58,
+        "sensitivity": 0.03875968992248062,
+        "specificity": 0.9958275382475661,
+        "precision": 0.625,
+        "balancedAccuracy": 0.5172936140850234,
+        "counts": {
+          "tp": 5,
+          "fp": 3,
+          "tn": 716,
+          "fn": 124
+        }
+      },
+      {
+        "threshold": 0.59,
+        "sensitivity": 0.03875968992248062,
+        "specificity": 0.9958275382475661,
+        "precision": 0.625,
+        "balancedAccuracy": 0.5172936140850234,
+        "counts": {
+          "tp": 5,
+          "fp": 3,
+          "tn": 716,
+          "fn": 124
+        }
+      },
+      {
+        "threshold": 0.6,
+        "sensitivity": 0.03875968992248062,
+        "specificity": 0.9972183588317107,
+        "precision": 0.7142857142857143,
+        "balancedAccuracy": 0.5179890243770957,
+        "counts": {
+          "tp": 5,
+          "fp": 2,
+          "tn": 717,
+          "fn": 124
+        }
+      },
+      {
+        "threshold": 0.61,
+        "sensitivity": 0.023255813953488372,
+        "specificity": 0.9986091794158554,
+        "precision": 0.75,
+        "balancedAccuracy": 0.5109324966846719,
+        "counts": {
+          "tp": 3,
+          "fp": 1,
+          "tn": 718,
+          "fn": 126
+        }
+      },
+      {
+        "threshold": 0.62,
+        "sensitivity": 0.023255813953488372,
+        "specificity": 0.9986091794158554,
+        "precision": 0.75,
+        "balancedAccuracy": 0.5109324966846719,
+        "counts": {
+          "tp": 3,
+          "fp": 1,
+          "tn": 718,
+          "fn": 126
+        }
+      },
+      {
+        "threshold": 0.63,
+        "sensitivity": 0.015503875968992248,
+        "specificity": 0.9986091794158554,
+        "precision": 0.6666666666666666,
+        "balancedAccuracy": 0.5070565276924238,
+        "counts": {
+          "tp": 2,
+          "fp": 1,
+          "tn": 718,
+          "fn": 127
+        }
+      },
+      {
+        "threshold": 0.64,
+        "sensitivity": 0.015503875968992248,
+        "specificity": 0.9986091794158554,
+        "precision": 0.6666666666666666,
+        "balancedAccuracy": 0.5070565276924238,
+        "counts": {
+          "tp": 2,
+          "fp": 1,
+          "tn": 718,
+          "fn": 127
+        }
+      },
+      {
+        "threshold": 0.65,
+        "sensitivity": 0.015503875968992248,
+        "specificity": 0.9986091794158554,
+        "precision": 0.6666666666666666,
+        "balancedAccuracy": 0.5070565276924238,
+        "counts": {
+          "tp": 2,
+          "fp": 1,
+          "tn": 718,
+          "fn": 127
+        }
+      },
+      {
+        "threshold": 0.66,
+        "sensitivity": 0.015503875968992248,
+        "specificity": 0.9986091794158554,
+        "precision": 0.6666666666666666,
+        "balancedAccuracy": 0.5070565276924238,
+        "counts": {
+          "tp": 2,
+          "fp": 1,
+          "tn": 718,
+          "fn": 127
+        }
+      },
+      {
+        "threshold": 0.67,
+        "sensitivity": 0.007751937984496124,
+        "specificity": 1.0,
+        "precision": 1.0,
+        "balancedAccuracy": 0.5038759689922481,
+        "counts": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 719,
+          "fn": 128
+        }
+      },
+      {
+        "threshold": 0.68,
+        "sensitivity": 0.007751937984496124,
+        "specificity": 1.0,
+        "precision": 1.0,
+        "balancedAccuracy": 0.5038759689922481,
+        "counts": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 719,
+          "fn": 128
+        }
+      },
+      {
+        "threshold": 0.69,
+        "sensitivity": 0.007751937984496124,
+        "specificity": 1.0,
+        "precision": 1.0,
+        "balancedAccuracy": 0.5038759689922481,
+        "counts": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 719,
+          "fn": 128
+        }
+      },
+      {
+        "threshold": 0.7,
+        "sensitivity": 0.007751937984496124,
+        "specificity": 1.0,
+        "precision": 1.0,
+        "balancedAccuracy": 0.5038759689922481,
+        "counts": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 719,
+          "fn": 128
+        }
+      },
+      {
+        "threshold": 0.71,
+        "sensitivity": 0.007751937984496124,
+        "specificity": 1.0,
+        "precision": 1.0,
+        "balancedAccuracy": 0.5038759689922481,
+        "counts": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 719,
+          "fn": 128
+        }
+      },
+      {
+        "threshold": 0.72,
+        "sensitivity": 0.007751937984496124,
+        "specificity": 1.0,
+        "precision": 1.0,
+        "balancedAccuracy": 0.5038759689922481,
+        "counts": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 719,
+          "fn": 128
+        }
+      },
+      {
+        "threshold": 0.73,
+        "sensitivity": 0.007751937984496124,
+        "specificity": 1.0,
+        "precision": 1.0,
+        "balancedAccuracy": 0.5038759689922481,
+        "counts": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 719,
+          "fn": 128
+        }
+      },
+      {
+        "threshold": 0.74,
+        "sensitivity": 0.0,
+        "specificity": 1.0,
+        "precision": null,
+        "balancedAccuracy": 0.5,
+        "counts": {
+          "tp": 0,
+          "fp": 0,
+          "tn": 719,
+          "fn": 129
+        }
+      },
+      {
+        "threshold": 0.75,
+        "sensitivity": 0.0,
+        "specificity": 1.0,
+        "precision": null,
+        "balancedAccuracy": 0.5,
+        "counts": {
+          "tp": 0,
+          "fp": 0,
+          "tn": 719,
+          "fn": 129
+        }
+      },
+      {
+        "threshold": 0.76,
+        "sensitivity": 0.0,
+        "specificity": 1.0,
+        "precision": null,
+        "balancedAccuracy": 0.5,
+        "counts": {
+          "tp": 0,
+          "fp": 0,
+          "tn": 719,
+          "fn": 129
+        }
+      },
+      {
+        "threshold": 0.77,
+        "sensitivity": 0.0,
+        "specificity": 1.0,
+        "precision": null,
+        "balancedAccuracy": 0.5,
+        "counts": {
+          "tp": 0,
+          "fp": 0,
+          "tn": 719,
+          "fn": 129
+        }
+      },
+      {
+        "threshold": 0.78,
+        "sensitivity": 0.0,
+        "specificity": 1.0,
+        "precision": null,
+        "balancedAccuracy": 0.5,
+        "counts": {
+          "tp": 0,
+          "fp": 0,
+          "tn": 719,
+          "fn": 129
+        }
+      },
+      {
+        "threshold": 0.79,
+        "sensitivity": 0.0,
+        "specificity": 1.0,
+        "precision": null,
+        "balancedAccuracy": 0.5,
+        "counts": {
+          "tp": 0,
+          "fp": 0,
+          "tn": 719,
+          "fn": 129
+        }
+      },
+      {
+        "threshold": 0.8,
+        "sensitivity": 0.0,
+        "specificity": 1.0,
+        "precision": null,
+        "balancedAccuracy": 0.5,
+        "counts": {
+          "tp": 0,
+          "fp": 0,
+          "tn": 719,
+          "fn": 129
+        }
+      },
+      {
+        "threshold": 0.81,
+        "sensitivity": 0.0,
+        "specificity": 1.0,
+        "precision": null,
+        "balancedAccuracy": 0.5,
+        "counts": {
+          "tp": 0,
+          "fp": 0,
+          "tn": 719,
+          "fn": 129
+        }
+      },
+      {
+        "threshold": 0.82,
+        "sensitivity": 0.0,
+        "specificity": 1.0,
+        "precision": null,
+        "balancedAccuracy": 0.5,
+        "counts": {
+          "tp": 0,
+          "fp": 0,
+          "tn": 719,
+          "fn": 129
+        }
+      },
+      {
+        "threshold": 0.83,
+        "sensitivity": 0.0,
+        "specificity": 1.0,
+        "precision": null,
+        "balancedAccuracy": 0.5,
+        "counts": {
+          "tp": 0,
+          "fp": 0,
+          "tn": 719,
+          "fn": 129
+        }
+      },
+      {
+        "threshold": 0.84,
+        "sensitivity": 0.0,
+        "specificity": 1.0,
+        "precision": null,
+        "balancedAccuracy": 0.5,
+        "counts": {
+          "tp": 0,
+          "fp": 0,
+          "tn": 719,
+          "fn": 129
+        }
+      },
+      {
+        "threshold": 0.85,
+        "sensitivity": 0.0,
+        "specificity": 1.0,
+        "precision": null,
+        "balancedAccuracy": 0.5,
+        "counts": {
+          "tp": 0,
+          "fp": 0,
+          "tn": 719,
+          "fn": 129
+        }
+      },
+      {
+        "threshold": 0.86,
+        "sensitivity": 0.0,
+        "specificity": 1.0,
+        "precision": null,
+        "balancedAccuracy": 0.5,
+        "counts": {
+          "tp": 0,
+          "fp": 0,
+          "tn": 719,
+          "fn": 129
+        }
+      },
+      {
+        "threshold": 0.87,
+        "sensitivity": 0.0,
+        "specificity": 1.0,
+        "precision": null,
+        "balancedAccuracy": 0.5,
+        "counts": {
+          "tp": 0,
+          "fp": 0,
+          "tn": 719,
+          "fn": 129
+        }
+      },
+      {
+        "threshold": 0.88,
+        "sensitivity": 0.0,
+        "specificity": 1.0,
+        "precision": null,
+        "balancedAccuracy": 0.5,
+        "counts": {
+          "tp": 0,
+          "fp": 0,
+          "tn": 719,
+          "fn": 129
+        }
+      },
+      {
+        "threshold": 0.89,
+        "sensitivity": 0.0,
+        "specificity": 1.0,
+        "precision": null,
+        "balancedAccuracy": 0.5,
+        "counts": {
+          "tp": 0,
+          "fp": 0,
+          "tn": 719,
+          "fn": 129
+        }
+      },
+      {
+        "threshold": 0.9,
+        "sensitivity": 0.0,
+        "specificity": 1.0,
+        "precision": null,
+        "balancedAccuracy": 0.5,
+        "counts": {
+          "tp": 0,
+          "fp": 0,
+          "tn": 719,
+          "fn": 129
+        }
+      },
+      {
+        "threshold": 0.91,
+        "sensitivity": 0.0,
+        "specificity": 1.0,
+        "precision": null,
+        "balancedAccuracy": 0.5,
+        "counts": {
+          "tp": 0,
+          "fp": 0,
+          "tn": 719,
+          "fn": 129
+        }
+      },
+      {
+        "threshold": 0.92,
+        "sensitivity": 0.0,
+        "specificity": 1.0,
+        "precision": null,
+        "balancedAccuracy": 0.5,
+        "counts": {
+          "tp": 0,
+          "fp": 0,
+          "tn": 719,
+          "fn": 129
+        }
+      },
+      {
+        "threshold": 0.93,
+        "sensitivity": 0.0,
+        "specificity": 1.0,
+        "precision": null,
+        "balancedAccuracy": 0.5,
+        "counts": {
+          "tp": 0,
+          "fp": 0,
+          "tn": 719,
+          "fn": 129
+        }
+      },
+      {
+        "threshold": 0.94,
+        "sensitivity": 0.0,
+        "specificity": 1.0,
+        "precision": null,
+        "balancedAccuracy": 0.5,
+        "counts": {
+          "tp": 0,
+          "fp": 0,
+          "tn": 719,
+          "fn": 129
+        }
+      },
+      {
+        "threshold": 0.95,
+        "sensitivity": 0.0,
+        "specificity": 1.0,
+        "precision": null,
+        "balancedAccuracy": 0.5,
+        "counts": {
+          "tp": 0,
+          "fp": 0,
+          "tn": 719,
+          "fn": 129
+        }
+      },
+      {
+        "threshold": 0.96,
+        "sensitivity": 0.0,
+        "specificity": 1.0,
+        "precision": null,
+        "balancedAccuracy": 0.5,
+        "counts": {
+          "tp": 0,
+          "fp": 0,
+          "tn": 719,
+          "fn": 129
+        }
+      },
+      {
+        "threshold": 0.97,
+        "sensitivity": 0.0,
+        "specificity": 1.0,
+        "precision": null,
+        "balancedAccuracy": 0.5,
+        "counts": {
+          "tp": 0,
+          "fp": 0,
+          "tn": 719,
+          "fn": 129
+        }
+      },
+      {
+        "threshold": 0.98,
+        "sensitivity": 0.0,
+        "specificity": 1.0,
+        "precision": null,
+        "balancedAccuracy": 0.5,
+        "counts": {
+          "tp": 0,
+          "fp": 0,
+          "tn": 719,
+          "fn": 129
+        }
+      },
+      {
+        "threshold": 0.99,
+        "sensitivity": 0.0,
+        "specificity": 1.0,
+        "precision": null,
+        "balancedAccuracy": 0.5,
+        "counts": {
+          "tp": 0,
+          "fp": 0,
+          "tn": 719,
+          "fn": 129
+        }
+      }
+    ]
+  },
+  "whatIf": {
+    "verdict": {
+      "level": "info",
+      "text": "With every control at its typical value, the model estimates a 10.0% chance of CHD within 10 years. Move the controls to see how the estimate changes."
+    },
+    "baselineRisk": 0.10002434918775295,
+    "controls": [
+      {
+        "column": "male",
+        "label": "Male (vs female)",
+        "kind": "toggle",
+        "unit": null,
+        "min": null,
+        "max": null,
+        "step": null,
+        "default": 0.0,
+        "options": [
+          {
+            "label": "0",
+            "term": null
+          },
+          {
+            "label": "1",
+            "term": "male"
+          }
+        ]
+      },
+      {
+        "column": "age",
+        "label": "Age",
+        "kind": "slider",
+        "unit": "years",
+        "min": 35.0,
+        "max": 67.0,
+        "step": 1.0,
+        "default": 50.0,
+        "options": null
+      },
+      {
+        "column": "education",
+        "label": "Education level",
+        "kind": "select",
+        "unit": null,
+        "min": null,
+        "max": null,
+        "step": null,
+        "default": 0.0,
+        "options": [
+          {
+            "label": "1",
+            "term": null
+          },
+          {
+            "label": "2",
+            "term": "education[2]"
+          },
+          {
+            "label": "3",
+            "term": "education[3]"
+          },
+          {
+            "label": "4",
+            "term": "education[4]"
+          }
+        ]
+      },
+      {
+        "column": "currentSmoker",
+        "label": "Current smoker",
+        "kind": "toggle",
+        "unit": null,
+        "min": null,
+        "max": null,
+        "step": null,
+        "default": 0.0,
+        "options": [
+          {
+            "label": "0",
+            "term": null
+          },
+          {
+            "label": "1",
+            "term": "currentSmoker"
+          }
+        ]
+      },
+      {
+        "column": "cigsPerDay",
+        "label": "Cigarettes per day",
+        "kind": "slider",
+        "unit": "cigarettes",
+        "min": 0.0,
+        "max": 43.0,
+        "step": 1.0,
+        "default": 9.0,
+        "options": null
+      },
+      {
+        "column": "BPMeds",
+        "label": "On BP medication",
+        "kind": "toggle",
+        "unit": null,
+        "min": null,
+        "max": null,
+        "step": null,
+        "default": 0.0,
+        "options": [
+          {
+            "label": "0",
+            "term": null
+          },
+          {
+            "label": "1",
+            "term": "BPMeds"
+          }
+        ]
+      },
+      {
+        "column": "prevalentStroke",
+        "label": "Prior stroke",
+        "kind": "toggle",
+        "unit": null,
+        "min": null,
+        "max": null,
+        "step": null,
+        "default": 0.0,
+        "options": [
+          {
+            "label": "0",
+            "term": null
+          },
+          {
+            "label": "1",
+            "term": "prevalentStroke"
+          }
+        ]
+      },
+      {
+        "column": "prevalentHyp",
+        "label": "Hypertension",
+        "kind": "toggle",
+        "unit": null,
+        "min": null,
+        "max": null,
+        "step": null,
+        "default": 0.0,
+        "options": [
+          {
+            "label": "0",
+            "term": null
+          },
+          {
+            "label": "1",
+            "term": "prevalentHyp"
+          }
+        ]
+      },
+      {
+        "column": "diabetes",
+        "label": "Diabetes",
+        "kind": "toggle",
+        "unit": null,
+        "min": null,
+        "max": null,
+        "step": null,
+        "default": 0.0,
+        "options": [
+          {
+            "label": "0",
+            "term": null
+          },
+          {
+            "label": "1",
+            "term": "diabetes"
+          }
+        ]
+      },
+      {
+        "column": "totChol",
+        "label": "Total cholesterol",
+        "kind": "slider",
+        "unit": "mg/dL",
+        "min": 153.3,
+        "max": 353.7,
+        "step": 0.1,
+        "default": 236.7,
+        "options": null
+      },
+      {
+        "column": "sysBP",
+        "label": "Systolic BP",
+        "kind": "slider",
+        "unit": "mmHg",
+        "min": 97.0,
+        "max": 200.0,
+        "step": 0.1,
+        "default": 132.4,
+        "options": null
+      },
+      {
+        "column": "diaBP",
+        "label": "Diastolic BP",
+        "kind": "slider",
+        "unit": "mmHg",
+        "min": 60.0,
+        "max": 118.0,
+        "step": 0.1,
+        "default": 82.9,
+        "options": null
+      },
+      {
+        "column": "BMI",
+        "label": "BMI",
+        "kind": "slider",
+        "unit": "kg/m²",
+        "min": 18.1,
+        "max": 39.0,
+        "step": 0.1,
+        "default": 25.8,
+        "options": null
+      },
+      {
+        "column": "heartRate",
+        "label": "Heart rate",
+        "kind": "slider",
+        "unit": "bpm",
+        "min": 52.0,
+        "max": 110.0,
+        "step": 0.1,
+        "default": 75.9,
+        "options": null
+      },
+      {
+        "column": "glucose",
+        "label": "Glucose",
+        "kind": "slider",
+        "unit": "mg/dL",
+        "min": 56.0,
+        "max": 170.0,
+        "step": 1.0,
+        "default": 82.0,
+        "options": null
+      }
+    ],
+    "note": "Uses the full-data model, not the hold-out model. It shows what the model estimates from patterns in this data, not what would happen if a person changed."
+  },
+  "takeaways": {
+    "verdict": {
+      "level": "warn",
+      "text": "Read the results together with the cautions below."
+    },
+    "headline": "6 of 17 predictors show clear evidence of an association with CHD within 10 years. Discrimination is modest (AUC 0.70).",
+    "bullets": [
+      {
+        "level": "info",
+        "text": "Prior stroke: 2.64 times the odds (95% CI 1.11 to 6.30)."
+      },
+      {
+        "level": "info",
+        "text": "Age: each 1 SD higher goes with 1.68 times the odds (95% CI 1.51 to 1.87)."
+      },
+      {
+        "level": "info",
+        "text": "Male (vs female): 1.63 times the odds (95% CI 1.34 to 1.99)."
+      },
+      {
+        "level": "warn",
+        "text": "Modest discrimination. On the unseen test rows the model scores AUC 0.70 (5-fold cross-validation 0.73, 95% CI 0.69 to 0.78). At the chosen cut-off of 0.15 it catches 60% of cases and clears 68% of non-cases."
+      },
+      {
+        "level": "info",
+        "text": "Current smoker and Cigarettes per day overlap, so read their odds ratios as a set (joint test, p < 0.001)."
+      },
+      {
+        "level": "info",
+        "text": "Hypertension, Systolic BP and Diastolic BP overlap, so read their odds ratios as a set (joint test, p < 0.001)."
+      },
+      {
+        "level": "info",
+        "text": "Diabetes and Glucose overlap, so read their odds ratios as a set (joint test, p < 0.001)."
+      },
+      {
+        "level": "warn",
+        "text": "Using only the 3,658 complete rows changes whether there is clear evidence for Prior stroke and Total cholesterol, and moves the odds ratio for Prior stroke by 23%. The way gaps were filled matters for these results."
+      },
+      {
+        "level": "warn",
+        "text": "Removing the 42 most influential rows moves the odds ratio for Diabetes by 48%. That estimate rests on a few rows, so read it with caution. This is only a check: no row was removed from the model."
+      }
+    ],
+    "nonSignificantNote": "11 predictors showed no clear evidence of an association: Education level: 2 vs 1, Education level: 3 vs 1, Education level: 4 vs 1, Current smoker and On BP medication and 6 more. They stay in the model. No clear evidence is not evidence that there is no effect.",
+    "caveats": [
+      "These are associations in observational data, not proof that changing a factor changes the outcome.",
+      "Independence of rows is assumed, not tested.",
+      "The model learns from one dataset (Framingham Heart Study). Check it on other populations before relying on it.",
+      "The cut-off was tuned by cross-validation on the training rows; the hold-out test rows were used once."
+    ]
+  }
+}

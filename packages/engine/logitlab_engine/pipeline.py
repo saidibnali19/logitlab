@@ -12,7 +12,12 @@ from .design import build_design
 from .eda import eda_block
 from .hygiene import Imputer, hygiene_block
 from .logit import LogitFit
+from .model import model_block
+from .performance import performance_block
 from .profile import Profile, build_profile, choose_target, encode_target, glance_block
+from .sensitivity import sensitivity_block
+from .takeaways import refused_takeaways, takeaways_block
+from .whatif import whatif_block
 
 
 @dataclass
@@ -81,4 +86,17 @@ def run_analysis(df: pd.DataFrame, dataset_name: str, source: str = "sample", ta
         "eda": eda_block(prepared.imputed, profile),
         "assumptions": assumptions,
     }
+
+    if refusal is None and fit is not None:
+        outcome = profile.positive_label
+        result["model"] = model_block(fit, prepared.terms, prepared.y, outcome)
+        result["sensitivity"] = sensitivity_block(
+            prepared.design, prepared.y, prepared.terms, fit, prepared.imputed, prepared.data, profile, assumptions
+        )
+        result["performance"] = performance_block(prepared.data, profile)
+        result["whatIf"] = whatif_block(prepared.design, prepared.terms, fit, prepared.imputed, profile)
+        result["takeaways"] = takeaways_block(result)
+    else:
+        result["model"] = result["sensitivity"] = result["performance"] = result["whatIf"] = None
+        result["takeaways"] = refused_takeaways(refusal or {"title": "No model", "message": "A model could not be fitted."})
     return result, prepared
