@@ -18,7 +18,7 @@ import {
 } from "@/lib/report/types";
 
 /** Longest file the page will accept. Real uploads arrive in a later phase. */
-export const MAX_UPLOAD_MB = 25;
+export const MAX_UPLOAD_MB = 10;
 
 /** A short pause so the loading state is seen, not a flash. */
 const MIN_LOADING_MS = 600;
@@ -71,20 +71,27 @@ export function ReportProvider({ children }: { children: ReactNode }) {
   const loadUpload = useCallback((file: File) => {
     latest.current += 1;
 
-    const looksLikeCsv = /\.csv$/i.test(file.name) || file.type === "text/csv";
     let error: ReportError;
-    if (!looksLikeCsv) {
+    if (/\.(xlsx|xls|xlsm)$/i.test(file.name)) {
+      error = {
+        kind: "invalid-file",
+        message: "That's an Excel file. Export it as CSV and try again.",
+      };
+    } else if (!/\.csv$/i.test(file.name)) {
       error = {
         kind: "invalid-file",
         message:
-          "That does not look like a CSV file. LogitLab reads .csv files.",
+          "Only CSV files are supported. Export your data as .csv and try again.",
       };
     } else if (file.size === 0) {
-      error = { kind: "invalid-file", message: "That file is empty." };
+      error = {
+        kind: "invalid-file",
+        message: "That file is empty. Check the export and try again.",
+      };
     } else if (file.size > MAX_UPLOAD_MB * 1024 * 1024) {
       error = {
         kind: "invalid-file",
-        message: `That file is larger than ${MAX_UPLOAD_MB} MB.`,
+        message: `That file is over ${MAX_UPLOAD_MB} MB. Try a smaller sample of rows.`,
       };
     } else {
       error = {

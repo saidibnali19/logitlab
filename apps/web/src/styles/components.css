@@ -81,6 +81,9 @@
   .dropzone-invalid {
     @apply border-refuse-line bg-refuse-soft text-refuse-ink border-dashed;
   }
+  .dropzone-notice {
+    @apply border-warn-line bg-warn-soft text-warn-ink;
+  }
   .dropzone-loading {
     @apply border-line-strong bg-surface text-ink border-dashed;
   }
