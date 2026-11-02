@@ -8,3 +8,4 @@ package-lock.json
 .venv
 __pycache__
 apps/web/public/samples
+apps/web/src/lib/preview.generated.json

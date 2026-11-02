@@ -7,7 +7,9 @@ export function LimitsNote() {
       <span>
         LogitLab supports binary outcomes only. It is a learning and portfolio
         project, not a clinical tool, so its output should not inform medical
-        decisions.
+        decisions. In this version the Framingham sample is a prepared result
+        from the same engine; analysing your own file arrives when the engine is
+        connected.
       </span>
     </p>
   );

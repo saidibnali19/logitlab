@@ -8,17 +8,14 @@ const B = 34;
 const PW = S - L - R;
 const PH = S - T - B;
 
-// Curve shape y = x^k with k chosen so the area under it equals the reported AUC.
-const K = 1 / ROC.auc - 1;
-
 const px = (fpr: number) => L + fpr * PW;
 const py = (tpr: number) => T + (1 - tpr) * PH;
 
-const points = Array.from({ length: 41 }, (_, i) => i / 40);
-const line = points
+// The real ROC curve from the sample analysis, on unseen test rows.
+const line = ROC.curve
   .map(
-    (f, i) =>
-      `${i === 0 ? "M" : "L"}${px(f).toFixed(1)} ${py(f ** K).toFixed(1)}`,
+    (p, i) =>
+      `${i === 0 ? "M" : "L"}${px(p.fpr).toFixed(1)} ${py(p.tpr).toFixed(1)}`,
   )
   .join(" ");
 const area = `${line} L${px(1)} ${py(0)} L${px(0)} ${py(0)} Z`;
@@ -28,7 +25,7 @@ export function MiniRocCurve() {
     <svg
       viewBox={`0 0 ${S} ${S}`}
       role="img"
-      aria-label={`ROC curve with an AUC of ${ROC.auc}. At the threshold of ${ROC.point.threshold}, sensitivity is 72 percent.`}
+      aria-label={`ROC curve with an AUC of ${ROC.auc}. At the threshold of ${ROC.point.threshold}, sensitivity is ${Math.round(ROC.point.tpr * 100)} percent.`}
       className="h-auto w-full"
     >
       {[0, 0.5, 1].map((v) => (

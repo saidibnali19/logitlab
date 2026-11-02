@@ -23,7 +23,9 @@ export function MiniForestPlot() {
     <svg
       viewBox={`0 0 ${W} ${H}`}
       role="img"
-      aria-label="Forest plot of odds ratios per standard deviation. Prior stroke is highest at 3.98, then systolic blood pressure 1.70, male 1.56, glucose 1.20, cigarettes per day 1.20 and total cholesterol 1.19."
+      aria-label={`Forest plot of odds ratios per standard deviation. ${FOREST_ROWS.map(
+        (row) => `${row.label} ${row.or.toFixed(2)}`,
+      ).join(", ")}.`}
       className="h-auto w-full"
     >
       {TICKS.map((t) => (

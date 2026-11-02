@@ -2,7 +2,7 @@ import type { ReactNode } from "react";
 import { MiniForestPlot } from "@/components/hero/MiniForestPlot";
 import { MiniRocCurve } from "@/components/hero/MiniRocCurve";
 import { MiniAssumptionCards } from "@/components/hero/MiniAssumptionCards";
-import { PREVIEW_LABEL } from "@/lib/preview-data";
+import { PREVIEW_LABEL, ROC } from "@/lib/preview-data";
 
 function PreviewCard({
   title,
@@ -46,7 +46,7 @@ export function ProductPreview() {
 
         <PreviewCard
           title="How well does it work?"
-          caption="ROC curve, AUC 0.66 (modest)"
+          caption={`ROC curve on unseen rows, AUC ${ROC.auc.toFixed(2)} (${ROC.label.toLowerCase()})`}
         >
           <MiniRocCurve />
         </PreviewCard>
@@ -60,9 +60,8 @@ export function ProductPreview() {
       </div>
 
       <p className="text-ink-muted mt-3 text-center text-xs">
-        Values are from the project report (weighted model), rescaled to per-SD.
-        The ROC shape is approximate. The live app refits your data and may
-        differ slightly.
+        Real results from the Framingham sample analysis below, computed by the
+        same engine that will analyse your own file.
       </p>
     </section>
   );

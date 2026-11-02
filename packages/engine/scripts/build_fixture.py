@@ -11,11 +11,13 @@ ROOT = ENGINE.parents[1]
 sys.path.insert(0, str(ENGINE))
 
 from logitlab_engine.pipeline import run_analysis  # noqa: E402
+from logitlab_engine.preview import preview_block  # noqa: E402
 from logitlab_engine.serialize import write_json  # noqa: E402
 from logitlab_engine.validate import validate_result  # noqa: E402
 
 CSV = ROOT / "apps" / "web" / "public" / "samples" / "framingham.csv"
 OUT = ROOT / "apps" / "web" / "public" / "samples" / "framingham.result.json"
+PREVIEW_OUT = ROOT / "apps" / "web" / "src" / "lib" / "preview.generated.json"
 
 
 def main() -> None:
@@ -35,6 +37,10 @@ def main() -> None:
             print("  -", line)
         sys.exit(1)
     print(f"Contract check passed. {OUT.stat().st_size / 1024:.0f} KB written.")
+
+    if written["meta"]["status"] == "complete":
+        write_json(preview_block(written), PREVIEW_OUT)
+        print(f"Preview written to {PREVIEW_OUT.relative_to(ROOT)}.")
 
     meta, glance, hygiene = result["meta"], result["dataGlance"], result["hygiene"]
     print(f"Wrote {OUT.relative_to(ROOT)}\n")

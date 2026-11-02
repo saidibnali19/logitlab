@@ -1,7 +1,7 @@
 const STACK = [
   "Next.js",
   "Tailwind CSS",
-  "FastAPI",
+  // "FastAPI",
   "pandas",
   "statsmodels",
   "scikit-learn",

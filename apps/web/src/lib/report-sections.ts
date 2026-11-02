@@ -11,7 +11,7 @@ export const REPORT_SECTIONS = [
     number: 2,
     title: "Data hygiene",
     description:
-      "Missing values, imputation choices and a decision log you can override.",
+      "Missing values, how each gap was filled, and a decision log of every automatic choice.",
   },
   {
     id: "explore",
@@ -25,14 +25,14 @@ export const REPORT_SECTIONS = [
     number: 4,
     title: "Assumption checks",
     description:
-      "Traffic-light verdicts on sample size, multicollinearity, linearity and influential points.",
+      "Traffic-light verdicts on sample size, multicollinearity, linearity and influential points, plus checks that the results do not depend on them.",
   },
   {
     id: "model",
     number: 5,
     title: "The model",
     description:
-      "Odds ratios with 95% confidence intervals, shown per standard deviation.",
+      "Odds ratios with 95% confidence intervals, per unit or per standard deviation, with a plain-English reading of each.",
   },
   {
     id: "performance",
