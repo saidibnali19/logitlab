@@ -1,0 +1,44 @@
+"use client";
+
+import { isComplete } from "@/lib/report/types";
+
+import { AssumptionChecks } from "./AssumptionChecks";
+import { DataGlance } from "./DataGlance";
+import { DataHygiene } from "./DataHygiene";
+import { ExploreData } from "./ExploreData";
+import { ModelPerformance } from "./ModelPerformance";
+import { ModelResults } from "./ModelResults";
+import { useReport } from "./ReportProvider";
+import { TakeawaysExport } from "./TakeawaysExport";
+import { WhatIfExplorer } from "./WhatIfExplorer";
+
+/**
+ * Reads the result once and hands every section only its own slice.
+ * A refused analysis still has sections 01 to 04, so those render; the
+ * model-dependent ones appear only when a model exists.
+ */
+export function ReportSections() {
+  const { state } = useReport();
+  if (state.status !== "ready") return null;
+  const result = state.result;
+
+  return (
+    <>
+      <DataGlance data={result.dataGlance} />
+      <DataHygiene data={result.hygiene} />
+      <ExploreData data={result.eda} />
+      <AssumptionChecks
+        data={result.assumptions}
+        sensitivity={result.sensitivity}
+      />
+      {isComplete(result) ? (
+        <>
+          <ModelResults data={result.model} />
+          <ModelPerformance data={result.performance} />
+          <WhatIfExplorer data={result.whatIf} />
+          <TakeawaysExport data={result.takeaways} />
+        </>
+      ) : null}
+    </>
+  );
+}

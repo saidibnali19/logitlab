@@ -60,11 +60,10 @@ export function ReportGate({
       {state.status === "ready" ? (
         <div id="report">
           <ReportBanner meta={state.result.meta} />
-          {isComplete(state.result) ? (
-            children
-          ) : (
+          {isComplete(state.result) ? null : (
             <RefusalCard refusal={state.result.meta.refusal} />
           )}
+          {children}
         </div>
       ) : (
         intro
