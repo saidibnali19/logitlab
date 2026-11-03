@@ -392,6 +392,7 @@ export type Performance = {
   pr: Point[]; // x = recall, y = precision
   prBaseline: number; // prevalence in the test set
   calibration: {
+    verdict: Verdict; // whether predicted risks can be read as real probabilities
     bins: { predicted: number; observed: number; n: number }[];
     slope: number | null;
     intercept: number | null;
@@ -403,7 +404,9 @@ export type Performance = {
     tunedOn: "cross-validation";
   };
   atChosen: ThresholdRow;
-  thresholdTable: ThresholdRow[]; // grid for the live slider
+  thresholdTable: ThresholdRow[]; // grid for the live slider, on the test rows
+  /** The same grid on cross-validation predictions from the training rows. Cut-offs are chosen here. */
+  thresholdTableCv: ThresholdRow[];
 };
 
 // ───────────────────── 07 What-if explorer ─────────────────────

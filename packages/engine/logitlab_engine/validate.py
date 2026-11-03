@@ -26,7 +26,7 @@ SHAPE: dict[str, object] = {
     "assumptions": ["verdict", "checks", "epv", "vif", "vifLimit", "boxTidwell", "boxTidwellThreshold", "influence", "groupTests"],
     "model": ["verdict", "description", "intercept", "terms", "coefficients", "fit", "counts", "exclusions"],
     "sensitivity": ["verdict", "linearity", "completeCase", "influence"],
-    "performance": ["verdict", "split", "auc", "roc", "pr", "prBaseline", "calibration", "threshold", "atChosen", "thresholdTable"],
+    "performance": ["verdict", "split", "auc", "roc", "pr", "prBaseline", "calibration", "threshold", "atChosen", "thresholdTable", "thresholdTableCv"],
     "whatIf": ["verdict", "baselineRisk", "controls", "note"],
     "takeaways": ["verdict", "headline", "bullets", "nonSignificantNote", "caveats"],
 }
@@ -39,7 +39,7 @@ NESTED: dict[tuple[str, str], list[str]] = {
     ("eda", "correlation"): ["columns", "labels", "matrix"],
     ("performance", "split"): ["trainRows", "testRows", "testEvents", "testFraction", "seed"],
     ("performance", "auc"): ["test", "cvMean", "cvLo", "cvHi", "folds"],
-    ("performance", "calibration"): ["bins", "slope", "intercept", "hosmerLemeshow"],
+    ("performance", "calibration"): ["verdict", "bins", "slope", "intercept", "hosmerLemeshow"],
     ("performance", "threshold"): ["chosen", "method", "tunedOn"],
     ("performance", "atChosen"): ["threshold", "sensitivity", "specificity", "precision", "balancedAccuracy", "counts"],
     ("dataGlance", "target"): ["name", "reason", "negativeLabel", "positiveLabel", "counts"],
@@ -57,6 +57,7 @@ ITEMS: dict[tuple[str, ...], list[str]] = {
     ("model", "coefficients"): ["term", "label", "beta", "se", "z", "pValue", "orRaw", "orRawLo", "orRawHi", "orStd", "orStdLo", "orStdHi", "significant", "interpretation"],
     ("sensitivity", "linearity"): ["column", "label", "boxTidwellP", "primaryAic", "alternativeAic", "deltaAic", "lrPValue", "maxOrChange", "matters", "verdict", "binned", "linearCurve", "splineCurve"],
     ("performance", "thresholdTable"): ["threshold", "sensitivity", "specificity", "precision", "balancedAccuracy", "counts"],
+    ("performance", "thresholdTableCv"): ["threshold", "sensitivity", "specificity", "precision", "balancedAccuracy", "counts"],
     ("whatIf", "controls"): ["column", "label", "kind", "unit", "min", "max", "step", "default", "options"],
 }
 

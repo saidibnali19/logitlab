@@ -4534,6 +4534,10 @@
     ],
     "prBaseline": 0.15212264150943397,
     "calibration": {
+      "verdict": {
+        "level": "warn",
+        "text": "Predicted risks are too spread out: the calibration slope is 0.74, where 1 is perfect, so the highest risks are overstated and the lowest understated. The Hosmer-Lemeshow test finds no clear misfit (p = 0.237)."
+      },
       "bins": [
         {
           "predicted": 0.027680882348905915,
@@ -5898,6 +5902,1295 @@
           "fp": 0,
           "tn": 719,
           "fn": 129
+        }
+      }
+    ],
+    "thresholdTableCv": [
+      {
+        "threshold": 0.01,
+        "sensitivity": 1.0,
+        "specificity": 0.0,
+        "precision": 0.15182783018867924,
+        "balancedAccuracy": 0.5,
+        "counts": {
+          "tp": 515,
+          "fp": 2877,
+          "tn": 0,
+          "fn": 0
+        }
+      },
+      {
+        "threshold": 0.02,
+        "sensitivity": 0.996116504854369,
+        "specificity": 0.01251303441084463,
+        "precision": 0.15295169946332737,
+        "balancedAccuracy": 0.5043147696326068,
+        "counts": {
+          "tp": 513,
+          "fp": 2841,
+          "tn": 36,
+          "fn": 2
+        }
+      },
+      {
+        "threshold": 0.03,
+        "sensitivity": 0.9941747572815534,
+        "specificity": 0.06256517205422316,
+        "precision": 0.1595512620754129,
+        "balancedAccuracy": 0.5283699646678882,
+        "counts": {
+          "tp": 512,
+          "fp": 2697,
+          "tn": 180,
+          "fn": 3
+        }
+      },
+      {
+        "threshold": 0.04,
+        "sensitivity": 0.9689320388349515,
+        "specificity": 0.12652068126520682,
+        "precision": 0.16567065073041168,
+        "balancedAccuracy": 0.5477263600500791,
+        "counts": {
+          "tp": 499,
+          "fp": 2513,
+          "tn": 364,
+          "fn": 16
+        }
+      },
+      {
+        "threshold": 0.05,
+        "sensitivity": 0.9514563106796117,
+        "specificity": 0.19742787625999306,
+        "precision": 0.17506252232940336,
+        "balancedAccuracy": 0.5744420934698024,
+        "counts": {
+          "tp": 490,
+          "fp": 2309,
+          "tn": 568,
+          "fn": 25
+        }
+      },
+      {
+        "threshold": 0.06,
+        "sensitivity": 0.9223300970873787,
+        "specificity": 0.2599930483142162,
+        "precision": 0.18241167434715821,
+        "balancedAccuracy": 0.5911615727007975,
+        "counts": {
+          "tp": 475,
+          "fp": 2129,
+          "tn": 748,
+          "fn": 40
+        }
+      },
+      {
+        "threshold": 0.07,
+        "sensitivity": 0.9087378640776699,
+        "specificity": 0.3218630517900591,
+        "precision": 0.1934683753617197,
+        "balancedAccuracy": 0.6153004579338645,
+        "counts": {
+          "tp": 468,
+          "fp": 1951,
+          "tn": 926,
+          "fn": 47
+        }
+      },
+      {
+        "threshold": 0.08,
+        "sensitivity": 0.8757281553398059,
+        "specificity": 0.38129996524157106,
+        "precision": 0.20215150156880324,
+        "balancedAccuracy": 0.6285140602906885,
+        "counts": {
+          "tp": 451,
+          "fp": 1780,
+          "tn": 1097,
+          "fn": 64
+        }
+      },
+      {
+        "threshold": 0.09,
+        "sensitivity": 0.8427184466019417,
+        "specificity": 0.4313521028849496,
+        "precision": 0.20966183574879227,
+        "balancedAccuracy": 0.6370352747434457,
+        "counts": {
+          "tp": 434,
+          "fp": 1636,
+          "tn": 1241,
+          "fn": 81
+        }
+      },
+      {
+        "threshold": 0.1,
+        "sensitivity": 0.8233009708737864,
+        "specificity": 0.4793187347931874,
+        "precision": 0.2206035379812695,
+        "balancedAccuracy": 0.6513098528334869,
+        "counts": {
+          "tp": 424,
+          "fp": 1498,
+          "tn": 1379,
+          "fn": 91
+        }
+      },
+      {
+        "threshold": 0.11,
+        "sensitivity": 0.7941747572815534,
+        "specificity": 0.5220716023635732,
+        "precision": 0.22926008968609865,
+        "balancedAccuracy": 0.6581231798225633,
+        "counts": {
+          "tp": 409,
+          "fp": 1375,
+          "tn": 1502,
+          "fn": 106
+        }
+      },
+      {
+        "threshold": 0.12,
+        "sensitivity": 0.7611650485436893,
+        "specificity": 0.5658672228015293,
+        "precision": 0.238878732480195,
+        "balancedAccuracy": 0.6635161356726094,
+        "counts": {
+          "tp": 392,
+          "fp": 1249,
+          "tn": 1628,
+          "fn": 123
+        }
+      },
+      {
+        "threshold": 0.13,
+        "sensitivity": 0.7495145631067961,
+        "specificity": 0.6044490789016337,
+        "precision": 0.2532808398950131,
+        "balancedAccuracy": 0.6769818210042149,
+        "counts": {
+          "tp": 386,
+          "fp": 1138,
+          "tn": 1739,
+          "fn": 129
+        }
+      },
+      {
+        "threshold": 0.14,
+        "sensitivity": 0.7223300970873786,
+        "specificity": 0.6392075078206465,
+        "precision": 0.26382978723404255,
+        "balancedAccuracy": 0.6807688024540126,
+        "counts": {
+          "tp": 372,
+          "fp": 1038,
+          "tn": 1839,
+          "fn": 143
+        }
+      },
+      {
+        "threshold": 0.15,
+        "sensitivity": 0.6932038834951456,
+        "specificity": 0.6722280152937087,
+        "precision": 0.2746153846153846,
+        "balancedAccuracy": 0.6827159493944271,
+        "counts": {
+          "tp": 357,
+          "fp": 943,
+          "tn": 1934,
+          "fn": 158
+        }
+      },
+      {
+        "threshold": 0.16,
+        "sensitivity": 0.6640776699029126,
+        "specificity": 0.7003823427181092,
+        "precision": 0.2840531561461794,
+        "balancedAccuracy": 0.6822300063105109,
+        "counts": {
+          "tp": 342,
+          "fp": 862,
+          "tn": 2015,
+          "fn": 173
+        }
+      },
+      {
+        "threshold": 0.17,
+        "sensitivity": 0.6271844660194175,
+        "specificity": 0.7274939172749392,
+        "precision": 0.2917795844625113,
+        "balancedAccuracy": 0.6773391916471783,
+        "counts": {
+          "tp": 323,
+          "fp": 784,
+          "tn": 2093,
+          "fn": 192
+        }
+      },
+      {
+        "threshold": 0.18,
+        "sensitivity": 0.570873786407767,
+        "specificity": 0.7490441432047271,
+        "precision": 0.28937007874015747,
+        "balancedAccuracy": 0.659958964806247,
+        "counts": {
+          "tp": 294,
+          "fp": 722,
+          "tn": 2155,
+          "fn": 221
+        }
+      },
+      {
+        "threshold": 0.19,
+        "sensitivity": 0.537864077669903,
+        "specificity": 0.7740702120264165,
+        "precision": 0.2988133764832794,
+        "balancedAccuracy": 0.6559671448481597,
+        "counts": {
+          "tp": 277,
+          "fp": 650,
+          "tn": 2227,
+          "fn": 238
+        }
+      },
+      {
+        "threshold": 0.2,
+        "sensitivity": 0.5184466019417475,
+        "specificity": 0.7924921793534933,
+        "precision": 0.3090277777777778,
+        "balancedAccuracy": 0.6554693906476203,
+        "counts": {
+          "tp": 267,
+          "fp": 597,
+          "tn": 2280,
+          "fn": 248
+        }
+      },
+      {
+        "threshold": 0.21,
+        "sensitivity": 0.47572815533980584,
+        "specificity": 0.8112617309697602,
+        "precision": 0.31091370558375636,
+        "balancedAccuracy": 0.643494943154783,
+        "counts": {
+          "tp": 245,
+          "fp": 543,
+          "tn": 2334,
+          "fn": 270
+        }
+      },
+      {
+        "threshold": 0.22,
+        "sensitivity": 0.4524271844660194,
+        "specificity": 0.8234271810914147,
+        "precision": 0.3144399460188934,
+        "balancedAccuracy": 0.6379271827787171,
+        "counts": {
+          "tp": 233,
+          "fp": 508,
+          "tn": 2369,
+          "fn": 282
+        }
+      },
+      {
+        "threshold": 0.23,
+        "sensitivity": 0.4330097087378641,
+        "specificity": 0.8415015641293013,
+        "precision": 0.3284241531664212,
+        "balancedAccuracy": 0.6372556364335827,
+        "counts": {
+          "tp": 223,
+          "fp": 456,
+          "tn": 2421,
+          "fn": 292
+        }
+      },
+      {
+        "threshold": 0.24,
+        "sensitivity": 0.4058252427184466,
+        "specificity": 0.8543621828293361,
+        "precision": 0.3328025477707006,
+        "balancedAccuracy": 0.6300937127738914,
+        "counts": {
+          "tp": 209,
+          "fp": 419,
+          "tn": 2458,
+          "fn": 306
+        }
+      },
+      {
+        "threshold": 0.25,
+        "sensitivity": 0.3786407766990291,
+        "specificity": 0.8668752172401808,
+        "precision": 0.3373702422145329,
+        "balancedAccuracy": 0.622757996969605,
+        "counts": {
+          "tp": 195,
+          "fp": 383,
+          "tn": 2494,
+          "fn": 320
+        }
+      },
+      {
+        "threshold": 0.26,
+        "sensitivity": 0.3572815533980582,
+        "specificity": 0.8790406673618353,
+        "precision": 0.3458646616541353,
+        "balancedAccuracy": 0.6181611103799467,
+        "counts": {
+          "tp": 184,
+          "fp": 348,
+          "tn": 2529,
+          "fn": 331
+        }
+      },
+      {
+        "threshold": 0.27,
+        "sensitivity": 0.3339805825242718,
+        "specificity": 0.886339937434828,
+        "precision": 0.34468937875751504,
+        "balancedAccuracy": 0.6101602599795499,
+        "counts": {
+          "tp": 172,
+          "fp": 327,
+          "tn": 2550,
+          "fn": 343
+        }
+      },
+      {
+        "threshold": 0.28,
+        "sensitivity": 0.31650485436893205,
+        "specificity": 0.8964198818213417,
+        "precision": 0.35357917570498915,
+        "balancedAccuracy": 0.6064623680951369,
+        "counts": {
+          "tp": 163,
+          "fp": 298,
+          "tn": 2579,
+          "fn": 352
+        }
+      },
+      {
+        "threshold": 0.29,
+        "sensitivity": 0.3029126213592233,
+        "specificity": 0.9058046576294752,
+        "precision": 0.36533957845433257,
+        "balancedAccuracy": 0.6043586394943492,
+        "counts": {
+          "tp": 156,
+          "fp": 271,
+          "tn": 2606,
+          "fn": 359
+        }
+      },
+      {
+        "threshold": 0.3,
+        "sensitivity": 0.28932038834951457,
+        "specificity": 0.9124087591240876,
+        "precision": 0.371571072319202,
+        "balancedAccuracy": 0.600864573736801,
+        "counts": {
+          "tp": 149,
+          "fp": 252,
+          "tn": 2625,
+          "fn": 366
+        }
+      },
+      {
+        "threshold": 0.31,
+        "sensitivity": 0.26796116504854367,
+        "specificity": 0.9197080291970803,
+        "precision": 0.37398373983739835,
+        "balancedAccuracy": 0.593834597122812,
+        "counts": {
+          "tp": 138,
+          "fp": 231,
+          "tn": 2646,
+          "fn": 377
+        }
+      },
+      {
+        "threshold": 0.32,
+        "sensitivity": 0.24854368932038834,
+        "specificity": 0.9277024678484532,
+        "precision": 0.38095238095238093,
+        "balancedAccuracy": 0.5881230785844208,
+        "counts": {
+          "tp": 128,
+          "fp": 208,
+          "tn": 2669,
+          "fn": 387
+        }
+      },
+      {
+        "threshold": 0.33,
+        "sensitivity": 0.229126213592233,
+        "specificity": 0.9360444907890163,
+        "precision": 0.39072847682119205,
+        "balancedAccuracy": 0.5825853521906247,
+        "counts": {
+          "tp": 118,
+          "fp": 184,
+          "tn": 2693,
+          "fn": 397
+        }
+      },
+      {
+        "threshold": 0.34,
+        "sensitivity": 0.22135922330097088,
+        "specificity": 0.943343760862009,
+        "precision": 0.41155234657039713,
+        "balancedAccuracy": 0.58235149208149,
+        "counts": {
+          "tp": 114,
+          "fp": 163,
+          "tn": 2714,
+          "fn": 401
+        }
+      },
+      {
+        "threshold": 0.35,
+        "sensitivity": 0.20194174757281552,
+        "specificity": 0.9482099409106708,
+        "precision": 0.41106719367588934,
+        "balancedAccuracy": 0.5750758442417432,
+        "counts": {
+          "tp": 104,
+          "fp": 149,
+          "tn": 2728,
+          "fn": 411
+        }
+      },
+      {
+        "threshold": 0.36,
+        "sensitivity": 0.1786407766990291,
+        "specificity": 0.9520333680917622,
+        "precision": 0.4,
+        "balancedAccuracy": 0.5653370723953957,
+        "counts": {
+          "tp": 92,
+          "fp": 138,
+          "tn": 2739,
+          "fn": 423
+        }
+      },
+      {
+        "threshold": 0.37,
+        "sensitivity": 0.1786407766990291,
+        "specificity": 0.9558567952728537,
+        "precision": 0.4200913242009132,
+        "balancedAccuracy": 0.5672487859859414,
+        "counts": {
+          "tp": 92,
+          "fp": 127,
+          "tn": 2750,
+          "fn": 423
+        }
+      },
+      {
+        "threshold": 0.38,
+        "sensitivity": 0.17281553398058253,
+        "specificity": 0.9617657281890859,
+        "precision": 0.4472361809045226,
+        "balancedAccuracy": 0.5672906310848342,
+        "counts": {
+          "tp": 89,
+          "fp": 110,
+          "tn": 2767,
+          "fn": 426
+        }
+      },
+      {
+        "threshold": 0.39,
+        "sensitivity": 0.16310679611650486,
+        "specificity": 0.9652415710809872,
+        "precision": 0.45652173913043476,
+        "balancedAccuracy": 0.564174183598746,
+        "counts": {
+          "tp": 84,
+          "fp": 100,
+          "tn": 2777,
+          "fn": 431
+        }
+      },
+      {
+        "threshold": 0.4,
+        "sensitivity": 0.1553398058252427,
+        "specificity": 0.9687174139728885,
+        "precision": 0.47058823529411764,
+        "balancedAccuracy": 0.5620286098990656,
+        "counts": {
+          "tp": 80,
+          "fp": 90,
+          "tn": 2787,
+          "fn": 435
+        }
+      },
+      {
+        "threshold": 0.41,
+        "sensitivity": 0.14757281553398058,
+        "specificity": 0.9708029197080292,
+        "precision": 0.475,
+        "balancedAccuracy": 0.5591878676210049,
+        "counts": {
+          "tp": 76,
+          "fp": 84,
+          "tn": 2793,
+          "fn": 439
+        }
+      },
+      {
+        "threshold": 0.42,
+        "sensitivity": 0.1378640776699029,
+        "specificity": 0.9735835940215503,
+        "precision": 0.48299319727891155,
+        "balancedAccuracy": 0.5557238358457266,
+        "counts": {
+          "tp": 71,
+          "fp": 76,
+          "tn": 2801,
+          "fn": 444
+        }
+      },
+      {
+        "threshold": 0.43,
+        "sensitivity": 0.13203883495145632,
+        "specificity": 0.9753215154675009,
+        "precision": 0.4892086330935252,
+        "balancedAccuracy": 0.5536801752094787,
+        "counts": {
+          "tp": 68,
+          "fp": 71,
+          "tn": 2806,
+          "fn": 447
+        }
+      },
+      {
+        "threshold": 0.44,
+        "sensitivity": 0.12427184466019417,
+        "specificity": 0.9777546054918318,
+        "precision": 0.5,
+        "balancedAccuracy": 0.551013225076013,
+        "counts": {
+          "tp": 64,
+          "fp": 64,
+          "tn": 2813,
+          "fn": 451
+        }
+      },
+      {
+        "threshold": 0.45,
+        "sensitivity": 0.11844660194174757,
+        "specificity": 0.980882864094543,
+        "precision": 0.5258620689655172,
+        "balancedAccuracy": 0.5496647330181452,
+        "counts": {
+          "tp": 61,
+          "fp": 55,
+          "tn": 2822,
+          "fn": 454
+        }
+      },
+      {
+        "threshold": 0.46,
+        "sensitivity": 0.11262135922330097,
+        "specificity": 0.9822732012513035,
+        "precision": 0.5321100917431193,
+        "balancedAccuracy": 0.5474472802373023,
+        "counts": {
+          "tp": 58,
+          "fp": 51,
+          "tn": 2826,
+          "fn": 457
+        }
+      },
+      {
+        "threshold": 0.47,
+        "sensitivity": 0.1029126213592233,
+        "specificity": 0.9850538755648245,
+        "precision": 0.5520833333333334,
+        "balancedAccuracy": 0.543983248462024,
+        "counts": {
+          "tp": 53,
+          "fp": 43,
+          "tn": 2834,
+          "fn": 462
+        }
+      },
+      {
+        "threshold": 0.48,
+        "sensitivity": 0.1029126213592233,
+        "specificity": 0.9867917970107751,
+        "precision": 0.5824175824175825,
+        "balancedAccuracy": 0.5448522091849992,
+        "counts": {
+          "tp": 53,
+          "fp": 38,
+          "tn": 2839,
+          "fn": 462
+        }
+      },
+      {
+        "threshold": 0.49,
+        "sensitivity": 0.0970873786407767,
+        "specificity": 0.9885297184567258,
+        "precision": 0.6024096385542169,
+        "balancedAccuracy": 0.5428085485487513,
+        "counts": {
+          "tp": 50,
+          "fp": 33,
+          "tn": 2844,
+          "fn": 465
+        }
+      },
+      {
+        "threshold": 0.5,
+        "sensitivity": 0.09514563106796116,
+        "specificity": 0.9906152241918665,
+        "precision": 0.6447368421052632,
+        "balancedAccuracy": 0.5428804276299138,
+        "counts": {
+          "tp": 49,
+          "fp": 27,
+          "tn": 2850,
+          "fn": 466
+        }
+      },
+      {
+        "threshold": 0.51,
+        "sensitivity": 0.0912621359223301,
+        "specificity": 0.9927007299270073,
+        "precision": 0.6911764705882353,
+        "balancedAccuracy": 0.5419814329246687,
+        "counts": {
+          "tp": 47,
+          "fp": 21,
+          "tn": 2856,
+          "fn": 468
+        }
+      },
+      {
+        "threshold": 0.52,
+        "sensitivity": 0.0854368932038835,
+        "specificity": 0.9933958985053876,
+        "precision": 0.6984126984126984,
+        "balancedAccuracy": 0.5394163958546355,
+        "counts": {
+          "tp": 44,
+          "fp": 19,
+          "tn": 2858,
+          "fn": 471
+        }
+      },
+      {
+        "threshold": 0.53,
+        "sensitivity": 0.07961165048543689,
+        "specificity": 0.9937434827945777,
+        "precision": 0.6949152542372882,
+        "balancedAccuracy": 0.5366775666400073,
+        "counts": {
+          "tp": 41,
+          "fp": 18,
+          "tn": 2859,
+          "fn": 474
+        }
+      },
+      {
+        "threshold": 0.54,
+        "sensitivity": 0.07572815533980583,
+        "specificity": 0.9940910670837678,
+        "precision": 0.6964285714285714,
+        "balancedAccuracy": 0.5349096112117868,
+        "counts": {
+          "tp": 39,
+          "fp": 17,
+          "tn": 2860,
+          "fn": 476
+        }
+      },
+      {
+        "threshold": 0.55,
+        "sensitivity": 0.07378640776699029,
+        "specificity": 0.9951338199513382,
+        "precision": 0.7307692307692307,
+        "balancedAccuracy": 0.5344601138591643,
+        "counts": {
+          "tp": 38,
+          "fp": 14,
+          "tn": 2863,
+          "fn": 477
+        }
+      },
+      {
+        "threshold": 0.56,
+        "sensitivity": 0.06796116504854369,
+        "specificity": 0.9958289885297185,
+        "precision": 0.7446808510638298,
+        "balancedAccuracy": 0.5318950767891311,
+        "counts": {
+          "tp": 35,
+          "fp": 12,
+          "tn": 2865,
+          "fn": 480
+        }
+      },
+      {
+        "threshold": 0.57,
+        "sensitivity": 0.06407766990291262,
+        "specificity": 0.9958289885297185,
+        "precision": 0.7333333333333333,
+        "balancedAccuracy": 0.5299533292163155,
+        "counts": {
+          "tp": 33,
+          "fp": 12,
+          "tn": 2865,
+          "fn": 482
+        }
+      },
+      {
+        "threshold": 0.58,
+        "sensitivity": 0.062135922330097085,
+        "specificity": 0.9961765728189086,
+        "precision": 0.7441860465116279,
+        "balancedAccuracy": 0.5291562475745029,
+        "counts": {
+          "tp": 32,
+          "fp": 11,
+          "tn": 2866,
+          "fn": 483
+        }
+      },
+      {
+        "threshold": 0.59,
+        "sensitivity": 0.05631067961165048,
+        "specificity": 0.9965241571080987,
+        "precision": 0.7435897435897436,
+        "balancedAccuracy": 0.5264174183598747,
+        "counts": {
+          "tp": 29,
+          "fp": 10,
+          "tn": 2867,
+          "fn": 486
+        }
+      },
+      {
+        "threshold": 0.6,
+        "sensitivity": 0.05242718446601942,
+        "specificity": 0.9965241571080987,
+        "precision": 0.7297297297297297,
+        "balancedAccuracy": 0.524475670787059,
+        "counts": {
+          "tp": 27,
+          "fp": 10,
+          "tn": 2867,
+          "fn": 488
+        }
+      },
+      {
+        "threshold": 0.61,
+        "sensitivity": 0.04660194174757282,
+        "specificity": 0.9968717413972888,
+        "precision": 0.7272727272727273,
+        "balancedAccuracy": 0.5217368415724308,
+        "counts": {
+          "tp": 24,
+          "fp": 9,
+          "tn": 2868,
+          "fn": 491
+        }
+      },
+      {
+        "threshold": 0.62,
+        "sensitivity": 0.04271844660194175,
+        "specificity": 0.997219325686479,
+        "precision": 0.7333333333333333,
+        "balancedAccuracy": 0.5199688861442103,
+        "counts": {
+          "tp": 22,
+          "fp": 8,
+          "tn": 2869,
+          "fn": 493
+        }
+      },
+      {
+        "threshold": 0.63,
+        "sensitivity": 0.038834951456310676,
+        "specificity": 0.9975669099756691,
+        "precision": 0.7407407407407407,
+        "balancedAccuracy": 0.5182009307159899,
+        "counts": {
+          "tp": 20,
+          "fp": 7,
+          "tn": 2870,
+          "fn": 495
+        }
+      },
+      {
+        "threshold": 0.64,
+        "sensitivity": 0.038834951456310676,
+        "specificity": 0.9975669099756691,
+        "precision": 0.7407407407407407,
+        "balancedAccuracy": 0.5182009307159899,
+        "counts": {
+          "tp": 20,
+          "fp": 7,
+          "tn": 2870,
+          "fn": 495
+        }
+      },
+      {
+        "threshold": 0.65,
+        "sensitivity": 0.03495145631067961,
+        "specificity": 0.9982620785540494,
+        "precision": 0.782608695652174,
+        "balancedAccuracy": 0.5166067674323644,
+        "counts": {
+          "tp": 18,
+          "fp": 5,
+          "tn": 2872,
+          "fn": 497
+        }
+      },
+      {
+        "threshold": 0.66,
+        "sensitivity": 0.031067961165048542,
+        "specificity": 0.9986096628432395,
+        "precision": 0.8,
+        "balancedAccuracy": 0.514838812004144,
+        "counts": {
+          "tp": 16,
+          "fp": 4,
+          "tn": 2873,
+          "fn": 499
+        }
+      },
+      {
+        "threshold": 0.67,
+        "sensitivity": 0.031067961165048542,
+        "specificity": 0.9989572471324296,
+        "precision": 0.8421052631578947,
+        "balancedAccuracy": 0.5150126041487391,
+        "counts": {
+          "tp": 16,
+          "fp": 3,
+          "tn": 2874,
+          "fn": 499
+        }
+      },
+      {
+        "threshold": 0.68,
+        "sensitivity": 0.02912621359223301,
+        "specificity": 0.9989572471324296,
+        "precision": 0.8333333333333334,
+        "balancedAccuracy": 0.5140417303623314,
+        "counts": {
+          "tp": 15,
+          "fp": 3,
+          "tn": 2874,
+          "fn": 500
+        }
+      },
+      {
+        "threshold": 0.69,
+        "sensitivity": 0.027184466019417475,
+        "specificity": 0.9989572471324296,
+        "precision": 0.8235294117647058,
+        "balancedAccuracy": 0.5130708565759236,
+        "counts": {
+          "tp": 14,
+          "fp": 3,
+          "tn": 2874,
+          "fn": 501
+        }
+      },
+      {
+        "threshold": 0.7,
+        "sensitivity": 0.02330097087378641,
+        "specificity": 0.9989572471324296,
+        "precision": 0.8,
+        "balancedAccuracy": 0.511129109003108,
+        "counts": {
+          "tp": 12,
+          "fp": 3,
+          "tn": 2874,
+          "fn": 503
+        }
+      },
+      {
+        "threshold": 0.71,
+        "sensitivity": 0.021359223300970873,
+        "specificity": 0.9989572471324296,
+        "precision": 0.7857142857142857,
+        "balancedAccuracy": 0.5101582352167002,
+        "counts": {
+          "tp": 11,
+          "fp": 3,
+          "tn": 2874,
+          "fn": 504
+        }
+      },
+      {
+        "threshold": 0.72,
+        "sensitivity": 0.019417475728155338,
+        "specificity": 0.9989572471324296,
+        "precision": 0.7692307692307693,
+        "balancedAccuracy": 0.5091873614302925,
+        "counts": {
+          "tp": 10,
+          "fp": 3,
+          "tn": 2874,
+          "fn": 505
+        }
+      },
+      {
+        "threshold": 0.73,
+        "sensitivity": 0.019417475728155338,
+        "specificity": 0.9989572471324296,
+        "precision": 0.7692307692307693,
+        "balancedAccuracy": 0.5091873614302925,
+        "counts": {
+          "tp": 10,
+          "fp": 3,
+          "tn": 2874,
+          "fn": 505
+        }
+      },
+      {
+        "threshold": 0.74,
+        "sensitivity": 0.015533980582524271,
+        "specificity": 0.9989572471324296,
+        "precision": 0.7272727272727273,
+        "balancedAccuracy": 0.5072456138574769,
+        "counts": {
+          "tp": 8,
+          "fp": 3,
+          "tn": 2874,
+          "fn": 507
+        }
+      },
+      {
+        "threshold": 0.75,
+        "sensitivity": 0.011650485436893204,
+        "specificity": 0.9989572471324296,
+        "precision": 0.6666666666666666,
+        "balancedAccuracy": 0.5053038662846614,
+        "counts": {
+          "tp": 6,
+          "fp": 3,
+          "tn": 2874,
+          "fn": 509
+        }
+      },
+      {
+        "threshold": 0.76,
+        "sensitivity": 0.011650485436893204,
+        "specificity": 0.9989572471324296,
+        "precision": 0.6666666666666666,
+        "balancedAccuracy": 0.5053038662846614,
+        "counts": {
+          "tp": 6,
+          "fp": 3,
+          "tn": 2874,
+          "fn": 509
+        }
+      },
+      {
+        "threshold": 0.77,
+        "sensitivity": 0.011650485436893204,
+        "specificity": 0.9993048314216197,
+        "precision": 0.75,
+        "balancedAccuracy": 0.5054776584292565,
+        "counts": {
+          "tp": 6,
+          "fp": 2,
+          "tn": 2875,
+          "fn": 509
+        }
+      },
+      {
+        "threshold": 0.78,
+        "sensitivity": 0.011650485436893204,
+        "specificity": 0.9996524157108099,
+        "precision": 0.8571428571428571,
+        "balancedAccuracy": 0.5056514505738515,
+        "counts": {
+          "tp": 6,
+          "fp": 1,
+          "tn": 2876,
+          "fn": 509
+        }
+      },
+      {
+        "threshold": 0.79,
+        "sensitivity": 0.009708737864077669,
+        "specificity": 0.9996524157108099,
+        "precision": 0.8333333333333334,
+        "balancedAccuracy": 0.5046805767874438,
+        "counts": {
+          "tp": 5,
+          "fp": 1,
+          "tn": 2876,
+          "fn": 510
+        }
+      },
+      {
+        "threshold": 0.8,
+        "sensitivity": 0.009708737864077669,
+        "specificity": 0.9996524157108099,
+        "precision": 0.8333333333333334,
+        "balancedAccuracy": 0.5046805767874438,
+        "counts": {
+          "tp": 5,
+          "fp": 1,
+          "tn": 2876,
+          "fn": 510
+        }
+      },
+      {
+        "threshold": 0.81,
+        "sensitivity": 0.007766990291262136,
+        "specificity": 0.9996524157108099,
+        "precision": 0.8,
+        "balancedAccuracy": 0.503709703001036,
+        "counts": {
+          "tp": 4,
+          "fp": 1,
+          "tn": 2876,
+          "fn": 511
+        }
+      },
+      {
+        "threshold": 0.82,
+        "sensitivity": 0.007766990291262136,
+        "specificity": 0.9996524157108099,
+        "precision": 0.8,
+        "balancedAccuracy": 0.503709703001036,
+        "counts": {
+          "tp": 4,
+          "fp": 1,
+          "tn": 2876,
+          "fn": 511
+        }
+      },
+      {
+        "threshold": 0.83,
+        "sensitivity": 0.005825242718446602,
+        "specificity": 0.9996524157108099,
+        "precision": 0.75,
+        "balancedAccuracy": 0.5027388292146282,
+        "counts": {
+          "tp": 3,
+          "fp": 1,
+          "tn": 2876,
+          "fn": 512
+        }
+      },
+      {
+        "threshold": 0.84,
+        "sensitivity": 0.005825242718446602,
+        "specificity": 0.9996524157108099,
+        "precision": 0.75,
+        "balancedAccuracy": 0.5027388292146282,
+        "counts": {
+          "tp": 3,
+          "fp": 1,
+          "tn": 2876,
+          "fn": 512
+        }
+      },
+      {
+        "threshold": 0.85,
+        "sensitivity": 0.005825242718446602,
+        "specificity": 0.9996524157108099,
+        "precision": 0.75,
+        "balancedAccuracy": 0.5027388292146282,
+        "counts": {
+          "tp": 3,
+          "fp": 1,
+          "tn": 2876,
+          "fn": 512
+        }
+      },
+      {
+        "threshold": 0.86,
+        "sensitivity": 0.003883495145631068,
+        "specificity": 0.9996524157108099,
+        "precision": 0.6666666666666666,
+        "balancedAccuracy": 0.5017679554282205,
+        "counts": {
+          "tp": 2,
+          "fp": 1,
+          "tn": 2876,
+          "fn": 513
+        }
+      },
+      {
+        "threshold": 0.87,
+        "sensitivity": 0.003883495145631068,
+        "specificity": 0.9996524157108099,
+        "precision": 0.6666666666666666,
+        "balancedAccuracy": 0.5017679554282205,
+        "counts": {
+          "tp": 2,
+          "fp": 1,
+          "tn": 2876,
+          "fn": 513
+        }
+      },
+      {
+        "threshold": 0.88,
+        "sensitivity": 0.003883495145631068,
+        "specificity": 0.9996524157108099,
+        "precision": 0.6666666666666666,
+        "balancedAccuracy": 0.5017679554282205,
+        "counts": {
+          "tp": 2,
+          "fp": 1,
+          "tn": 2876,
+          "fn": 513
+        }
+      },
+      {
+        "threshold": 0.89,
+        "sensitivity": 0.003883495145631068,
+        "specificity": 0.9996524157108099,
+        "precision": 0.6666666666666666,
+        "balancedAccuracy": 0.5017679554282205,
+        "counts": {
+          "tp": 2,
+          "fp": 1,
+          "tn": 2876,
+          "fn": 513
+        }
+      },
+      {
+        "threshold": 0.9,
+        "sensitivity": 0.001941747572815534,
+        "specificity": 0.9996524157108099,
+        "precision": 0.5,
+        "balancedAccuracy": 0.5007970816418127,
+        "counts": {
+          "tp": 1,
+          "fp": 1,
+          "tn": 2876,
+          "fn": 514
+        }
+      },
+      {
+        "threshold": 0.91,
+        "sensitivity": 0.001941747572815534,
+        "specificity": 0.9996524157108099,
+        "precision": 0.5,
+        "balancedAccuracy": 0.5007970816418127,
+        "counts": {
+          "tp": 1,
+          "fp": 1,
+          "tn": 2876,
+          "fn": 514
+        }
+      },
+      {
+        "threshold": 0.92,
+        "sensitivity": 0.001941747572815534,
+        "specificity": 1.0,
+        "precision": 1.0,
+        "balancedAccuracy": 0.5009708737864078,
+        "counts": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 2877,
+          "fn": 514
+        }
+      },
+      {
+        "threshold": 0.93,
+        "sensitivity": 0.001941747572815534,
+        "specificity": 1.0,
+        "precision": 1.0,
+        "balancedAccuracy": 0.5009708737864078,
+        "counts": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 2877,
+          "fn": 514
+        }
+      },
+      {
+        "threshold": 0.94,
+        "sensitivity": 0.001941747572815534,
+        "specificity": 1.0,
+        "precision": 1.0,
+        "balancedAccuracy": 0.5009708737864078,
+        "counts": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 2877,
+          "fn": 514
+        }
+      },
+      {
+        "threshold": 0.95,
+        "sensitivity": 0.001941747572815534,
+        "specificity": 1.0,
+        "precision": 1.0,
+        "balancedAccuracy": 0.5009708737864078,
+        "counts": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 2877,
+          "fn": 514
+        }
+      },
+      {
+        "threshold": 0.96,
+        "sensitivity": 0.001941747572815534,
+        "specificity": 1.0,
+        "precision": 1.0,
+        "balancedAccuracy": 0.5009708737864078,
+        "counts": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 2877,
+          "fn": 514
+        }
+      },
+      {
+        "threshold": 0.97,
+        "sensitivity": 0.001941747572815534,
+        "specificity": 1.0,
+        "precision": 1.0,
+        "balancedAccuracy": 0.5009708737864078,
+        "counts": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 2877,
+          "fn": 514
+        }
+      },
+      {
+        "threshold": 0.98,
+        "sensitivity": 0.0,
+        "specificity": 1.0,
+        "precision": null,
+        "balancedAccuracy": 0.5,
+        "counts": {
+          "tp": 0,
+          "fp": 0,
+          "tn": 2877,
+          "fn": 515
+        }
+      },
+      {
+        "threshold": 0.99,
+        "sensitivity": 0.0,
+        "specificity": 1.0,
+        "precision": null,
+        "balancedAccuracy": 0.5,
+        "counts": {
+          "tp": 0,
+          "fp": 0,
+          "tn": 2877,
+          "fn": 515
         }
       }
     ]

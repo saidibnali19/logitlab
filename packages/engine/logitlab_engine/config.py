@@ -48,6 +48,8 @@ TEST_FRACTION = 0.2
 CV_FOLDS = 5
 CURVE_MAX_POINTS = 100  # ROC and precision-recall curves are thinned to about this many points
 CALIBRATION_BINS = 10
+CALIBRATION_SLOPE_RANGE = (0.8, 1.2)  # a slope outside this means predictions are too extreme or too cautious
+HOSMER_ALPHA = 0.05
 
 TARGET_HINTS = (
     "chd",

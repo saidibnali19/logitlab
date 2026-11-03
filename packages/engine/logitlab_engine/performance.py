@@ -10,6 +10,7 @@ from sklearn.model_selection import StratifiedKFold, train_test_split
 
 from . import config
 from .design import build_design
+from .fmt import fmt_p
 from .hygiene import Imputer
 from .logit import LogitFit, Refused, fit_logit
 from .profile import Profile
@@ -82,7 +83,43 @@ def _calibration(y: np.ndarray, p: np.ndarray) -> dict:
             slope, intercept = float(params["logit"]), float(params["const"])
     except Refused:
         pass
-    return {"bins": bins, "slope": slope, "intercept": intercept, "hosmerLemeshow": hosmer}
+    return {
+        "verdict": _calibration_verdict(slope, hosmer),
+        "bins": bins,
+        "slope": slope,
+        "intercept": intercept,
+        "hosmerLemeshow": hosmer,
+    }
+
+
+def _calibration_verdict(slope: float | None, hosmer: dict | None) -> dict:
+    """Whether predicted risks can be read as real probabilities."""
+    if slope is None:
+        return {"level": "info", "text": "The calibration slope could not be estimated, so read predicted risks as rankings only."}
+    low, high = config.CALIBRATION_SLOPE_RANGE
+    if slope < low:
+        spread = (
+            f"Predicted risks are too spread out: the calibration slope is {slope:.2f}, where 1 is perfect, "
+            "so the highest risks are overstated and the lowest understated."
+        )
+    elif slope > high:
+        spread = (
+            f"Predicted risks are too bunched together: the calibration slope is {slope:.2f}, where 1 is perfect, "
+            "so the highest risks are understated and the lowest overstated."
+        )
+    else:
+        spread = f"Predicted risks have about the right spread (calibration slope {slope:.2f}, where 1 is perfect)."
+
+    misfit = hosmer is not None and hosmer["pValue"] < config.HOSMER_ALPHA
+    if hosmer is None:
+        overall = ""
+    elif misfit:
+        overall = f" The Hosmer-Lemeshow test finds a misfit between predicted and observed rates ({fmt_p(hosmer['pValue'])})."
+    else:
+        overall = f" The Hosmer-Lemeshow test finds no clear misfit ({fmt_p(hosmer['pValue'])})."
+
+    level = "warn" if misfit or not (low <= slope <= high) else "pass"
+    return {"level": level, "text": spread + overall}
 
 
 def _wording(auc: float) -> tuple[str, str]:
@@ -165,4 +202,7 @@ def performance_block(data: pd.DataFrame, profile: Profile) -> dict | None:
         "threshold": {"chosen": chosen, "method": "balanced-accuracy", "tunedOn": "cross-validation"},
         "atChosen": at_chosen,
         "thresholdTable": [_row(y_test, p_test, g) for g in grid],
+        # The same grid on the training rows' cross-validation predictions: any cut-off is chosen
+        # here, so the test rows stay unseen until it is reported.
+        "thresholdTableCv": [_row(y_train, oof, g) for g in grid],
     }
