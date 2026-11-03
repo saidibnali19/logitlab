@@ -46,7 +46,10 @@ export function ReportSections() {
                 .map((row) => row.term) ?? []
             }
           />
-          <ModelPerformance data={result.performance} />
+          <ModelPerformance
+            data={result.performance}
+            target={result.dataGlance.target}
+          />
           <WhatIfExplorer data={result.whatIf} />
           <TakeawaysExport data={result.takeaways} />
         </>
