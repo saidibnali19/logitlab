@@ -434,6 +434,11 @@ export type WhatIf = {
   verdict: Verdict;
   baselineRisk: number; // predicted risk with every control at its default
   controls: WhatIfControl[];
+  /** The ingredients for computing risk in the browser, from the full-data model. */
+  intercept: number;
+  betas: Record<string, number>; // per unit, keyed by term name
+  /** Covariance of the estimates, for the interval. `terms` starts with "const", the intercept. */
+  covariance: { terms: string[]; matrix: number[][] };
   note: string; // e.g. "Uses the full-data model, not the hold-out model."
 };
 

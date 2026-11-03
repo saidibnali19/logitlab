@@ -27,7 +27,7 @@ SHAPE: dict[str, object] = {
     "model": ["verdict", "description", "intercept", "terms", "coefficients", "fit", "counts", "exclusions"],
     "sensitivity": ["verdict", "linearity", "completeCase", "influence"],
     "performance": ["verdict", "split", "auc", "roc", "pr", "prBaseline", "calibration", "threshold", "atChosen", "thresholdTable", "thresholdTableCv"],
-    "whatIf": ["verdict", "baselineRisk", "controls", "note"],
+    "whatIf": ["verdict", "baselineRisk", "controls", "intercept", "betas", "covariance", "note"],
     "takeaways": ["verdict", "headline", "bullets", "nonSignificantNote", "caveats"],
 }
 
@@ -141,6 +141,14 @@ def validate_result(result: dict) -> list[str]:
         matrix = result["eda"]["correlation"]["matrix"]
         if len(matrix) != size or any(len(row) != size for row in matrix):
             errors.append("eda.correlation.matrix is not square")
+        covariance = result["whatIf"]["covariance"]
+        expected = ["const"] + [t["name"] for t in result["model"]["terms"]]
+        if covariance["terms"] != expected:
+            errors.append("whatIf.covariance.terms does not match the model terms")
+        if len(covariance["matrix"]) != len(expected) or any(len(row) != len(expected) for row in covariance["matrix"]):
+            errors.append("whatIf.covariance.matrix is not square over the model terms")
+        if set(result["whatIf"]["betas"]) != set(expected[1:]):
+            errors.append("whatIf.betas does not cover every model term")
         for h in result["eda"]["histograms"]:
             if len(h["edges"]) != len(h["negative"]) + 1 or len(h["negative"]) != len(h["positive"]):
                 errors.append(f"eda.histograms '{h['column']}' has mismatched bin lengths")

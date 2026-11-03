@@ -104,6 +104,9 @@ def whatif_block(
         )
 
     risk = float(1 / (1 + np.exp(-logit)))
+    # Everything the browser needs to recompute the risk and its interval as controls move.
+    order = ["const"] + [t["name"] for t in terms]
+    covariance = fit.cov.reindex(index=order, columns=order)
     return {
         "verdict": {
             "level": "info",
@@ -112,6 +115,9 @@ def whatif_block(
         },
         "baselineRisk": risk,
         "controls": controls,
+        "intercept": float(params["const"]),
+        "betas": {t["name"]: float(params[t["name"]]) for t in terms},
+        "covariance": {"terms": order, "matrix": [[float(v) for v in row] for row in covariance.to_numpy()]},
         "note": "Uses the full-data model, not the hold-out model. It shows what the model estimates from "
         "patterns in this data, not what would happen if a person changed.",
     }
