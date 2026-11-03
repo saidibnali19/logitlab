@@ -67,6 +67,9 @@
   .verdict-refuse {
     @apply border-refuse-line bg-refuse-soft text-refuse-ink;
   }
+  .verdict-info {
+    @apply border-line bg-surface text-ink;
+  }
 
   /* Upload zone: base shape plus one class per visual state */
   .dropzone {

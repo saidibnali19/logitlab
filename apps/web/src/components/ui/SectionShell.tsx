@@ -13,10 +13,10 @@ export function SectionShell({ id, children }: Props) {
     <section
       id={id}
       aria-labelledby={`${id}-title`}
-      className="scroll-mt-20 border-t border-slate-200 py-16"
+      className="border-line scroll-mt-20 border-t py-16"
     >
       <div className="mx-auto max-w-5xl px-6">
-        <p className="font-mono text-sm text-emerald-700">
+        <p className="text-brand font-mono text-sm">
           {String(number).padStart(2, "0")}
         </p>
         <h2
@@ -25,7 +25,7 @@ export function SectionShell({ id, children }: Props) {
         >
           {title}
         </h2>
-        <p className="mt-2 max-w-2xl text-slate-600">{description}</p>
+        <p className="text-ink-muted mt-2 max-w-2xl">{description}</p>
         <div className="mt-8">{children}</div>
       </div>
     </section>

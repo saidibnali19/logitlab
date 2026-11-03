@@ -24,7 +24,7 @@ export function ReportSections() {
 
   return (
     <>
-      <DataGlance data={result.dataGlance} />
+      <DataGlance data={result.dataGlance} rows={result.meta.rows} />
       <DataHygiene data={result.hygiene} />
       <ExploreData data={result.eda} />
       <AssumptionChecks
