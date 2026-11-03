@@ -53,7 +53,7 @@ ITEMS: dict[tuple[str, ...], list[str]] = {
     ("eda", "histograms"): ["column", "label", "edges", "negative", "positive"],
     ("assumptions", "checks"): ["id", "title", "verdict", "action", "detail", "remedies"],
     ("assumptions", "groupTests"): ["id", "label", "terms", "reason", "maxVif", "statistic", "df", "pValue", "significant", "interpretation"],
-    ("model", "terms"): ["name", "column", "label", "kind", "reference", "unit", "mean", "sd"],
+    ("model", "terms"): ["name", "column", "label", "kind", "reference", "unit", "perUnit", "perSd", "mean", "sd"],
     ("model", "coefficients"): ["term", "label", "beta", "se", "z", "pValue", "orRaw", "orRawLo", "orRawHi", "orStd", "orStdLo", "orStdHi", "significant", "interpretation"],
     ("sensitivity", "linearity"): ["column", "label", "boxTidwellP", "primaryAic", "alternativeAic", "deltaAic", "lrPValue", "maxOrChange", "matters", "verdict", "binned", "linearCurve", "splineCurve"],
     ("performance", "thresholdTable"): ["threshold", "sensitivity", "specificity", "precision", "balancedAccuracy", "counts"],

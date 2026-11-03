@@ -95,6 +95,12 @@ UNITS = {
     "glucose": "mg/dL",
 }
 
+# Units that change in the singular, so a sentence can say "per year", not "per 1 years".
+UNIT_SINGULAR = {
+    "years": "year",
+    "cigarettes": "cigarette",
+}
+
 TARGET_LABELS = {
     "TenYearCHD": ("No CHD within 10 years", "CHD within 10 years"),
 }

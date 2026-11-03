@@ -2119,6 +2119,8 @@
         "kind": "binary",
         "reference": null,
         "unit": null,
+        "perUnit": null,
+        "perSd": null,
         "mean": null,
         "sd": null
       },
@@ -2129,6 +2131,8 @@
         "kind": "continuous",
         "reference": null,
         "unit": "years",
+        "perUnit": "per year",
+        "perSd": "per SD (8.6 years)",
         "mean": 49.58018867924528,
         "sd": 8.57294217547334
       },
@@ -2139,6 +2143,8 @@
         "kind": "level",
         "reference": "1",
         "unit": null,
+        "perUnit": null,
+        "perSd": null,
         "mean": null,
         "sd": null
       },
@@ -2149,6 +2155,8 @@
         "kind": "level",
         "reference": "1",
         "unit": null,
+        "perUnit": null,
+        "perSd": null,
         "mean": null,
         "sd": null
       },
@@ -2159,6 +2167,8 @@
         "kind": "level",
         "reference": "1",
         "unit": null,
+        "perUnit": null,
+        "perSd": null,
         "mean": null,
         "sd": null
       },
@@ -2169,6 +2179,8 @@
         "kind": "binary",
         "reference": null,
         "unit": null,
+        "perUnit": null,
+        "perSd": null,
         "mean": null,
         "sd": null
       },
@@ -2179,6 +2191,8 @@
         "kind": "continuous",
         "reference": null,
         "unit": "cigarettes",
+        "perUnit": "per cigarette",
+        "perSd": "per SD (11.9 cigarettes)",
         "mean": 9.081132075471698,
         "sd": 11.916118824638177
       },
@@ -2189,6 +2203,8 @@
         "kind": "binary",
         "reference": null,
         "unit": null,
+        "perUnit": null,
+        "perSd": null,
         "mean": null,
         "sd": null
       },
@@ -2199,6 +2215,8 @@
         "kind": "binary",
         "reference": null,
         "unit": null,
+        "perUnit": null,
+        "perSd": null,
         "mean": null,
         "sd": null
       },
@@ -2209,6 +2227,8 @@
         "kind": "binary",
         "reference": null,
         "unit": null,
+        "perUnit": null,
+        "perSd": null,
         "mean": null,
         "sd": null
       },
@@ -2219,6 +2239,8 @@
         "kind": "binary",
         "reference": null,
         "unit": null,
+        "perUnit": null,
+        "perSd": null,
         "mean": null,
         "sd": null
       },
@@ -2229,6 +2251,8 @@
         "kind": "continuous",
         "reference": null,
         "unit": "mg/dL",
+        "perUnit": "per mg/dL",
+        "perSd": "per SD (44.3 mg/dL)",
         "mean": 236.69952267303103,
         "sd": 44.327521446557704
       },
@@ -2239,6 +2263,8 @@
         "kind": "continuous",
         "reference": null,
         "unit": "mmHg",
+        "perUnit": "per mmHg",
+        "perSd": "per SD (22.0 mmHg)",
         "mean": 132.35459905660377,
         "sd": 22.033299608849184
       },
@@ -2249,6 +2275,8 @@
         "kind": "continuous",
         "reference": null,
         "unit": "mmHg",
+        "perUnit": "per mmHg",
+        "perSd": "per SD (11.9 mmHg)",
         "mean": 82.89775943396226,
         "sd": 11.91039448330595
       },
@@ -2259,6 +2287,8 @@
         "kind": "continuous",
         "reference": null,
         "unit": "kg/m²",
+        "perUnit": "per kg/m²",
+        "perSd": "per SD (4.1 kg/m²)",
         "mean": 25.800800758114192,
         "sd": 4.07068659264745
       },
@@ -2269,6 +2299,8 @@
         "kind": "continuous",
         "reference": null,
         "unit": "bpm",
+        "perUnit": "per bpm",
+        "perSd": "per SD (12.0 bpm)",
         "mean": 75.87898089171975,
         "sd": 12.023929482785363
       },
@@ -2279,6 +2311,8 @@
         "kind": "continuous",
         "reference": null,
         "unit": "mg/dL",
+        "perUnit": "per mg/dL",
+        "perSd": "per SD (22.9 mg/dL)",
         "mean": 81.60094339622641,
         "sd": 22.860339880961675
       }
@@ -2314,7 +2348,7 @@
         "orStdLo": 1.5119521535561704,
         "orStdHi": 1.8674023022209982,
         "significant": true,
-        "interpretation": "With the other predictors held fixed, each extra 1 years of Age goes with 6% higher odds of CHD within 10 years (OR 1.06, 95% CI 1.05 to 1.08, p < 0.001). Per 1 SD (8.6 years): OR 1.68 (95% CI 1.51 to 1.87)."
+        "interpretation": "With the other predictors held fixed, each extra year of Age goes with 6% higher odds of CHD within 10 years (OR 1.06, 95% CI 1.05 to 1.08, p < 0.001). Per 1 SD (8.6 years): OR 1.68 (95% CI 1.51 to 1.87)."
       },
       {
         "term": "education[2]",
@@ -2394,7 +2428,7 @@
         "orStdLo": 1.1164973384131869,
         "orStdHi": 1.4601659711819317,
         "significant": true,
-        "interpretation": "With the other predictors held fixed, each extra 1 cigarettes of Cigarettes per day goes with 2% higher odds of CHD within 10 years (OR 1.02, 95% CI 1.01 to 1.03, p < 0.001). Per 1 SD (11.9 cigarettes): OR 1.28 (95% CI 1.12 to 1.46)."
+        "interpretation": "With the other predictors held fixed, each extra cigarette of Cigarettes per day goes with 2% higher odds of CHD within 10 years (OR 1.02, 95% CI 1.01 to 1.03, p < 0.001). Per 1 SD (11.9 cigarettes): OR 1.28 (95% CI 1.12 to 1.46)."
       },
       {
         "term": "BPMeds",
@@ -2490,7 +2524,7 @@
         "orStdLo": 1.1739692026146915,
         "orStdHi": 1.5946541319136953,
         "significant": true,
-        "interpretation": "With the other predictors held fixed, each extra 1 mmHg of Systolic BP goes with 1% higher odds of CHD within 10 years (OR 1.01, 95% CI 1.01 to 1.02, p < 0.001). Per 1 SD (22.0 mmHg): OR 1.37 (95% CI 1.17 to 1.59)."
+        "interpretation": "With the other predictors held fixed, each extra mmHg of Systolic BP goes with 1% higher odds of CHD within 10 years (OR 1.01, 95% CI 1.01 to 1.02, p < 0.001). Per 1 SD (22.0 mmHg): OR 1.37 (95% CI 1.17 to 1.59)."
       },
       {
         "term": "diaBP",
@@ -2554,7 +2588,7 @@
         "orStdLo": 1.0597734008664148,
         "orStdHi": 1.2840532431226712,
         "significant": true,
-        "interpretation": "With the other predictors held fixed, each extra 1 mg/dL of Glucose goes with 1% higher odds of CHD within 10 years (OR 1.01, 95% CI 1.00 to 1.01, p = 0.002). Per 1 SD (22.9 mg/dL): OR 1.17 (95% CI 1.06 to 1.28)."
+        "interpretation": "With the other predictors held fixed, each extra mg/dL of Glucose goes with 1% higher odds of CHD within 10 years (OR 1.01, 95% CI 1.00 to 1.01, p = 0.002). Per 1 SD (22.9 mg/dL): OR 1.17 (95% CI 1.06 to 1.28)."
       }
     ],
     "fit": {

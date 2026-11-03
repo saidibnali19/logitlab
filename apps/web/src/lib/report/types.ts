@@ -310,6 +310,8 @@ export type Term = {
   kind: "continuous" | "binary" | "level";
   reference: string | null; // reference level for level terms
   unit: string | null; // e.g. "mmHg"
+  perUnit: string | null; // continuous only, e.g. "per year"
+  perSd: string | null; // continuous only, e.g. "per SD (8.6 years)"
   mean: number | null; // continuous only; used by the what-if explorer
   sd: number | null; // continuous only; used for per-SD odds ratios
 };

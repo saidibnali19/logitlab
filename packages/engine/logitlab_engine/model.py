@@ -44,7 +44,8 @@ def _reading(term: dict, o: dict, significant: bool, outcome: str) -> str:
     stats = f"OR {raw[0]:.2f}, 95% CI {_ci(raw[1], raw[2])}, {fmt_p(o['p'])}"
     if term["kind"] == "continuous":
         unit = f" {term['unit']}" if term["unit"] else ""
-        subject = f"each extra 1{unit}" if term["unit"] else "each one-unit increase"
+        singular = config.UNIT_SINGULAR.get(term["unit"], term["unit"])
+        subject = f"each extra {singular}" if term["unit"] else "each one-unit increase"
         sd_text = f"1 SD ({term['sd']:.1f}{unit})"
         if significant:
             return (

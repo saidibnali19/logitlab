@@ -8,6 +8,13 @@ from . import config
 from .profile import Profile, level_text
 
 
+def unit_phrases(unit: str | None, sd: float) -> tuple[str, str]:
+    """How one unit and one SD read in a label, e.g. "per year" and "per SD (8.6 years)"."""
+    if unit is None:
+        return "per unit", f"per SD ({sd:.2g})"
+    return f"per {config.UNIT_SINGULAR.get(unit, unit)}", f"per SD ({sd:.1f} {unit})"
+
+
 def build_design(imputed: pd.DataFrame, profile: Profile) -> tuple[pd.DataFrame, list[dict]]:
     """Returns the design matrix (with a constant first) and the contract's `Term` list."""
     columns: dict[str, pd.Series] = {"const": pd.Series(1.0, index=imputed.index)}
@@ -20,6 +27,7 @@ def build_design(imputed: pd.DataFrame, profile: Profile) -> tuple[pd.DataFrame,
         if col.type == "continuous":
             values = series.astype(float)
             columns[col.name] = values
+            per_unit, per_sd = unit_phrases(unit, float(values.std()))
             terms.append(
                 {
                     "name": col.name,
@@ -28,6 +36,8 @@ def build_design(imputed: pd.DataFrame, profile: Profile) -> tuple[pd.DataFrame,
                     "kind": "continuous",
                     "reference": None,
                     "unit": unit,
+                    "perUnit": per_unit,
+                    "perSd": per_sd,
                     "mean": float(values.mean()),
                     "sd": float(values.std()),
                 }
@@ -47,6 +57,8 @@ def build_design(imputed: pd.DataFrame, profile: Profile) -> tuple[pd.DataFrame,
                     "kind": "binary",
                     "reference": None,
                     "unit": None,
+                    "perUnit": None,
+                    "perSd": None,
                     "mean": None,
                     "sd": None,
                 }
@@ -67,6 +79,8 @@ def build_design(imputed: pd.DataFrame, profile: Profile) -> tuple[pd.DataFrame,
                         "kind": "level",
                         "reference": reference,
                         "unit": None,
+                        "perUnit": None,
+                        "perSd": None,
                         "mean": None,
                         "sd": None,
                     }
