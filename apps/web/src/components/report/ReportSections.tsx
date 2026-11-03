@@ -50,7 +50,11 @@ export function ReportSections() {
             data={result.performance}
             target={result.dataGlance.target}
           />
-          <WhatIfExplorer data={result.whatIf} />
+          <WhatIfExplorer
+            data={result.whatIf}
+            target={result.dataGlance.target}
+            prevalence={result.meta.prevalence}
+          />
           <TakeawaysExport data={result.takeaways} />
         </>
       ) : null}
