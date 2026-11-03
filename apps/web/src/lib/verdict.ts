@@ -12,6 +12,13 @@ export const VERDICT_CLASS: Record<Level, string> = {
   info: "verdict-info",
 };
 
+export const VERDICT_BADGE: Record<Level, string> = {
+  pass: "badge-pass",
+  warn: "badge-warn",
+  refuse: "badge-refuse",
+  info: "badge-outline",
+};
+
 export const VERDICT_ICON: Record<Level, typeof Info> = {
   pass: CircleCheck,
   warn: TriangleAlert,

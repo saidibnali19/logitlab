@@ -278,6 +278,7 @@ export type CompleteCaseComparison = {
   primaryN: number;
   completeCaseN: number;
   verdict: Verdict;
+  /** Odds ratios per 1 SD for continuous terms, versus the reference otherwise. */
   rows: {
     term: string;
     label: string;
