@@ -26,7 +26,11 @@ export function ReportSections() {
     <>
       <DataGlance data={result.dataGlance} rows={result.meta.rows} />
       <DataHygiene data={result.hygiene} />
-      <ExploreData data={result.eda} />
+      <ExploreData
+        data={result.eda}
+        target={result.dataGlance.target}
+        prevalence={result.meta.prevalence}
+      />
       <AssumptionChecks
         data={result.assumptions}
         sensitivity={result.sensitivity}
