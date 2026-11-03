@@ -20,6 +20,11 @@ export function formatChange(fraction: number, digits = 1): string {
   return `${sign}${formatPercent(Math.abs(fraction), digits)}`;
 }
 
+/** An odds ratio, with a third decimal near 1 so 1.002 never shows as a flat "1.00". */
+export function formatOddsRatio(value: number): string {
+  return value.toFixed(Math.abs(value - 1) < 0.01 ? 3 : 2);
+}
+
 /** A p-value on its own, e.g. "0.022", or "< 0.001" once it is tiny. */
 export function formatPValue(p: number): string {
   return p < 0.001 ? "< 0.001" : p.toFixed(3);

@@ -37,7 +37,15 @@ export function ReportSections() {
       />
       {isComplete(result) ? (
         <>
-          <ModelResults data={result.model} />
+          <ModelResults
+            data={result.model}
+            groups={result.assumptions.groupTests}
+            fragile={
+              result.sensitivity.completeCase?.rows
+                .filter((row) => !row.sameSignificance)
+                .map((row) => row.term) ?? []
+            }
+          />
           <ModelPerformance data={result.performance} />
           <WhatIfExplorer data={result.whatIf} />
           <TakeawaysExport data={result.takeaways} />

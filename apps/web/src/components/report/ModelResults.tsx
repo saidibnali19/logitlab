@@ -1,42 +1,60 @@
 import { SectionShell } from "@/components/ui/SectionShell";
-import { ComponentPlaceholder } from "@/components/ui/ComponentPlaceholder";
-import { SectionSummary } from "@/components/report/SectionSummary";
-import type { Model } from "@/lib/report/types";
+import { FitSummary } from "@/components/report/model/FitSummary";
+import { Interpretations } from "@/components/report/model/Interpretations";
+import { OddsRatioView } from "@/components/report/model/OddsRatioView";
+import { VerdictBanner } from "@/components/report/VerdictBanner";
 
-export function ModelResults({ data }: { data: Model }) {
-  const clear = data.coefficients.filter((c) => c.significant);
+import type { GroupTest, Model } from "@/lib/report/types";
+
+/**
+ * The fitted model. Section 04's related groups and fragile estimates come
+ * along so the forest plot can point back to them.
+ */
+export function ModelResults({
+  data,
+  groups,
+  fragile,
+}: {
+  data: Model;
+  groups: GroupTest[];
+  fragile: string[];
+}) {
+  // Each related group gets a letter, keyed by column so every level of a categorical shares it.
+  const groupOf: Record<string, string> = {};
+  groups.forEach((group, i) => {
+    for (const column of group.terms) {
+      groupOf[column] = String.fromCharCode(65 + i);
+    }
+  });
+
   return (
     <SectionShell id="model">
-      <SectionSummary
-        verdict={data.verdict}
-        facts={[
-          { label: "Terms", value: String(data.coefficients.length) },
-          { label: "Clear evidence", value: String(data.counts.significant) },
-          {
-            label: "No clear evidence",
-            value: String(data.counts.notSignificant),
-          },
-          { label: "McFadden R²", value: data.fit.mcFaddenR2.toFixed(3) },
-        ]}
-      >
-        <ul className="list-disc space-y-1 pl-5 text-sm">
-          {clear.map((c) => (
-            <li key={c.term}>
-              <span className="font-medium">{c.label}:</span> OR{" "}
-              {c.orStd.toFixed(2)} (95% CI {c.orStdLo.toFixed(2)} to{" "}
-              {c.orStdHi.toFixed(2)})
-            </li>
-          ))}
-        </ul>
-        <p className="text-ink-muted text-xs">
-          Continuous predictors are shown per 1 SD; the others versus their
-          reference.
-        </p>
-      </SectionSummary>
-      <ComponentPlaceholder
-        name="ModelResults"
-        description="Per-SD forest plot on a log axis, coefficient table, and a raw/standardised toggle."
-      />
+      <div className="space-y-8">
+        <VerdictBanner verdict={data.verdict} />
+        <FitSummary description={data.description} fit={data.fit} />
+        <OddsRatioView
+          terms={data.terms}
+          coefficients={data.coefficients}
+          intercept={data.intercept}
+          groupOf={groupOf}
+          fragile={fragile}
+        />
+        <Interpretations coefficients={data.coefficients} />
+
+        {data.exclusions.length > 0 ? (
+          <div>
+            <h3 className="text-lg font-semibold">Left out by you</h3>
+            <ul className="text-ink-muted mt-2 list-disc space-y-1 pl-5 text-sm">
+              {data.exclusions.map((item) => (
+                <li key={item.column}>
+                  <span className="text-ink font-medium">{item.column}</span>:{" "}
+                  {item.reason}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ) : null}
+      </div>
     </SectionShell>
   );
 }
