@@ -1,33 +1,22 @@
 import { SectionShell } from "@/components/ui/SectionShell";
-import { ComponentPlaceholder } from "@/components/ui/ComponentPlaceholder";
-import { SectionSummary } from "@/components/report/SectionSummary";
+import { DecisionLog } from "@/components/report/hygiene/DecisionLog";
+import { GapsOverview } from "@/components/report/hygiene/GapsOverview";
+import { ImputationTable } from "@/components/report/hygiene/ImputationTable";
+import { OutlierCard } from "@/components/report/hygiene/OutlierCard";
+import { VerdictBanner } from "@/components/report/VerdictBanner";
+
 import type { Hygiene } from "@/lib/report/types";
 
 export function DataHygiene({ data }: { data: Hygiene }) {
   return (
     <SectionShell id="data-hygiene">
-      <SectionSummary
-        verdict={data.verdict}
-        facts={[
-          {
-            label: "Rows with gaps",
-            value: data.rowsWithMissing.toLocaleString("en-US"),
-          },
-          {
-            label: "Complete rows",
-            value: data.completeCases.toLocaleString("en-US"),
-          },
-          { label: "Columns filled", value: String(data.imputations.length) },
-          {
-            label: "Outliers kept in",
-            value: `${data.outlierPolicy.flagged.length} columns`,
-          },
-        ]}
-      />
-      <ComponentPlaceholder
-        name="DataHygiene"
-        description="Missingness bars, imputation before/after, and the overridable decision log."
-      />
+      <div className="space-y-8">
+        <VerdictBanner verdict={data.verdict} />
+        <GapsOverview data={data} />
+        <ImputationTable imputations={data.imputations} />
+        <OutlierCard policy={data.outlierPolicy} />
+        <DecisionLog entries={data.decisionLog} />
+      </div>
     </SectionShell>
   );
 }
