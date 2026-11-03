@@ -447,7 +447,12 @@ export type WhatIf = {
 export type Takeaways = {
   verdict: Verdict;
   headline: string;
-  bullets: { level: Level; text: string }[];
+  /** `topic` says where a bullet belongs, so the page can group them without judging them. */
+  bullets: {
+    level: Level;
+    text: string;
+    topic: "finding" | "performance" | "caution";
+  }[];
   nonSignificantNote: string | null;
   caveats: string[];
 };

@@ -5,13 +5,14 @@ from __future__ import annotations
 import numpy as np
 
 from .fmt import fmt_p, join_labels
+from .performance import discrimination_word
 
 
 def refused_takeaways(refusal: dict) -> dict:
     return {
         "verdict": {"level": "refuse", "text": f"Refused: {refusal['title']}."},
         "headline": f"The analysis was stopped: {refusal['title'].lower()}.",
-        "bullets": [{"level": "refuse", "text": refusal["message"]}],
+        "bullets": [{"level": "refuse", "text": refusal["message"], "topic": "caution"}],
         "nonSignificantNote": None,
         "caveats": [],
     }
@@ -33,27 +34,43 @@ def takeaways_block(result: dict) -> dict:
     significant.sort(key=lambda c: abs(np.log(c["orStd"])), reverse=True)
     others = [c for c in coefficients if not c["significant"]]
 
-    bullets: list[dict] = [{"level": "info", "text": _lead(c, term_of[c["term"]])} for c in significant[:3]]
+    # Each bullet names its topic, so the page can group them without judging them itself.
+    bullets: list[dict] = [
+        {"level": "info", "text": _lead(c, term_of[c["term"]]), "topic": "finding"} for c in significant[:3]
+    ]
     if perf is not None:
-        bullets.append({"level": perf["verdict"]["level"], "text": perf["verdict"]["text"]})
+        bullets.append({"level": perf["verdict"]["level"], "text": perf["verdict"]["text"], "topic": "performance"})
+        calibration = perf["calibration"]["verdict"]
+        bullets.append({"level": calibration["level"], "text": calibration["text"], "topic": "performance"})
     for g in assumptions["groupTests"]:
         if g["significant"]:
             bullets.append(
-                {"level": "info", "text": f"{g['label']} overlap, so read their odds ratios as a set (joint test, {fmt_p(g['pValue'])})."}
+                {
+                    "level": "info",
+                    "text": f"{g['label']} overlap, so read their odds ratios as a set (joint test, {fmt_p(g['pValue'])}).",
+                    "topic": "caution",
+                }
             )
     for item in sens["linearity"]:
         if item["verdict"]["level"] == "warn":
-            bullets.append({"level": "warn", "text": item["verdict"]["text"]})
+            bullets.append({"level": "warn", "text": item["verdict"]["text"], "topic": "caution"})
     for block in (sens["completeCase"], sens["influence"]):
         if block and block["verdict"]["level"] == "warn":
-            bullets.append({"level": "warn", "text": block["verdict"]["text"]})
+            bullets.append({"level": "warn", "text": block["verdict"]["text"], "topic": "caution"})
 
+    # Named by predictor, not by term, so a categorical's levels appear once.
+    label_of = {c["name"]: c["label"] for c in result["dataGlance"]["columns"]}
+    unclear: list[str] = []
+    for c in others:
+        label = label_of.get(term_of[c["term"]]["column"], c["label"])
+        if label not in unclear:
+            unclear.append(label)
     note = None
-    if others:
-        shown = join_labels([c["label"] for c in others[:5]])
-        more = f" and {len(others) - 5} more" if len(others) > 5 else ""
+    if unclear:
+        listed = unclear if len(unclear) <= 6 else unclear[:5] + [f"{len(unclear) - 5} more"]
+        noun = "predictor shows" if len(unclear) == 1 else "predictors show"
         note = (
-            f"{len(others)} predictors showed no clear evidence of an association: {shown}{more}. "
+            f"{len(unclear)} {noun} no clear evidence of an association: {join_labels(listed)}. "
             "They stay in the model. No clear evidence is not evidence that there is no effect."
         )
 
@@ -67,9 +84,10 @@ def takeaways_block(result: dict) -> dict:
         if check["verdict"]["level"] == "warn":
             caveats.append(check["verdict"]["text"])
 
-    headline = f"{len(significant)} of {len(coefficients)} predictors show clear evidence of an association with {positive}."
+    headline = f"{len(significant)} of {len(coefficients)} terms show clear evidence of an association with {positive}."
     if perf is not None:
-        headline += f" Discrimination is {perf['verdict']['text'].split(' ')[0].lower()} (AUC {perf['auc']['test']:.2f})."
+        word, _ = discrimination_word(perf["auc"]["test"])
+        headline += f" Discrimination is {word.lower()} (AUC {perf['auc']['test']:.2f})."
 
     warned = any(b["level"] == "warn" for b in bullets) or len(caveats) > 4
     verdict = (

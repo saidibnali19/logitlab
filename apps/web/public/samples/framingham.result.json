@@ -7869,46 +7869,60 @@
       "level": "warn",
       "text": "Read the results together with the cautions below."
     },
-    "headline": "6 of 17 predictors show clear evidence of an association with CHD within 10 years. Discrimination is modest (AUC 0.70).",
+    "headline": "6 of 17 terms show clear evidence of an association with CHD within 10 years. Discrimination is modest (AUC 0.70).",
     "bullets": [
       {
         "level": "info",
-        "text": "Prior stroke: 2.64 times the odds (95% CI 1.11 to 6.30)."
+        "text": "Prior stroke: 2.64 times the odds (95% CI 1.11 to 6.30).",
+        "topic": "finding"
       },
       {
         "level": "info",
-        "text": "Age: each 1 SD higher goes with 1.68 times the odds (95% CI 1.51 to 1.87)."
+        "text": "Age: each 1 SD higher goes with 1.68 times the odds (95% CI 1.51 to 1.87).",
+        "topic": "finding"
       },
       {
         "level": "info",
-        "text": "Male (vs female): 1.63 times the odds (95% CI 1.34 to 1.99)."
+        "text": "Male (vs female): 1.63 times the odds (95% CI 1.34 to 1.99).",
+        "topic": "finding"
       },
       {
         "level": "warn",
-        "text": "Modest discrimination. On the unseen test rows the model scores AUC 0.70 (5-fold cross-validation 0.73, 95% CI 0.69 to 0.78). At the chosen cut-off of 0.15 it catches 60% of cases and clears 68% of non-cases."
-      },
-      {
-        "level": "info",
-        "text": "Current smoker and Cigarettes per day overlap, so read their odds ratios as a set (joint test, p < 0.001)."
-      },
-      {
-        "level": "info",
-        "text": "Hypertension, Systolic BP and Diastolic BP overlap, so read their odds ratios as a set (joint test, p < 0.001)."
-      },
-      {
-        "level": "info",
-        "text": "Diabetes and Glucose overlap, so read their odds ratios as a set (joint test, p < 0.001)."
+        "text": "Modest discrimination. On the unseen test rows the model scores AUC 0.70 (5-fold cross-validation 0.73, 95% CI 0.69 to 0.78). At the chosen cut-off of 0.15 it catches 60% of cases and clears 68% of non-cases.",
+        "topic": "performance"
       },
       {
         "level": "warn",
-        "text": "Using only the 3,658 complete rows changes whether there is clear evidence for Prior stroke and Total cholesterol, and moves the odds ratio for Prior stroke by 23%. The way gaps were filled matters for these results."
+        "text": "Predicted risks are too spread out: the calibration slope is 0.74, where 1 is perfect, so the highest risks are overstated and the lowest understated. The Hosmer-Lemeshow test finds no clear misfit (p = 0.237).",
+        "topic": "performance"
+      },
+      {
+        "level": "info",
+        "text": "Current smoker and Cigarettes per day overlap, so read their odds ratios as a set (joint test, p < 0.001).",
+        "topic": "caution"
+      },
+      {
+        "level": "info",
+        "text": "Hypertension, Systolic BP and Diastolic BP overlap, so read their odds ratios as a set (joint test, p < 0.001).",
+        "topic": "caution"
+      },
+      {
+        "level": "info",
+        "text": "Diabetes and Glucose overlap, so read their odds ratios as a set (joint test, p < 0.001).",
+        "topic": "caution"
       },
       {
         "level": "warn",
-        "text": "Removing the 42 most influential rows moves the odds ratio for Diabetes by 48%. That estimate rests on a few rows, so read it with caution. This is only a check: no row was removed from the model."
+        "text": "Using only the 3,658 complete rows changes whether there is clear evidence for Prior stroke and Total cholesterol, and moves the odds ratio for Prior stroke by 23%. The way gaps were filled matters for these results.",
+        "topic": "caution"
+      },
+      {
+        "level": "warn",
+        "text": "Removing the 42 most influential rows moves the odds ratio for Diabetes by 48%. That estimate rests on a few rows, so read it with caution. This is only a check: no row was removed from the model.",
+        "topic": "caution"
       }
     ],
-    "nonSignificantNote": "11 predictors showed no clear evidence of an association: Education level: 2 vs 1, Education level: 3 vs 1, Education level: 4 vs 1, Current smoker and On BP medication and 6 more. They stay in the model. No clear evidence is not evidence that there is no effect.",
+    "nonSignificantNote": "9 predictors show no clear evidence of an association: Education level, Current smoker, On BP medication, Hypertension, Diabetes and 4 more. They stay in the model. No clear evidence is not evidence that there is no effect.",
     "caveats": [
       "These are associations in observational data, not proof that changing a factor changes the outcome.",
       "Independence of rows is assumed, not tested.",

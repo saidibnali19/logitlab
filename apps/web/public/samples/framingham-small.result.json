@@ -1737,7 +1737,8 @@
     "bullets": [
       {
         "level": "refuse",
-        "text": "There are only 21 events for 16 model terms (1.3 per term). Below 5 per term, the estimates are too unstable to trust. Collect more cases, or exclude some predictors yourself."
+        "text": "There are only 21 events for 16 model terms (1.3 per term). Below 5 per term, the estimates are too unstable to trust. Collect more cases, or exclude some predictors yourself.",
+        "topic": "caution"
       }
     ],
     "nonSignificantNote": null,

@@ -122,7 +122,7 @@ def _calibration_verdict(slope: float | None, hosmer: dict | None) -> dict:
     return {"level": level, "text": spread + overall}
 
 
-def _wording(auc: float) -> tuple[str, str]:
+def discrimination_word(auc: float) -> tuple[str, str]:
     if auc >= 0.8:
         return "Good", "pass"
     if auc >= 0.7:
@@ -169,7 +169,7 @@ def performance_block(data: pd.DataFrame, profile: Profile) -> dict | None:
     precision, recall, _ = precision_recall_curve(y_test, p_test)
     at_chosen = _row(y_test, p_test, chosen)
 
-    word, level = _wording(test_auc)
+    word, level = discrimination_word(test_auc)
     verdict = {
         "level": level,
         "text": (
