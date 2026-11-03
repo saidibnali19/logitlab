@@ -123,6 +123,11 @@ def validate_result(result: dict) -> list[str]:
     flagged = ((result.get("hygiene") or {}).get("outlierPolicy") or {}).get("flagged") or []
     for i, item in enumerate(flagged[:3]):
         _missing(item, ["column", "label", "count"], f"hygiene.outlierPolicy.flagged[{i}]", errors)
+    eda = result.get("eda") or {}
+    for field, value_key in (("categorical", "fraction"), ("outcomeRates", "rate")):
+        for i, entry in enumerate((eda.get(field) or [])[:3]):
+            for j, level in enumerate((entry.get("levels") or [])[:3]):
+                _missing(level, ["level", "label", "n", value_key], f"eda.{field}[{i}].levels[{j}]", errors)
 
     deep = complete and all(result.get(b) is not None for b in ("model", "sensitivity", "performance", "whatIf"))
     if deep:

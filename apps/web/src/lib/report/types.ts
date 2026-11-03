@@ -151,7 +151,8 @@ export type ContinuousSummary = {
 export type CategoricalSummary = {
   column: string;
   label: string;
-  levels: { level: string; n: number; fraction: number }[];
+  /** `label` is what people read: 0/1 indicators become "No" and "Yes". */
+  levels: { level: string; label: string; n: number; fraction: number }[];
 };
 
 export type OutcomeHistogram = {
@@ -165,7 +166,7 @@ export type OutcomeHistogram = {
 export type OutcomeRate = {
   column: string;
   label: string;
-  levels: { level: string; n: number; rate: number }[]; // rate = P(target = 1)
+  levels: { level: string; label: string; n: number; rate: number }[]; // rate = P(target = 1)
 };
 
 export type Correlation = {
