@@ -422,30 +422,37 @@
       "flagged": [
         {
           "column": "glucose",
+          "label": "Glucose",
           "count": 188
         },
         {
           "column": "sysBP",
+          "label": "Systolic BP",
           "count": 126
         },
         {
           "column": "BMI",
+          "label": "BMI",
           "count": 97
         },
         {
           "column": "diaBP",
+          "label": "Diastolic BP",
           "count": 77
         },
         {
           "column": "heartRate",
+          "label": "Heart rate",
           "count": 76
         },
         {
           "column": "totChol",
+          "label": "Total cholesterol",
           "count": 56
         },
         {
           "column": "cigsPerDay",
+          "label": "Cigarettes per day",
           "count": 12
         }
       ],
@@ -472,7 +479,7 @@
       {
         "id": "d03",
         "step": "roles",
-        "decision": "Chose 'TenYearCHD' as the outcome.",
+        "decision": "Chose '10-year CHD' as the outcome.",
         "reason": "Exactly two distinct values, and the name suggests an outcome (it is also the last column).",
         "automatic": true,
         "alternative": "Choose a different outcome column"
@@ -480,7 +487,7 @@
       {
         "id": "d04",
         "step": "imputation",
-        "decision": "Filled 388 missing values in 'glucose' with the median.",
+        "decision": "Filled 388 missing values in 'Glucose' with the median.",
         "reason": "Skewness is 6.21, beyond ±1, so a few extreme values would drag the mean. The median (78) is the robust choice.",
         "automatic": true,
         "alternative": "Use a different fill method"
@@ -488,7 +495,7 @@
       {
         "id": "d05",
         "step": "imputation",
-        "decision": "Filled 105 missing values in 'education' with the mode.",
+        "decision": "Filled 105 missing values in 'Education level' with the mode.",
         "reason": "'Education level' is categorical, so the most common value (1) is used.",
         "automatic": true,
         "alternative": "Use a different fill method"
@@ -496,7 +503,7 @@
       {
         "id": "d06",
         "step": "imputation",
-        "decision": "Filled 53 missing values in 'BPMeds' with the mode.",
+        "decision": "Filled 53 missing values in 'On BP medication' with the mode.",
         "reason": "'On BP medication' is categorical, so the most common value (0) is used.",
         "automatic": true,
         "alternative": "Use a different fill method"
@@ -504,7 +511,7 @@
       {
         "id": "d07",
         "step": "imputation",
-        "decision": "Filled 50 missing values in 'totChol' with the mean.",
+        "decision": "Filled 50 missing values in 'Total cholesterol' with the mean.",
         "reason": "Skewness is 0.87, close to symmetric, so the mean (236.70) is a fair fill value.",
         "automatic": true,
         "alternative": "Use a different fill method"
@@ -512,7 +519,7 @@
       {
         "id": "d08",
         "step": "imputation",
-        "decision": "Filled 29 missing values in 'cigsPerDay' with the median.",
+        "decision": "Filled 29 missing values in 'Cigarettes per day' with the median.",
         "reason": "'Current smoker' is known for every row. All 29 missing values belong to rows where it is 1, so the overall median (0) would have contradicted what is already known. Rows where it is 0 get 0; the others get the median among positive values (20).",
         "automatic": true,
         "alternative": "Use a different fill method"
@@ -528,7 +535,7 @@
       {
         "id": "d10",
         "step": "imputation",
-        "decision": "Filled 1 missing value in 'heartRate' with the mean.",
+        "decision": "Filled 1 missing value in 'Heart rate' with the mean.",
         "reason": "Skewness is 0.64, close to symmetric, so the mean (75.88) is a fair fill value.",
         "automatic": true,
         "alternative": "Use a different fill method"
@@ -544,7 +551,7 @@
       {
         "id": "d12",
         "step": "outliers",
-        "decision": "Flagged unusual values but kept them: glucose (188), sysBP (126), BMI (97), diaBP (77), heartRate (76), totChol (56), cigsPerDay (12).",
+        "decision": "Flagged unusual values but kept them: Glucose (188), Systolic BP (126), BMI (97), Diastolic BP (77), Heart rate (76), Total cholesterol (56), Cigarettes per day (12).",
         "reason": "Extreme values were kept. A value outside the fences is unusual, not necessarily wrong, and in clinical data the extremes are often the high-risk cases a model should learn from.",
         "automatic": true,
         "alternative": "Cap values at the fences"
@@ -552,7 +559,7 @@
       {
         "id": "d13",
         "step": "encoding",
-        "decision": "Coded 'education' as 3 indicator columns against level '1'.",
+        "decision": "Coded 'Education level' as 3 indicator columns against level '1'.",
         "reason": "A categorical predictor needs one indicator per level except a reference level.",
         "automatic": true,
         "alternative": "Choose a different reference level"

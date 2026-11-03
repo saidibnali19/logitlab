@@ -128,7 +128,7 @@ export type Hygiene = {
   imputations: Imputation[];
   outlierPolicy: {
     method: string;
-    flagged: { column: string; count: number }[];
+    flagged: { column: string; label: string; count: number }[];
     action: "kept";
     reason: string;
   };

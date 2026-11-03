@@ -43,6 +43,7 @@ NESTED: dict[tuple[str, str], list[str]] = {
     ("performance", "threshold"): ["chosen", "method", "tunedOn"],
     ("performance", "atChosen"): ["threshold", "sensitivity", "specificity", "precision", "balancedAccuracy", "counts"],
     ("dataGlance", "target"): ["name", "reason", "negativeLabel", "positiveLabel", "counts"],
+    ("hygiene", "outlierPolicy"): ["method", "flagged", "action", "reason"],
 }
 
 ITEMS: dict[tuple[str, ...], list[str]] = {
@@ -117,6 +118,11 @@ def validate_result(result: dict) -> list[str]:
         items = (result.get(block) or {}).get(field) or []
         for i, item in enumerate(items[:3]):  # the first few are enough to catch a shape error
             _missing(item, keys, f"{block}.{field}[{i}]", errors)
+
+    # One level deeper than ITEMS reaches.
+    flagged = ((result.get("hygiene") or {}).get("outlierPolicy") or {}).get("flagged") or []
+    for i, item in enumerate(flagged[:3]):
+        _missing(item, ["column", "label", "count"], f"hygiene.outlierPolicy.flagged[{i}]", errors)
 
     deep = complete and all(result.get(b) is not None for b in ("model", "sensitivity", "performance", "whatIf"))
     if deep:
