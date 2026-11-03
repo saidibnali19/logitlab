@@ -55,7 +55,11 @@ export function ReportSections() {
             target={result.dataGlance.target}
             prevalence={result.meta.prevalence}
           />
-          <TakeawaysExport data={result.takeaways} />
+          <TakeawaysExport
+            data={result.takeaways}
+            model={result.model}
+            datasetName={result.meta.datasetName}
+          />
         </>
       ) : null}
     </>

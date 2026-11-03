@@ -7,7 +7,7 @@ import { FooterBar } from "@/components/footer/FooterBar";
 
 export function SiteFooter() {
   return (
-    <footer>
+    <footer className="print:hidden">
       <section
         id="about"
         aria-labelledby="about-title"

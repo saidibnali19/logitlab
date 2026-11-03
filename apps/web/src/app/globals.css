@@ -3,6 +3,7 @@
 @import "../styles/theme.css";
 @import "../styles/components.css";
 @import "../styles/motion.css";
+@import "../styles/print.css";
 
 @theme inline {
   --font-sans: var(--font-geist-sans);

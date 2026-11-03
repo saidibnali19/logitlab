@@ -5,7 +5,7 @@ import { SITE } from "@/lib/site";
 
 export function SiteHeader() {
   return (
-    <header className="border-line bg-surface/80 sticky top-0 z-40 border-b backdrop-blur">
+    <header className="border-line bg-surface/80 sticky top-0 z-40 border-b backdrop-blur print:hidden">
       <div className="mx-auto flex h-14 max-w-5xl items-center justify-between px-6">
         <Link href="/" aria-label={`${SITE.name} home`}>
           <Logo />

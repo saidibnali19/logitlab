@@ -1,0 +1,28 @@
+/* Printing, or saving as PDF from the print dialog: the report only, read top to bottom. */
+@media print {
+  @page {
+    margin: 14mm;
+  }
+
+  body {
+    background: white;
+  }
+
+  /* Buttons do nothing on paper. */
+  button {
+    display: none !important;
+  }
+
+  /* Keep each card, chart and table on one page where it fits. */
+  .card,
+  .verdict-card,
+  figure,
+  table {
+    break-inside: avoid;
+  }
+
+  /* A sticky card would otherwise repeat or overlap on every page. */
+  .lg\:sticky {
+    position: static !important;
+  }
+}

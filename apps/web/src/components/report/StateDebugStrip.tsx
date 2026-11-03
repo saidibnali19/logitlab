@@ -20,7 +20,7 @@ export function StateDebugStrip() {
     detail = `${state.error.kind}: ${state.error.message}`;
 
   return (
-    <div className="border-line bg-surface text-ink fixed bottom-3 left-3 z-50 max-w-xs rounded-lg border p-3 text-xs shadow-lg">
+    <div className="border-line bg-surface text-ink fixed bottom-3 left-3 z-50 max-w-xs rounded-lg border p-3 text-xs shadow-lg print:hidden">
       <p className="font-mono">
         state: <strong>{state.status}</strong>
       </p>

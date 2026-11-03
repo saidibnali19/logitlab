@@ -4,6 +4,7 @@ import { useEffect, useRef, type ReactNode } from "react";
 
 import { isComplete } from "@/lib/report/types";
 
+import { PrintExpander } from "./PrintExpander";
 import { RefusalCard } from "./RefusalCard";
 import { ReportBanner } from "./ReportBanner";
 import { useReport } from "./ReportProvider";
@@ -59,6 +60,7 @@ export function ReportGate({
 
       {state.status === "ready" ? (
         <div id="report">
+          <PrintExpander />
           <ReportBanner meta={state.result.meta} />
           {isComplete(state.result) ? null : (
             <RefusalCard refusal={state.result.meta.refusal} />
