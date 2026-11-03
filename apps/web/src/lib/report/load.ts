@@ -3,6 +3,9 @@ import { SCHEMA_VERSION, type AnalysisResult } from "./types";
 /** Where the Framingham sample result lives. Fetched at runtime, never bundled. */
 export const SAMPLE_URL = "/samples/framingham.result.json";
 
+/** A small Framingham sample the engine refuses: too few events per term. */
+export const REFUSED_SAMPLE_URL = "/samples/framingham-small.result.json";
+
 export type LoadErrorKind = "network" | "malformed" | "version";
 export type LoadError = { kind: LoadErrorKind; message: string };
 
@@ -42,10 +45,12 @@ export function readResult(value: unknown): LoadOutcome {
   return { ok: true, result: value as unknown as AnalysisResult };
 }
 
-export async function loadSampleResult(): Promise<LoadOutcome> {
+export async function loadSampleResult(
+  url: string = SAMPLE_URL,
+): Promise<LoadOutcome> {
   let response: Response;
   try {
-    response = await fetch(SAMPLE_URL, { cache: "no-store" });
+    response = await fetch(url, { cache: "no-store" });
   } catch {
     return fail(
       "network",

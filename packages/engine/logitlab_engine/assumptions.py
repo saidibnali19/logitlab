@@ -179,8 +179,8 @@ def build_assumptions(X: pd.DataFrame, y: pd.Series, terms: list[dict], imputed:
     label_of = {t["name"]: t["label"] for t in terms}
 
     checks: list[dict] = []
-    epv = {"events": smaller, "terms": n_terms, "value": epv_value, "minimum": config.MIN_EPV}
-    empty = {"threshold": 4 / n, "count": 0, "maxCooksD": 0.0, "flagged": []}
+    epv = {"events": smaller, "terms": n_terms, "value": epv_value, "minimum": config.MIN_EPV, "refuseBelow": config.REFUSE_EPV}
+    empty = {"threshold": 4 / n, "limit": config.COOKS_LIMIT, "count": 0, "maxCooksD": 0.0, "flagged": []}
 
     def finish(refusal: Refused | None, vif=None, bt=None, influence=None, groups=None, fit=None):
         levels = [c["verdict"]["level"] for c in checks]
@@ -201,7 +201,10 @@ def build_assumptions(X: pd.DataFrame, y: pd.Series, terms: list[dict], imputed:
             "checks": checks,
             "epv": epv,
             "vif": vif or [],
+            # The limits travel with the values, so the charts never hard-code a rule.
+            "vifLimit": config.VIF_LIMIT,
             "boxTidwell": bt or [],
+            "boxTidwellThreshold": config.BOX_TIDWELL_ALPHA / max(len(bt or []), 1),
             "influence": influence or empty,
             "groupTests": groups or [],
         }
@@ -357,6 +360,7 @@ def build_assumptions(X: pd.DataFrame, y: pd.Series, terms: list[dict], imputed:
     biggest = float(cooks.max())
     influence = {
         "threshold": guideline,
+        "limit": config.COOKS_LIMIT,
         "count": count,
         "maxCooksD": biggest,
         "flagged": [{"row": int(i) + 1, "cooksD": float(cooks[i])} for i in order[:5]],

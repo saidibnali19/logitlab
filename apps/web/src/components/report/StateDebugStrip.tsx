@@ -1,5 +1,7 @@
 "use client";
 
+import { REFUSED_SAMPLE_URL } from "@/lib/report/load";
+
 import { useReport } from "./ReportProvider";
 
 /** A development-only readout of the report state. Renders nothing in production. */
@@ -30,6 +32,13 @@ export function StateDebugStrip() {
           className="border-line hover:bg-canvas rounded border px-2 py-1"
         >
           Load sample
+        </button>
+        <button
+          type="button"
+          onClick={() => void loadSample(REFUSED_SAMPLE_URL)}
+          className="border-line hover:bg-canvas rounded border px-2 py-1"
+        >
+          Load refusal
         </button>
         <button
           type="button"

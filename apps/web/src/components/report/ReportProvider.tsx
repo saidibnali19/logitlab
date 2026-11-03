@@ -36,7 +36,8 @@ export type ReportState =
 
 type ReportContextValue = {
   state: ReportState;
-  loadSample: () => Promise<void>;
+  /** Loads a pre-computed result: the Framingham sample unless another URL is given. */
+  loadSample: (url?: string) => Promise<void>;
   /** Checks the file without reading it, then explains that analysis is not connected yet. */
   loadUpload: (file: File) => void;
   reset: () => void;
@@ -50,12 +51,12 @@ export function ReportProvider({ children }: { children: ReactNode }) {
   // Each request gets a number, so a slow one can never overwrite a newer choice.
   const latest = useRef(0);
 
-  const loadSample = useCallback(async () => {
+  const loadSample = useCallback(async (url?: string) => {
     const id = ++latest.current;
     setState({ status: "loading", source: "sample" });
 
     const started = performance.now();
-    const outcome = await loadSampleResult();
+    const outcome = await loadSampleResult(url);
     const remaining = MIN_LOADING_MS - (performance.now() - started);
     if (remaining > 0)
       await new Promise((resolve) => setTimeout(resolve, remaining));

@@ -19,24 +19,42 @@ CSV = ROOT / "apps" / "web" / "public" / "samples" / "framingham.csv"
 OUT = ROOT / "apps" / "web" / "public" / "samples" / "framingham.result.json"
 PREVIEW_OUT = ROOT / "apps" / "web" / "src" / "lib" / "preview.generated.json"
 
+# A small seeded sample with too few events, so the refusal path has a real result to render.
+REFUSED_OUT = ROOT / "apps" / "web" / "public" / "samples" / "framingham-small.result.json"
+REFUSED_ROWS = 150
+REFUSED_SEED = 7
+
+
+def write_checked(result: dict, path: Path) -> dict:
+    """Writes a result, reads it back and stops the build if it breaks the contract."""
+    write_json(result, path)
+
+    def refuse_constant(name):
+        raise ValueError(f"{name} found in the JSON")
+
+    written = json.loads(path.read_text(encoding="utf-8"), parse_constant=refuse_constant)
+    problems = validate_result(written)
+    if problems:
+        print(f"CONTRACT CHECK FAILED for {path.name} ({len(problems)} problem(s)):")
+        for line in problems:
+            print("  -", line)
+        sys.exit(1)
+    print(f"Contract check passed. {path.stat().st_size / 1024:.0f} KB written to {path.name}.")
+    return written
+
 
 def main() -> None:
     df = pd.read_csv(CSV)
     result, prepared = run_analysis(df, "Framingham Heart Study", "sample")
-    write_json(result, OUT)
-    
-    
-    def refuse_constant(name):
-        raise ValueError(f"{name} found in the JSON")
+    written = write_checked(result, OUT)
 
-    written = json.loads(OUT.read_text(encoding="utf-8"), parse_constant=refuse_constant)
-    problems = validate_result(written)
-    if problems:
-        print(f"CONTRACT CHECK FAILED ({len(problems)} problem(s)):")
-        for line in problems:
-            print("  -", line)
+    small = df.sample(REFUSED_ROWS, random_state=REFUSED_SEED).reset_index(drop=True)
+    refused, _ = run_analysis(small, f"Framingham Heart Study, {REFUSED_ROWS}-row sample (too few events)", "sample")
+    if refused["meta"]["status"] != "refused":
+        print(f"The {REFUSED_ROWS}-row sample was not refused, so it cannot demonstrate a refusal.")
         sys.exit(1)
-    print(f"Contract check passed. {OUT.stat().st_size / 1024:.0f} KB written.")
+    write_checked(refused, REFUSED_OUT)
+    print(f"  Refused: {refused['meta']['refusal']['title']}")
 
     if written["meta"]["status"] == "complete":
         write_json(preview_block(written), PREVIEW_OUT)

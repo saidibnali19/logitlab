@@ -1885,7 +1885,8 @@
       "events": 644,
       "terms": 17,
       "value": 37.88235294117647,
-      "minimum": 10
+      "minimum": 10,
+      "refuseBelow": 5
     },
     "vif": [
       {
@@ -1974,6 +1975,7 @@
         "value": 1.6115066399199927
       }
     ],
+    "vifLimit": 5.0,
     "boxTidwell": [
       {
         "column": "age",
@@ -2024,8 +2026,10 @@
         "level": "pass"
       }
     ],
+    "boxTidwellThreshold": 0.00625,
     "influence": {
       "threshold": 0.0009433962264150943,
+      "limit": 1.0,
       "count": 388,
       "maxCooksD": 0.01152029909597811,
       "flagged": [

@@ -229,16 +229,26 @@ export type GroupTest = {
 export type Assumptions = {
   verdict: Verdict;
   checks: AssumptionCheck[];
-  epv: { events: number; terms: number; value: number; minimum: number };
+  epv: {
+    events: number;
+    terms: number;
+    value: number;
+    minimum: number; // the usual guideline
+    refuseBelow: number; // the analysis is refused under this
+  };
   vif: { term: string; label: string; value: number }[];
+  vifLimit: number; // a VIF at or above this warns
   boxTidwell: {
     column: string;
     label: string;
     pValue: number;
     level: Level;
   }[];
+  /** 0.05 divided by the number of tests; a p-value below it warns. */
+  boxTidwellThreshold: number;
   influence: {
-    threshold: number;
+    threshold: number; // the 4/n guideline
+    limit: number; // a Cook's distance above this warns
     count: number;
     maxCooksD: number;
     flagged: { row: number; cooksD: number }[]; // top few only
