@@ -1742,6 +1742,7 @@
       }
     ],
     "nonSignificantNote": null,
-    "caveats": []
+    "caveats": [],
+    "script": null
   }
 }

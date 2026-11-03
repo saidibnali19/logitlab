@@ -28,7 +28,7 @@ SHAPE: dict[str, object] = {
     "sensitivity": ["verdict", "linearity", "completeCase", "influence"],
     "performance": ["verdict", "split", "auc", "roc", "pr", "prBaseline", "calibration", "threshold", "atChosen", "thresholdTable", "thresholdTableCv"],
     "whatIf": ["verdict", "baselineRisk", "controls", "intercept", "betas", "covariance", "note"],
-    "takeaways": ["verdict", "headline", "bullets", "nonSignificantNote", "caveats"],
+    "takeaways": ["verdict", "headline", "bullets", "nonSignificantNote", "caveats", "script"],
 }
 
 NESTED: dict[tuple[str, str], list[str]] = {

@@ -15,6 +15,7 @@ from .logit import LogitFit
 from .model import model_block
 from .performance import performance_block
 from .profile import Profile, build_profile, choose_target, encode_target, glance_block
+from .script import script_block
 from .sensitivity import sensitivity_block
 from .takeaways import refused_takeaways, takeaways_block
 from .whatif import whatif_block
@@ -51,7 +52,9 @@ def prepare(df: pd.DataFrame, target: str | None = None) -> tuple[Prepared, int,
     return Prepared(data, profile, imputer, imputed), dropped, duplicates
 
 
-def run_analysis(df: pd.DataFrame, dataset_name: str, source: str = "sample", target: str | None = None) -> tuple[dict, Prepared]:
+def run_analysis(
+    df: pd.DataFrame, dataset_name: str, source: str = "sample", target: str | None = None, csv_name: str = "data.csv"
+) -> tuple[dict, Prepared]:
     prepared, dropped, duplicates = prepare(df, target)
     profile, data = prepared.profile, prepared.data
     rows = len(data)
@@ -96,6 +99,7 @@ def run_analysis(df: pd.DataFrame, dataset_name: str, source: str = "sample", ta
         result["performance"] = performance_block(prepared.data, profile)
         result["whatIf"] = whatif_block(prepared.design, prepared.terms, fit, prepared.imputed, prepared.data, profile)
         result["takeaways"] = takeaways_block(result)
+        result["takeaways"]["script"] = script_block(df, prepared, dataset_name, csv_name)
     else:
         result["model"] = result["sensitivity"] = result["performance"] = result["whatIf"] = None
         result["takeaways"] = refused_takeaways(refusal or {"title": "No model", "message": "A model could not be fitted."})

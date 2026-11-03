@@ -455,6 +455,8 @@ export type Takeaways = {
   }[];
   nonSignificantNote: string | null;
   caveats: string[];
+  /** A Python script that reproduces the full-data model; the build checks it does. Null when refused. */
+  script: { filename: string; code: string } | null;
 };
 
 // ───────────────────── The whole result ─────────────────────

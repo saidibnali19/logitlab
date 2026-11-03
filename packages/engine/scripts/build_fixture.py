@@ -1,7 +1,11 @@
 """Builds the Framingham fixture the front end reads, and checks it against the contract."""
 
+import contextlib
+import io
 import json
+import runpy
 import sys
+import tempfile
 from pathlib import Path
 
 import pandas as pd
@@ -43,10 +47,33 @@ def write_checked(result: dict, path: Path) -> dict:
     return written
 
 
+def check_script(result: dict) -> None:
+    """Runs the generated script on the real CSV and stops the build if its model differs."""
+    script = result["takeaways"]["script"]
+    with tempfile.TemporaryDirectory() as folder:
+        path = Path(folder) / script["filename"]
+        path.write_text(script["code"], encoding="utf-8")
+        argv = sys.argv
+        sys.argv = [str(path), str(CSV)]
+        try:
+            with contextlib.redirect_stdout(io.StringIO()):
+                namespace = runpy.run_path(str(path), run_name="__main__")
+        finally:
+            sys.argv = argv
+    params = namespace["fit"].params
+    expected = {"const": result["whatIf"]["intercept"], **result["whatIf"]["betas"]}
+    worst = max(abs(float(params[name]) - value) for name, value in expected.items())
+    if set(params.index) != set(expected) or worst > 1e-6:
+        print(f"SCRIPT CHECK FAILED: the generated script's coefficients differ by up to {worst:.2e}.")
+        sys.exit(1)
+    print(f"Script check passed. {script['filename']} reproduces all {len(expected)} coefficients (max difference {worst:.1e}).")
+
+
 def main() -> None:
     df = pd.read_csv(CSV)
-    result, prepared = run_analysis(df, "Framingham Heart Study", "sample")
+    result, prepared = run_analysis(df, "Framingham Heart Study", "sample", csv_name=CSV.name)
     written = write_checked(result, OUT)
+    check_script(written)
 
     small = df.sample(REFUSED_ROWS, random_state=REFUSED_SEED).reset_index(drop=True)
     refused, _ = run_analysis(small, f"Framingham Heart Study, {REFUSED_ROWS}-row sample (too few events)", "sample")

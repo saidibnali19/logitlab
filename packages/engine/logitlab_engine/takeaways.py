@@ -15,6 +15,7 @@ def refused_takeaways(refusal: dict) -> dict:
         "bullets": [{"level": "refuse", "text": refusal["message"], "topic": "caution"}],
         "nonSignificantNote": None,
         "caveats": [],
+        "script": None,  # nothing to reproduce without a model
     }
 
 
