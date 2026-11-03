@@ -94,7 +94,7 @@ def run_analysis(df: pd.DataFrame, dataset_name: str, source: str = "sample", ta
             prepared.design, prepared.y, prepared.terms, fit, prepared.imputed, prepared.data, profile, assumptions
         )
         result["performance"] = performance_block(prepared.data, profile)
-        result["whatIf"] = whatif_block(prepared.design, prepared.terms, fit, prepared.imputed, profile)
+        result["whatIf"] = whatif_block(prepared.design, prepared.terms, fit, prepared.imputed, prepared.data, profile)
         result["takeaways"] = takeaways_block(result)
     else:
         result["model"] = result["sensitivity"] = result["performance"] = result["whatIf"] = None

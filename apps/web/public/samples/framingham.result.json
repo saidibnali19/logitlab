@@ -7198,9 +7198,9 @@
   "whatIf": {
     "verdict": {
       "level": "info",
-      "text": "With every control at its typical value, the model estimates a 10.0% chance of CHD within 10 years. Move the controls to see how the estimate changes."
+      "text": "With every control at its typical value, the model estimates a 7.4% chance of CHD within 10 years. Move the controls to see how the estimate changes."
     },
-    "baselineRisk": 0.10002434918775295,
+    "baselineRisk": 0.0735284180748462,
     "controls": [
       {
         "column": "male",
@@ -7213,14 +7213,15 @@
         "default": 0.0,
         "options": [
           {
-            "label": "0",
+            "label": "No",
             "term": null
           },
           {
-            "label": "1",
+            "label": "Yes",
             "term": "male"
           }
-        ]
+        ],
+        "linked": null
       },
       {
         "column": "age",
@@ -7230,8 +7231,9 @@
         "min": 35.0,
         "max": 67.0,
         "step": 1.0,
-        "default": 50.0,
-        "options": null
+        "default": 49.0,
+        "options": null,
+        "linked": null
       },
       {
         "column": "education",
@@ -7259,7 +7261,8 @@
             "label": "4",
             "term": "education[4]"
           }
-        ]
+        ],
+        "linked": null
       },
       {
         "column": "currentSmoker",
@@ -7272,14 +7275,15 @@
         "default": 0.0,
         "options": [
           {
-            "label": "0",
+            "label": "No",
             "term": null
           },
           {
-            "label": "1",
+            "label": "Yes",
             "term": "currentSmoker"
           }
-        ]
+        ],
+        "linked": null
       },
       {
         "column": "cigsPerDay",
@@ -7289,8 +7293,13 @@
         "min": 0.0,
         "max": 43.0,
         "step": 1.0,
-        "default": 9.0,
-        "options": null
+        "default": 0.0,
+        "options": null,
+        "linked": {
+          "column": "currentSmoker",
+          "offValue": 0.0,
+          "onValue": 20.0
+        }
       },
       {
         "column": "BPMeds",
@@ -7303,14 +7312,15 @@
         "default": 0.0,
         "options": [
           {
-            "label": "0",
+            "label": "No",
             "term": null
           },
           {
-            "label": "1",
+            "label": "Yes",
             "term": "BPMeds"
           }
-        ]
+        ],
+        "linked": null
       },
       {
         "column": "prevalentStroke",
@@ -7323,14 +7333,15 @@
         "default": 0.0,
         "options": [
           {
-            "label": "0",
+            "label": "No",
             "term": null
           },
           {
-            "label": "1",
+            "label": "Yes",
             "term": "prevalentStroke"
           }
-        ]
+        ],
+        "linked": null
       },
       {
         "column": "prevalentHyp",
@@ -7343,14 +7354,15 @@
         "default": 0.0,
         "options": [
           {
-            "label": "0",
+            "label": "No",
             "term": null
           },
           {
-            "label": "1",
+            "label": "Yes",
             "term": "prevalentHyp"
           }
-        ]
+        ],
+        "linked": null
       },
       {
         "column": "diabetes",
@@ -7363,25 +7375,27 @@
         "default": 0.0,
         "options": [
           {
-            "label": "0",
+            "label": "No",
             "term": null
           },
           {
-            "label": "1",
+            "label": "Yes",
             "term": "diabetes"
           }
-        ]
+        ],
+        "linked": null
       },
       {
         "column": "totChol",
         "label": "Total cholesterol",
         "kind": "slider",
         "unit": "mg/dL",
-        "min": 153.3,
-        "max": 353.7,
-        "step": 0.1,
-        "default": 236.7,
-        "options": null
+        "min": 153.0,
+        "max": 354.0,
+        "step": 1.0,
+        "default": 234.0,
+        "options": null,
+        "linked": null
       },
       {
         "column": "sysBP",
@@ -7390,9 +7404,10 @@
         "unit": "mmHg",
         "min": 97.0,
         "max": 200.0,
-        "step": 0.1,
-        "default": 132.4,
-        "options": null
+        "step": 0.5,
+        "default": 128.0,
+        "options": null,
+        "linked": null
       },
       {
         "column": "diaBP",
@@ -7401,9 +7416,10 @@
         "unit": "mmHg",
         "min": 60.0,
         "max": 118.0,
-        "step": 0.1,
-        "default": 82.9,
-        "options": null
+        "step": 0.5,
+        "default": 82.0,
+        "options": null,
+        "linked": null
       },
       {
         "column": "BMI",
@@ -7413,8 +7429,9 @@
         "min": 18.1,
         "max": 39.0,
         "step": 0.1,
-        "default": 25.8,
-        "options": null
+        "default": 25.4,
+        "options": null,
+        "linked": null
       },
       {
         "column": "heartRate",
@@ -7423,9 +7440,10 @@
         "unit": "bpm",
         "min": 52.0,
         "max": 110.0,
-        "step": 0.1,
-        "default": 75.9,
-        "options": null
+        "step": 1.0,
+        "default": 75.0,
+        "options": null,
+        "linked": null
       },
       {
         "column": "glucose",
@@ -7435,8 +7453,9 @@
         "min": 56.0,
         "max": 170.0,
         "step": 1.0,
-        "default": 82.0,
-        "options": null
+        "default": 78.0,
+        "options": null,
+        "linked": null
       }
     ],
     "note": "Uses the full-data model, not the hold-out model. It shows what the model estimates from patterns in this data, not what would happen if a person changed."

@@ -422,6 +422,12 @@ export type WhatIfControl = {
   default: number;
   /** For toggles and selects: the term each choice switches on (null = reference). */
   options: { label: string; term: string | null }[] | null;
+  /**
+   * Sliders tied to a toggle, e.g. cigarettes to smoking: the slider sits at
+   * `offValue` and is locked while the toggle is off, and jumps to `onValue`
+   * when it is switched on.
+   */
+  linked: { column: string; offValue: number; onValue: number } | null;
 };
 
 export type WhatIf = {

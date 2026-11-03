@@ -58,7 +58,7 @@ ITEMS: dict[tuple[str, ...], list[str]] = {
     ("sensitivity", "linearity"): ["column", "label", "boxTidwellP", "primaryAic", "alternativeAic", "deltaAic", "lrPValue", "maxOrChange", "matters", "verdict", "binned", "linearCurve", "splineCurve"],
     ("performance", "thresholdTable"): ["threshold", "sensitivity", "specificity", "precision", "balancedAccuracy", "counts"],
     ("performance", "thresholdTableCv"): ["threshold", "sensitivity", "specificity", "precision", "balancedAccuracy", "counts"],
-    ("whatIf", "controls"): ["column", "label", "kind", "unit", "min", "max", "step", "default", "options"],
+    ("whatIf", "controls"): ["column", "label", "kind", "unit", "min", "max", "step", "default", "options", "linked"],
 }
 
 

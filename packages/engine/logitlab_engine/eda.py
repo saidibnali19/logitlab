@@ -6,14 +6,7 @@ import numpy as np
 import pandas as pd
 
 from . import config
-from .profile import ColumnInfo, Profile, level_text
-
-
-def _level_label(col: ColumnInfo, level: str) -> str:
-    """0/1 indicators read as No and Yes; any other level keeps its own text."""
-    if col.type == "binary" and set(col.levels or []) == {"0", "1"}:
-        return "Yes" if level == "1" else "No"
-    return level
+from .profile import Profile, level_label, level_text
 
 
 def eda_block(imputed: pd.DataFrame, profile: Profile) -> dict:
@@ -50,7 +43,7 @@ def eda_block(imputed: pd.DataFrame, profile: Profile) -> dict:
                 "column": col.name,
                 "label": col.label,
                 "levels": [
-                    {"level": level, "label": _level_label(col, level), "n": int(counts.get(level, 0)), "fraction": float(counts.get(level, 0)) / len(text)}
+                    {"level": level, "label": level_label(col, level), "n": int(counts.get(level, 0)), "fraction": float(counts.get(level, 0)) / len(text)}
                     for level in order
                 ],
             }
@@ -61,7 +54,7 @@ def eda_block(imputed: pd.DataFrame, profile: Profile) -> dict:
                 "column": col.name,
                 "label": col.label,
                 "levels": [
-                    {"level": level, "label": _level_label(col, level), "n": int(counts.get(level, 0)), "rate": float(rates.get(level, np.nan))}
+                    {"level": level, "label": level_label(col, level), "n": int(counts.get(level, 0)), "rate": float(rates.get(level, np.nan))}
                     for level in order
                 ],
             }

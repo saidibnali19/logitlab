@@ -137,6 +137,13 @@ class Profile:
         return None
 
 
+def level_label(col: ColumnInfo, level: str) -> str:
+    """0/1 indicators read as No and Yes; any other level keeps its own text."""
+    if col.type == "binary" and set(col.levels or []) == {"0", "1"}:
+        return "Yes" if level == "1" else "No"
+    return level
+
+
 def _levels_and_reference(series: pd.Series, kind: str) -> tuple[list[str], object]:
     values = series.dropna()
     if kind == "categorical":
