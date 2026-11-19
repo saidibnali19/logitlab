@@ -60,8 +60,8 @@ export function ProductPreview() {
       </div>
 
       <p className="text-ink-muted mt-3 text-center text-xs">
-        Real results from the Framingham sample analysis below, computed by the
-        same engine that will analyse your own file.
+        Real results from the Framingham example, computed by the LogitLab
+        engine.
       </p>
     </section>
   );

@@ -1,8 +1,12 @@
 export const SITE = {
   name: "LogitLab",
+  url: "https://logitlab.vercel.app",
   githubUrl: "https://github.com/saidibnali19/logitlab",
   aboutHref: "#about",
   year: 2026,
+  /** The one line that says what version 2 adds. Use it word for word wherever the page mentions version 2. */
+  v2Line:
+    "Planned for version 2: analysing your own CSV, and changing any choice LogitLab made.",
   author: {
     name: "Said Ali",
     title: "Statistics graduate, aspiring data analyst",

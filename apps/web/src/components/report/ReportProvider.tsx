@@ -17,20 +17,14 @@ import {
   type CompleteResult,
 } from "@/lib/report/types";
 
-/** Longest file the page will accept. Real uploads arrive in a later phase. */
-export const MAX_UPLOAD_MB = 10;
-
 /** A short pause so the loading state is seen, not a flash. */
 const MIN_LOADING_MS = 600;
 
-export type ReportError =
-  | LoadError
-  | { kind: "invalid-file"; message: string }
-  | { kind: "backend-unavailable"; message: string };
+export type ReportError = LoadError;
 
 export type ReportState =
   | { status: "empty" }
-  | { status: "loading"; source: "sample" | "upload" }
+  | { status: "loading" }
   | { status: "ready"; result: AnalysisResult }
   | { status: "error"; error: ReportError };
 
@@ -38,8 +32,6 @@ type ReportContextValue = {
   state: ReportState;
   /** Loads a pre-computed result: the Framingham sample unless another URL is given. */
   loadSample: (url?: string) => Promise<void>;
-  /** Checks the file without reading it, then explains that analysis is not connected yet. */
-  loadUpload: (file: File) => void;
   reset: () => void;
 };
 
@@ -53,7 +45,7 @@ export function ReportProvider({ children }: { children: ReactNode }) {
 
   const loadSample = useCallback(async (url?: string) => {
     const id = ++latest.current;
-    setState({ status: "loading", source: "sample" });
+    setState({ status: "loading" });
 
     const started = performance.now();
     const outcome = await loadSampleResult(url);
@@ -69,49 +61,14 @@ export function ReportProvider({ children }: { children: ReactNode }) {
     );
   }, []);
 
-  const loadUpload = useCallback((file: File) => {
-    latest.current += 1;
-
-    let error: ReportError;
-    if (/\.(xlsx|xls|xlsm)$/i.test(file.name)) {
-      error = {
-        kind: "invalid-file",
-        message: "That's an Excel file. Export it as CSV and try again.",
-      };
-    } else if (!/\.csv$/i.test(file.name)) {
-      error = {
-        kind: "invalid-file",
-        message:
-          "Only CSV files are supported. Export your data as .csv and try again.",
-      };
-    } else if (file.size === 0) {
-      error = {
-        kind: "invalid-file",
-        message: "That file is empty. Check the export and try again.",
-      };
-    } else if (file.size > MAX_UPLOAD_MB * 1024 * 1024) {
-      error = {
-        kind: "invalid-file",
-        message: `That file is over ${MAX_UPLOAD_MB} MB. Try a smaller sample of rows.`,
-      };
-    } else {
-      error = {
-        kind: "backend-unavailable",
-        message:
-          "Analysing your own file needs the engine, which is not connected in this version. Your file was not read or sent anywhere. Try the sample instead.",
-      };
-    }
-    setState({ status: "error", error });
-  }, []);
-
   const reset = useCallback(() => {
     latest.current += 1;
     setState({ status: "empty" });
   }, []);
 
   const value = useMemo(
-    () => ({ state, loadSample, loadUpload, reset }),
-    [state, loadSample, loadUpload, reset],
+    () => ({ state, loadSample, reset }),
+    [state, loadSample, reset],
   );
 
   return (

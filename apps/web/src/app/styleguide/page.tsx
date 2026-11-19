@@ -165,7 +165,7 @@ export default function StyleGuidePage() {
 
       <Block title="Type scale">
         <div className="space-y-4">
-          <p className="text-display">Upload a CSV.</p>
+          <p className="text-display">A statistician&apos;s analysis.</p>
           <p className="text-title">Section title</p>
           <p className="text-lead text-ink-muted">
             Lead paragraph for subheadlines and section descriptions.
@@ -259,7 +259,7 @@ export default function StyleGuidePage() {
         </div>
       </Block>
 
-      <Block title="Upload zone states (static preview)">
+      <Block title="Upload zone states (version 2 reference, not shown in version 1)">
         <div className="grid gap-4 md:grid-cols-2">
           <div className="rounded-card border-brand/40 bg-surface border-2 border-dashed p-8 text-center">
             <CloudUpload className="text-brand mx-auto size-8" />

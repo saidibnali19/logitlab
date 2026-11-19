@@ -5,19 +5,16 @@ import { ArrowRight, Database, LoaderCircle } from "lucide-react";
 import { useReport } from "@/components/report/ReportProvider";
 import { REFUSED_SAMPLE_URL } from "@/lib/report/load";
 
+/** The main action: open the prepared example, or the one the engine refuses. */
 export function SampleDataButton() {
   const { state, loadSample } = useReport();
   const busy = state.status === "loading";
 
   return (
     <div className="flex flex-col items-center gap-4">
-      <div className="text-ink-faint flex w-full items-center gap-4 text-sm">
-        <span className="bg-line h-px flex-1" />
-        <span>or</span>
-        <span className="bg-line h-px flex-1" />
-      </div>
-
+      {/* The id is where keyboard focus returns after "Start over". */}
       <button
+        id="try-sample"
         type="button"
         onClick={() => void loadSample()}
         disabled={busy}
@@ -33,9 +30,17 @@ export function SampleDataButton() {
         <ArrowRight className="size-5" aria-hidden="true" />
       </button>
 
-      <p className="text-ink-muted text-sm">
-        4,240 participants · 10-year heart disease risk · no upload needed
+      <p className="text-ink-muted text-center text-sm">
+        A real, messy dataset: 10-year heart disease risk in Framingham
+        participants.
       </p>
+
+      {/* A failed load must say so; the button above stays usable to try again. */}
+      {state.status === "error" ? (
+        <p role="alert" className="verdict-card verdict-refuse w-full text-sm">
+          {state.error.message}
+        </p>
+      ) : null}
 
       {/* What makes it an opinionated tool: it says no. Shown with a real result, not described. */}
       <button

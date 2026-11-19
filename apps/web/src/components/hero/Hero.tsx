@@ -1,6 +1,6 @@
 import { HeroIntro } from "@/components/hero/HeroIntro";
-import { UploadZone } from "@/components/hero/UploadZone";
 import { SampleDataButton } from "@/components/hero/SampleDataButton";
+import { VersionTwoCard } from "@/components/hero/VersionTwoCard";
 import { TrustLine } from "@/components/hero/TrustLine";
 import { ProductPreview } from "@/components/hero/ProductPreview";
 import { ScrollCue } from "@/components/hero/ScrollCue";
@@ -13,8 +13,8 @@ export function Hero() {
     >
       <HeroIntro />
       <div className="reveal-up reveal-delay-300 mx-auto flex w-full max-w-2xl flex-col gap-6">
-        <UploadZone />
         <SampleDataButton />
+        <VersionTwoCard />
       </div>
       <TrustLine />
       <ProductPreview />

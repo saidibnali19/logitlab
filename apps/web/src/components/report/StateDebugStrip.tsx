@@ -11,7 +11,7 @@ export function StateDebugStrip() {
   if (process.env.NODE_ENV !== "development") return null;
 
   let detail = "";
-  if (state.status === "loading") detail = `loading ${state.source}`;
+  if (state.status === "loading") detail = "loading the sample";
   if (state.status === "ready") {
     const { meta } = state.result;
     detail = `${meta.datasetName}, ${meta.rows} rows, ${meta.status}`;

@@ -19,7 +19,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "LogitLab: binary logistic regression, end to end",
   description:
-    "Upload a CSV and get a statistician's analysis: data hygiene, assumption checks, a fitted model and plain-English results.",
+    "A complete binary logistic regression on a real dataset, with every choice explained: data hygiene, assumption checks, odds ratios, performance and takeaways.",
 };
 
 export const viewport: Viewport = {

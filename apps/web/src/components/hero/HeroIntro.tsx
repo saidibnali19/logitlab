@@ -6,13 +6,13 @@ export function HeroIntro() {
       </span>
 
       <h1 className="reveal-up reveal-delay-100 text-display mt-6 text-balance">
-        <span className="block">Upload a CSV.</span>
-        <span className="block">Get a statistician&apos;s analysis.</span>
+        <span className="block">A statistician&apos;s analysis,</span>
+        <span className="block">with every choice explained.</span>
       </h1>
 
       <p className="reveal-up reveal-delay-200 text-lead text-ink-muted mt-6 max-w-2xl text-balance">
-        LogitLab cleans your data, tests the assumptions, fits the model and
-        explains every choice. It refuses analyses that would mislead.
+        LogitLab cleans the data, tests the assumptions, fits the model and says
+        how far to trust it. It refuses analyses that would mislead.
       </p>
     </div>
   );

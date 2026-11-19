@@ -41,7 +41,7 @@ export function ReportGate({
     }
     if (state.status === "empty" && before === "ready") {
       window.scrollTo({ top: 0, behavior });
-      document.getElementById("data-upload")?.focus({ preventScroll: true });
+      document.getElementById("try-sample")?.focus({ preventScroll: true });
     }
   }, [state.status]);
 

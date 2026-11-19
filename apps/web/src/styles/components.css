@@ -71,7 +71,7 @@
     @apply border-line bg-surface text-ink;
   }
 
-  /* Upload zone: base shape plus one class per visual state */
+  /* Upload zone: base shape plus one class per visual state. Not used in version 1 (the hero shows a static version 2 card); kept for the version 2 upload. */
   .dropzone {
     @apply rounded-card focus-within:outline-focus flex min-h-44 w-full flex-col items-center justify-center border-2 p-8 text-center transition-colors duration-150 focus-within:outline-2 focus-within:outline-offset-2;
   }
