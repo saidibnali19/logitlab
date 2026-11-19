@@ -63,7 +63,8 @@ export function PerformanceView({
         Everything below is on the test rows.
       </p>
 
-      <div className="mt-5 grid gap-8 lg:grid-cols-2">
+      {/* grid-cols-1 lets the matrix's own scroller work on a phone instead of widening the page. */}
+      <div className="mt-5 grid grid-cols-1 gap-8 lg:grid-cols-2">
         <ThresholdControls
           table={table}
           index={index}

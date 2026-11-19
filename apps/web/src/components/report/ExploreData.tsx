@@ -36,7 +36,8 @@ export function ExploreData({
           positiveLabel={target.positiveLabel}
         />
         {data.correlation.labels.length > 1 ? (
-          <div className="grid items-start gap-6 lg:grid-cols-[minmax(0,1fr)_16rem]">
+          // grid-cols-1 gives the single column a minimum of 0, so the heatmap's own scroller can do its job on a phone.
+          <div className="grid grid-cols-1 items-start gap-6 lg:grid-cols-[minmax(0,1fr)_16rem]">
             <CorrelationHeatmap correlation={data.correlation} />
             <StrongestPairs correlation={data.correlation} />
           </div>
