@@ -33,7 +33,6 @@ export function CheckCard({ check }: { check: AssumptionCheck }) {
   const level = check.verdict.level;
   const Icon = VERDICT_ICON[level];
   const action = ACTION[check.action];
-  const offered = check.remedies.filter((remedy) => !remedy.applied);
 
   return (
     <div className={`verdict-card h-full ${CARD_CLASS[level]}`}>
@@ -60,18 +59,13 @@ export function CheckCard({ check }: { check: AssumptionCheck }) {
             <ul className="mt-3 space-y-2">
               {check.remedies.map((remedy) => (
                 <li key={remedy.id} className="text-sm">
+                  {/* Plain text when offered: version 1 cannot apply a remedy, so it must not look like a control. */}
                   {remedy.applied ? (
                     <span className="badge badge-pass">
                       Applied: {remedy.label}
                     </span>
                   ) : (
-                    <button
-                      type="button"
-                      className="btn btn-outline btn-sm"
-                      disabled
-                    >
-                      {remedy.label}
-                    </button>
+                    <span className="font-medium">{remedy.label}</span>
                   )}
                   <p className="mt-1 text-xs opacity-80">
                     {remedy.description}
@@ -79,12 +73,6 @@ export function CheckCard({ check }: { check: AssumptionCheck }) {
                 </li>
               ))}
             </ul>
-          ) : null}
-          {offered.length > 0 ? (
-            <p className="mt-2 text-xs opacity-80">
-              Choosing a remedy needs the live engine, which is not connected in
-              this version.
-            </p>
           ) : null}
         </div>
       </div>

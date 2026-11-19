@@ -14,22 +14,16 @@ export function TargetCard({
 
   return (
     <div className="card">
-      <div className="flex flex-wrap items-start justify-between gap-3">
-        <div>
-          <p className="text-ink-faint text-xs font-medium tracking-wide uppercase">
-            Outcome to predict
-          </p>
-          <h3 className="mt-1 text-lg font-semibold">
-            {label}
-            <span className="text-ink-faint ml-2 font-mono text-xs font-normal">
-              {target.name}
-            </span>
-          </h3>
-        </div>
-        {/* Shown now so the override has a place; it needs the live engine to work. */}
-        <button type="button" className="btn btn-outline btn-sm" disabled>
-          Change outcome
-        </button>
+      <div>
+        <p className="text-ink-faint text-xs font-medium tracking-wide uppercase">
+          Outcome to predict
+        </p>
+        <h3 className="mt-1 text-lg font-semibold">
+          {label}
+          <span className="text-ink-faint ml-2 font-mono text-xs font-normal">
+            {target.name}
+          </span>
+        </h3>
       </div>
       <p className="text-ink-muted mt-1 text-sm">{target.reason}</p>
 
@@ -74,11 +68,6 @@ export function TargetCard({
           </dd>
         </div>
       </dl>
-
-      <p className="text-ink-faint mt-4 text-xs">
-        Choosing a different outcome needs the live engine, which is not
-        connected in this version.
-      </p>
     </div>
   );
 }

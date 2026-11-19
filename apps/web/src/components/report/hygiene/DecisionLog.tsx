@@ -1,3 +1,4 @@
+import { SITE } from "@/lib/site";
 import type { DecisionLogEntry } from "@/lib/report/types";
 
 const STEP_LABEL: Record<DecisionLogEntry["step"], string> = {
@@ -37,9 +38,7 @@ export function DecisionLog({ entries }: { entries: DecisionLogEntry[] }) {
       <div className="border-line space-y-6 border-t px-5 py-5">
         <p className="text-ink-muted text-sm">
           Nothing here was decided silently. Where a different choice was
-          possible it is shown as a button. Picking one needs the live engine,
-          which is not connected in this version, so the buttons are switched
-          off.
+          possible, the alternative is listed. {SITE.v2Line}
         </p>
 
         {groups.map((group, index) => (
@@ -58,14 +57,11 @@ export function DecisionLog({ entries }: { entries: DecisionLogEntry[] }) {
                 <li key={entry.id} className="text-sm">
                   <p className="font-medium">{entry.decision}</p>
                   <p className="text-ink-muted">{entry.reason}</p>
+                  {/* Plain text on purpose: version 1 cannot change a choice, so nothing here may look like a control. */}
                   {entry.alternative ? (
-                    <button
-                      type="button"
-                      className="btn btn-outline btn-sm mt-2"
-                      disabled
-                    >
-                      {entry.alternative}
-                    </button>
+                    <p className="text-ink-faint mt-1">
+                      Alternative considered: {entry.alternative}
+                    </p>
                   ) : null}
                 </li>
               ))}
