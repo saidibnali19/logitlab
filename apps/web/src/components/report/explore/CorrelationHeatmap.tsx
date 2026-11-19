@@ -125,14 +125,16 @@ export function CorrelationHeatmap({
                     height={CELL - 2}
                     rx={3}
                     className={r >= 0 ? "fill-chart-1" : "fill-chart-2"}
-                    fillOpacity={Math.max(Math.abs(r), 0.04)}
+                    // Never fully saturated: a mid-tone cell would fight any label colour in one theme or the other.
+                    fillOpacity={0.04 + Math.abs(r) * 0.6}
                   />
                   <text
                     x={cx + CELL / 2}
                     y={cy + CELL / 2 + 3}
                     textAnchor="middle"
+                    // Ink on every cell that has a visible tint, so the label stays readable in both themes.
                     className={`text-[8px] tabular-nums ${
-                      Math.abs(r) >= 0.5 ? "fill-surface" : "fill-ink-muted"
+                      Math.abs(r) >= 0.3 ? "fill-ink" : "fill-ink-muted"
                     }`}
                   >
                     {formatR(r)}

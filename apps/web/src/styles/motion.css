@@ -59,8 +59,8 @@
   }
 }
 
-/* Scroll-driven reveals (report sections below the fold) */
-@supports (animation-timeline: view()) {
+/* Scroll-driven reveals (report sections below the fold). Both checks are needed: some browsers have the timeline without the range. */
+@supports ((animation-timeline: view()) and (animation-range: entry)) {
   @media (prefers-reduced-motion: no-preference) {
     .scroll-reveal-up {
       animation: revealUp linear both;

@@ -98,4 +98,37 @@
   .outline-card {
     @apply rounded-card border-line bg-surface/60 hover:border-line-strong hover:bg-surface focus-visible:outline-focus flex h-full flex-col gap-2 border p-5 transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2;
   }
+
+  /* Theme toggle: both actions are in the markup, and only the one that leaves the scheme now on screen is shown. */
+  .theme-to-dark,
+  .theme-to-light {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .theme-to-light {
+    display: none;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme]) .theme-to-dark {
+      display: none;
+    }
+    :root:not([data-theme]) .theme-to-light {
+      display: inline-flex;
+    }
+  }
+  :root[data-theme="dark"] .theme-to-dark {
+    display: none;
+  }
+  :root[data-theme="dark"] .theme-to-light {
+    display: inline-flex;
+  }
+
+  /* Pins a part of the page to one scheme, whatever the rest is doing (the style guide's side-by-side panels) */
+  .scheme-light {
+    color-scheme: light;
+  }
+  .scheme-dark {
+    color-scheme: dark;
+  }
 }

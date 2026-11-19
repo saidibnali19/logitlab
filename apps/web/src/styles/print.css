@@ -4,8 +4,14 @@
     margin: 14mm;
   }
 
+  /* Paper is always light, whatever the screen was showing. */
+  html:root,
+  html:root[data-theme] {
+    color-scheme: light;
+  }
+
   body {
-    background: white;
+    background: var(--color-surface);
   }
 
   /* Buttons do nothing on paper. */
@@ -24,5 +30,15 @@
   /* A sticky card would otherwise repeat or overlap on every page. */
   .lg\:sticky {
     position: static !important;
+  }
+
+  /* Reveals start invisible and follow the scroll position, so whatever was not scrolled to would print blank. */
+  .scroll-reveal-up,
+  .scroll-reveal-fade,
+  .reveal-up,
+  .reveal-fade {
+    animation: none;
+    opacity: 1;
+    transform: none;
   }
 }

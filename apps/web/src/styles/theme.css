@@ -1,55 +1,88 @@
+/*
+ * Every colour token holds its light and dark value side by side:
+ * light-dark(light, dark). Components only ever use the token, so none of them
+ * needs a dark: variant. Which side applies comes from color-scheme (set below).
+ */
 @theme {
   /* Surfaces */
-  --color-canvas: var(--color-slate-50);
-  --color-surface: var(--color-white);
-  --color-surface-sunken: var(--color-slate-100);
+  --color-canvas: light-dark(var(--color-slate-50), var(--color-slate-950));
+  --color-surface: light-dark(var(--color-white), var(--color-slate-900));
+  --color-surface-sunken: light-dark(
+    var(--color-slate-100),
+    var(--color-slate-800)
+  );
 
   /* Text */
-  --color-ink: var(--color-slate-900);
-  --color-ink-muted: var(--color-slate-600);
-  --color-ink-faint: var(--color-slate-500);
+  --color-ink: light-dark(var(--color-slate-900), var(--color-slate-50));
+  --color-ink-muted: light-dark(var(--color-slate-600), var(--color-slate-300));
+  --color-ink-faint: light-dark(var(--color-slate-500), var(--color-slate-400));
 
   /* Lines */
-  --color-line: var(--color-slate-200);
-  --color-line-strong: var(--color-slate-300);
-  --color-focus: var(--color-emerald-600);
+  --color-line: light-dark(var(--color-slate-200), var(--color-slate-800));
+  --color-line-strong: light-dark(
+    var(--color-slate-300),
+    var(--color-slate-700)
+  );
+  --color-focus: light-dark(var(--color-emerald-600), var(--color-emerald-400));
 
-  /* Brand */
-  --color-brand: var(--color-emerald-700);
-  --color-brand-hover: var(--color-emerald-800);
-  --color-brand-ink: var(--color-white);
-  --color-brand-soft: var(--color-emerald-50);
-  --color-brand-soft-hover: var(--color-emerald-100);
-  --color-brand-soft-ink: var(--color-emerald-800);
+  /* Brand: in dark mode the brand turns light, so brand-ink turns dark with it */
+  --color-brand: light-dark(var(--color-emerald-700), var(--color-emerald-400));
+  --color-brand-hover: light-dark(
+    var(--color-emerald-800),
+    var(--color-emerald-300)
+  );
+  --color-brand-ink: light-dark(var(--color-white), var(--color-slate-950));
+  --color-brand-soft: light-dark(
+    var(--color-emerald-50),
+    var(--color-emerald-950)
+  );
+  --color-brand-soft-hover: light-dark(
+    var(--color-emerald-100),
+    var(--color-emerald-900)
+  );
+  --color-brand-soft-ink: light-dark(
+    var(--color-emerald-800),
+    var(--color-emerald-200)
+  );
 
   /* Verdicts: pass, warn, refuse (solid, soft, ink, line) */
-  --color-pass: var(--color-green-600);
-  --color-pass-soft: var(--color-green-50);
-  --color-pass-ink: var(--color-green-800);
-  --color-pass-line: var(--color-green-200);
+  --color-pass: light-dark(var(--color-green-600), var(--color-green-500));
+  --color-pass-soft: light-dark(var(--color-green-50), var(--color-green-950));
+  --color-pass-ink: light-dark(var(--color-green-800), var(--color-green-200));
+  --color-pass-line: light-dark(var(--color-green-200), var(--color-green-800));
 
-  --color-warn: var(--color-amber-500);
-  --color-warn-soft: var(--color-amber-50);
-  --color-warn-ink: var(--color-amber-900);
-  --color-warn-line: var(--color-amber-200);
+  --color-warn: light-dark(var(--color-amber-500), var(--color-amber-400));
+  --color-warn-soft: light-dark(var(--color-amber-50), var(--color-amber-950));
+  --color-warn-ink: light-dark(var(--color-amber-900), var(--color-amber-200));
+  --color-warn-line: light-dark(var(--color-amber-200), var(--color-amber-800));
 
-  --color-refuse: var(--color-red-600);
-  --color-refuse-soft: var(--color-red-50);
-  --color-refuse-ink: var(--color-red-800);
-  --color-refuse-line: var(--color-red-200);
+  --color-refuse: light-dark(var(--color-red-600), var(--color-red-400));
+  --color-refuse-soft: light-dark(var(--color-red-50), var(--color-red-950));
+  --color-refuse-ink: light-dark(var(--color-red-800), var(--color-red-200));
+  --color-refuse-line: light-dark(var(--color-red-200), var(--color-red-800));
 
   /* Charts: charts must only use these, never hex values */
-  --color-chart-1: var(--color-emerald-600);
-  --color-chart-2: var(--color-sky-600);
-  --color-chart-ref: var(--color-slate-400);
-  --color-chart-grid: var(--color-slate-200);
-  --color-chart-band: var(--color-emerald-200);
+  --color-chart-1: light-dark(
+    var(--color-emerald-600),
+    var(--color-emerald-400)
+  );
+  --color-chart-2: light-dark(var(--color-sky-600), var(--color-sky-400));
+  --color-chart-ref: light-dark(var(--color-slate-400), var(--color-slate-500));
+  --color-chart-grid: light-dark(
+    var(--color-slate-200),
+    var(--color-slate-800)
+  );
+  --color-chart-band: light-dark(
+    var(--color-emerald-200),
+    var(--color-emerald-900)
+  );
 
-  /* Shape and depth */
+  /* Shape and depth: shadows are stronger in dark mode, or they vanish against the canvas */
   --radius-card: 0.75rem;
   --shadow-card:
-    0 1px 2px rgb(15 23 42 / 0.04), 0 4px 12px rgb(15 23 42 / 0.05);
-  --shadow-lift: 0 12px 32px rgb(15 23 42 / 0.1);
+    0 1px 2px light-dark(rgb(15 23 42 / 0.04), rgb(0 0 0 / 0.3)),
+    0 4px 12px light-dark(rgb(15 23 42 / 0.05), rgb(0 0 0 / 0.25));
+  --shadow-lift: 0 12px 32px light-dark(rgb(15 23 42 / 0.1), rgb(0 0 0 / 0.45));
 
   /* Type scale (use as text-display, text-lead, text-title) */
   --text-display: clamp(2.5rem, 1.5rem + 4vw, 4rem);
@@ -64,4 +97,19 @@
   --text-title--line-height: 2rem;
   --text-title--letter-spacing: -0.01em;
   --text-title--font-weight: 600;
+}
+
+/*
+ * The scheme follows the system. A visitor can pin one with the header toggle,
+ * which sets data-theme on <html> (see lib/theme.ts). Without JavaScript the
+ * page still follows the system, because nothing here depends on the script.
+ */
+:root {
+  color-scheme: light dark;
+}
+:root[data-theme="light"] {
+  color-scheme: light;
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
 }
