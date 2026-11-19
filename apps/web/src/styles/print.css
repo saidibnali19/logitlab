@@ -10,6 +10,11 @@
     color-scheme: light;
   }
 
+  /* Much of the report is drawn with backgrounds (bars, dots, tints). Browsers leave them out by default, so ask for them. */
+  html {
+    print-color-adjust: exact;
+  }
+
   body {
     background: var(--color-surface);
   }
@@ -19,12 +24,19 @@
     display: none !important;
   }
 
-  /* Keep each card, chart and table on one page where it fits. */
+  /* Small things stay whole. A table may run over a page, but never through the middle of a row. */
   .card,
   .verdict-card,
-  figure,
-  table {
+  figure svg,
+  tr {
     break-inside: avoid;
+  }
+
+  /* A heading never ends a page on its own. */
+  h2,
+  h3,
+  h4 {
+    break-after: avoid;
   }
 
   /* A sticky card would otherwise repeat or overlap on every page. */
