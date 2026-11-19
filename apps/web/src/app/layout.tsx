@@ -4,6 +4,7 @@ import "./globals.css";
 
 import { ReportProvider } from "@/components/report/ReportProvider";
 import { StateDebugStrip } from "@/components/report/StateDebugStrip";
+import { SITE } from "@/lib/site";
 import { THEME_SCRIPT } from "@/lib/theme";
 
 const geistSans = Geist({
@@ -16,10 +17,29 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const TITLE = "LogitLab: binary logistic regression, end to end";
+const DESCRIPTION =
+  "A complete binary logistic regression on a real dataset, with every choice explained: data hygiene, assumption checks, odds ratios, performance and takeaways.";
+
 export const metadata: Metadata = {
-  title: "LogitLab: binary logistic regression, end to end",
-  description:
-    "A complete binary logistic regression on a real dataset, with every choice explained: data hygiene, assumption checks, odds ratios, performance and takeaways.",
+  // Link-preview tags need absolute URLs; this is what turns the image file's path into one.
+  metadataBase: new URL(SITE.url),
+  title: TITLE,
+  description: DESCRIPTION,
+  // The preview image itself is app/opengraph-image.png, which Next adds to the tags below.
+  openGraph: {
+    title: TITLE,
+    description: DESCRIPTION,
+    url: "/",
+    siteName: SITE.name,
+    type: "website",
+    locale: "en_GB",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: TITLE,
+    description: DESCRIPTION,
+  },
 };
 
 export const viewport: Viewport = {

@@ -1,0 +1,1 @@
+LogitLab: a statistician's analysis, with every choice explained. Binary logistic regression, end to end.
