@@ -116,7 +116,7 @@ export type DecisionLogEntry = {
   decision: string;
   reason: string;
   automatic: boolean;
-  /** What the user could choose instead. Null if the choice is not overridable. */
+  /** What could be chosen instead, as a short phrase that reads after "Alternative considered:". Null if there is none. */
   alternative: string | null;
 };
 

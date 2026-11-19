@@ -10,6 +10,10 @@ import pandas as pd
 from . import config
 from .profile import Profile, level_text
 
+# What a user could choose instead of each automatic fill. The decision log shows it as
+# "Alternative considered: …", so each one is a short phrase that reads after the colon.
+FILL_ALTERNATIVE = {"median": "the mean", "mean": "the median", "mode": "a 'Missing' level"}
+
 
 @dataclass
 class ColumnRule:
@@ -170,11 +174,11 @@ def hygiene_block(raw: pd.DataFrame, profile: Profile, imputer: Imputer, imputed
     if dropped_target_rows:
         add("ingest", f"Removed {dropped_target_rows} rows with a missing outcome.", "A row without an outcome cannot teach the model anything.")
     if duplicates:
-        add("ingest", f"Found {duplicates} exact duplicate rows and kept them.", "Identical rows can be genuine, so none are removed without your say-so.", "Remove the duplicate rows")
+        add("ingest", f"Found {duplicates} exact duplicate rows and kept them.", "Identical rows can be genuine, so none are removed without your say-so.", "removing the duplicate rows")
     else:
         add("ingest", "No exact duplicate rows were found.", "Nothing needed removing.")
 
-    add("roles", f"Chose '{profile.info(profile.target).label}' as the outcome.", profile.target_reason, "Choose a different outcome column")
+    add("roles", f"Chose '{profile.info(profile.target).label}' as the outcome.", profile.target_reason, "a different outcome column")
     for col in profile.columns:
         if col.role == "excluded":
             add("roles", f"Set aside '{col.label}'.", col.role_reason)
@@ -182,7 +186,7 @@ def hygiene_block(raw: pd.DataFrame, profile: Profile, imputer: Imputer, imputed
     for item in imputations:
         count = next(m["count"] for m in missingness if m["column"] == item["column"])
         noun = "value" if count == 1 else "values"
-        add("imputation", f"Filled {count} missing {noun} in '{item['label']}' with the {item['method']}.", item["reason"], "Use a different fill method")
+        add("imputation", f"Filled {count} missing {noun} in '{item['label']}' with the {item['method']}.", item["reason"], FILL_ALTERNATIVE[item["method"]])
     add(
         "imputation",
         "For the hold-out evaluation, fill values are re-learned from the training rows only.",
@@ -191,7 +195,7 @@ def hygiene_block(raw: pd.DataFrame, profile: Profile, imputer: Imputer, imputed
 
     if flagged:
         names = ", ".join(f"{item['label']} ({item['count']})" for item in flagged)
-        add("outliers", f"Flagged unusual values but kept them: {names}.", outlier_policy["reason"], "Cap values at the fences")
+        add("outliers", f"Flagged unusual values but kept them: {names}.", outlier_policy["reason"], "capping the flagged values at the fences")
     else:
         add("outliers", "No unusual values were flagged.", f"No value fell outside the {config.IQR_FENCE:g} × IQR fences.")
 
@@ -201,7 +205,7 @@ def hygiene_block(raw: pd.DataFrame, profile: Profile, imputer: Imputer, imputed
                 "encoding",
                 f"Coded '{col.label}' as {len(col.levels) - 1} indicator columns against level '{col.levels[0]}'.",
                 "A categorical predictor needs one indicator per level except a reference level.",
-                "Choose a different reference level",
+                "a different reference level",
             )
 
     # Verdict
