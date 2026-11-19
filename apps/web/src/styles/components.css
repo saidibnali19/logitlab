@@ -123,12 +123,4 @@
   :root[data-theme="dark"] .theme-to-light {
     display: inline-flex;
   }
-
-  /* Pins a part of the page to one scheme, whatever the rest is doing (the style guide's side-by-side panels) */
-  .scheme-light {
-    color-scheme: light;
-  }
-  .scheme-dark {
-    color-scheme: dark;
-  }
 }

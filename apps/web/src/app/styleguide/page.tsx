@@ -1,3 +1,6 @@
+import { readFileSync } from "node:fs";
+import { join } from "node:path";
+
 import type { Metadata } from "next";
 import {
   ChevronDown,
@@ -8,7 +11,11 @@ import {
   OctagonX,
   TriangleAlert,
 } from "lucide-react";
+import { StatusDot } from "@/components/layout/StatusDot";
 import { Logo, LogoMark } from "@/components/ui/Logo";
+import { ThemeToggle } from "@/components/ui/ThemeToggle";
+import type { Level } from "@/lib/report/types";
+import { verdictWord } from "@/lib/verdict";
 
 export const metadata: Metadata = {
   title: "Style guide · LogitLab",
@@ -16,66 +23,91 @@ export const metadata: Metadata = {
 };
 
 const colourGroups = [
-  {
-    title: "Surfaces",
-    items: [
-      { name: "canvas", cls: "bg-canvas" },
-      { name: "surface", cls: "bg-surface" },
-      { name: "surface-sunken", cls: "bg-surface-sunken" },
-    ],
-  },
+  { title: "Surfaces", names: ["canvas", "surface", "surface-sunken"] },
   {
     title: "Text and lines",
-    items: [
-      { name: "ink", cls: "bg-ink" },
-      { name: "ink-muted", cls: "bg-ink-muted" },
-      { name: "ink-faint", cls: "bg-ink-faint" },
-      { name: "line", cls: "bg-line" },
-      { name: "line-strong", cls: "bg-line-strong" },
-    ],
+    names: ["ink", "ink-muted", "ink-faint", "line", "line-strong"],
   },
   {
     title: "Brand",
-    items: [
-      { name: "brand", cls: "bg-brand" },
-      { name: "brand-hover", cls: "bg-brand-hover" },
-      { name: "brand-soft", cls: "bg-brand-soft" },
-      { name: "brand-soft-hover", cls: "bg-brand-soft-hover" },
+    names: [
+      "brand",
+      "brand-hover",
+      "brand-ink",
+      "brand-soft",
+      "brand-soft-hover",
+      "brand-soft-ink",
     ],
   },
   {
     title: "Verdicts",
-    items: [
-      { name: "pass", cls: "bg-pass" },
-      { name: "pass-soft", cls: "bg-pass-soft" },
-      { name: "warn", cls: "bg-warn" },
-      { name: "warn-soft", cls: "bg-warn-soft" },
-      { name: "refuse", cls: "bg-refuse" },
-      { name: "refuse-soft", cls: "bg-refuse-soft" },
+    names: [
+      "pass",
+      "pass-soft",
+      "pass-ink",
+      "warn",
+      "warn-soft",
+      "warn-ink",
+      "refuse",
+      "refuse-soft",
+      "refuse-ink",
     ],
   },
   {
     title: "Charts",
-    items: [
-      { name: "chart-1", cls: "bg-chart-1" },
-      { name: "chart-2", cls: "bg-chart-2" },
-      { name: "chart-ref", cls: "bg-chart-ref" },
-      { name: "chart-grid", cls: "bg-chart-grid" },
-      { name: "chart-band", cls: "bg-chart-band" },
-    ],
+    names: ["chart-1", "chart-2", "chart-ref", "chart-grid", "chart-band"],
   },
 ];
 
-function Swatch({ name, cls }: { name: string; cls: string }) {
+/**
+ * Each token's light and dark palette entry, read from theme.css at build time
+ * so this page can never drift from it. (A page cannot show both schemes with
+ * live classes: the build resolves each token on :root, so the scheme can only
+ * be switched for the whole page, which is what the toggle above does.)
+ */
+function readTokens(): Record<string, [light: string, dark: string]> {
+  const css = readFileSync(join(process.cwd(), "src/styles/theme.css"), "utf8");
+  const tokens: Record<string, [string, string]> = {};
+  const pattern =
+    /--color-([a-z0-9-]+):\s*light-dark\(\s*var\(--color-([a-z0-9-]+)\),\s*var\(--color-([a-z0-9-]+)\)\s*\)/g;
+  for (const match of css.matchAll(pattern)) {
+    tokens[match[1]] = [match[2], match[3]];
+  }
+  return tokens;
+}
+
+const tokens = readTokens();
+
+/** One token as its light and dark values, side by side. */
+function Swatch({ name }: { name: string }) {
+  const pair = tokens[name];
+  // A token that is not in theme.css shows as missing instead of quietly vanishing.
+  const [light, dark] = pair ?? ["?", "?"];
+  const square = "border-line size-10 border";
+
   return (
     <div className="flex items-center gap-3">
-      <div
-        className={`border-line size-10 shrink-0 rounded-lg border ${cls}`}
-      />
-      <code className="text-ink-muted font-mono text-sm">{name}</code>
+      <div className="flex shrink-0" aria-hidden="true">
+        <span
+          className={`${square} rounded-l-lg`}
+          style={{ backgroundColor: `var(--color-${light})` }}
+        />
+        <span
+          className={`${square} rounded-r-lg border-l-0`}
+          style={{ backgroundColor: `var(--color-${dark})` }}
+        />
+      </div>
+      <div>
+        <code className="text-ink-muted font-mono text-sm">{name}</code>
+        <p className="text-ink-faint text-xs">
+          {light} · {dark}
+        </p>
+      </div>
     </div>
   );
 }
+
+const statusLevels: (Level | null)[] = ["pass", "warn", "refuse", "info", null];
 
 function Block({
   title,
@@ -95,11 +127,14 @@ function Block({
 export default function StyleGuidePage() {
   return (
     <main className="mx-auto max-w-5xl px-6 py-12">
-      <p className="text-brand font-mono text-sm">/styleguide</p>
+      <div className="flex items-start justify-between gap-4">
+        <p className="text-brand font-mono text-sm">/styleguide</p>
+        <ThemeToggle />
+      </div>
       <h1 className="text-display mt-1">Style guide</h1>
       <p className="text-lead text-ink-muted mt-4 max-w-2xl">
         Every token and component in one place. Change a token in theme.css and
-        this page shows the redesign instantly.
+        this page shows the redesign instantly, in both themes.
       </p>
 
       <Block title="Logo">
@@ -110,12 +145,18 @@ export default function StyleGuidePage() {
       </Block>
 
       <Block title="Colour tokens">
+        <p className="text-ink-muted mb-6 max-w-2xl text-sm">
+          Each token holds a light and a dark value, so components never need a
+          dark: variant. The left square is light, the right one dark, with the
+          palette entry each comes from. The toggle above switches the rest of
+          this page.
+        </p>
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {colourGroups.map((group) => (
             <div key={group.title} className="space-y-3">
               <h3 className="text-ink text-sm font-semibold">{group.title}</h3>
-              {group.items.map((item) => (
-                <Swatch key={item.name} {...item} />
+              {group.names.map((name) => (
+                <Swatch key={name} name={name} />
               ))}
             </div>
           ))}
@@ -243,6 +284,23 @@ export default function StyleGuidePage() {
             <p className="text-ink-muted text-sm">Loading</p>
           </div>
         </div>
+      </Block>
+
+      <Block title="Section navigation dots">
+        <p className="text-ink-muted mb-4 max-w-2xl text-sm">
+          The dot is the engine&apos;s verdict for a section. The word beside it
+          is what a screen reader hears, because colour alone says nothing to
+          it.
+        </p>
+        <ul className="flex flex-wrap gap-x-8 gap-y-3 text-sm">
+          {statusLevels.map((level) => (
+            <li key={level ?? "none"} className="flex items-center gap-2">
+              <StatusDot level={level} />
+              <span>{level ?? "not run"}</span>
+              <span className="text-ink-faint">· {verdictWord(level)}</span>
+            </li>
+          ))}
+        </ul>
       </Block>
 
       <Block title="Icons in use">

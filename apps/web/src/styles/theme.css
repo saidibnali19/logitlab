@@ -2,6 +2,10 @@
  * Every colour token holds its light and dark value side by side:
  * light-dark(light, dark). Components only ever use the token, so none of them
  * needs a dark: variant. Which side applies comes from color-scheme (set below).
+ *
+ * One limit to know: the build rewrites light-dark() for older browsers, and
+ * the rewrite resolves each token on :root. So the scheme can only be switched
+ * for the whole page (data-theme on <html>), never for one element.
  */
 @theme {
   /* Surfaces */
