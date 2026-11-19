@@ -3,6 +3,7 @@
 import { ArrowRight, Database, LoaderCircle } from "lucide-react";
 
 import { useReport } from "@/components/report/ReportProvider";
+import { REFUSED_SAMPLE_URL } from "@/lib/report/load";
 
 export function SampleDataButton() {
   const { state, loadSample } = useReport();
@@ -35,6 +36,16 @@ export function SampleDataButton() {
       <p className="text-ink-muted text-sm">
         4,240 participants · 10-year heart disease risk · no upload needed
       </p>
+
+      {/* What makes it an opinionated tool: it says no. Shown with a real result, not described. */}
+      <button
+        type="button"
+        onClick={() => void loadSample(REFUSED_SAMPLE_URL)}
+        disabled={busy}
+        className="text-ink-muted hover:text-ink focus-visible:outline-focus rounded-md text-sm underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-4 disabled:cursor-not-allowed disabled:opacity-60"
+      >
+        See what LogitLab refuses
+      </button>
     </div>
   );
 }

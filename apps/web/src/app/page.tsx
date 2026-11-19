@@ -9,9 +9,16 @@ import { ReportGate } from "@/components/report/ReportGate";
 export default function Home() {
   return (
     <>
+      {/* Off screen until it takes focus: the first thing a keyboard visitor can reach. */}
+      <a
+        href="#main"
+        className="btn btn-primary sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-50 focus:px-5 focus:py-2.5"
+      >
+        Skip to content
+      </a>
       <SiteHeader />
       <ProgressRail />
-      <main>
+      <main id="main" tabIndex={-1} className="outline-none">
         <ReportGate
           intro={
             <>
