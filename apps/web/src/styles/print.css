@@ -32,6 +32,14 @@
     break-inside: avoid;
   }
 
+  /* A chart moves with its title and legend: otherwise they are left at the foot of one page and the chart starts the next. Only the chart block is held together, so the "View as table" part below it can still run on. */
+  figure > div {
+    break-inside: avoid;
+  }
+  figcaption {
+    break-after: avoid;
+  }
+
   /* A heading never ends a page on its own. */
   h2,
   h3,
