@@ -33,7 +33,15 @@ Refining inside a section is fine. A new section, feature, setting or test that 
 
 ## Overrides are real controls
 
-Every override button in the report must work, **including on the Framingham sample**, so a visitor can test them there. They are: the outcome and which level counts as the event, the fill method per column, capping outliers, the reference level of a categorical, removing duplicate rows, the remedies on a warned check (spline, log, exclude one), and including or excluding a column.
+Every override button in the report must work, **including on the Framingham sample**, so a visitor can test them there. The agreed option sets:
+
+- **Outcome:** any binary column, and which of its two levels counts as the event.
+- **Fill method per column:** continuous mean or median; categorical mode or a "Missing" level.
+- **Outlier capping:** cap flagged values at the fences, or keep them (the default).
+- **Reference level:** any level of a categorical column.
+- **Duplicate rows:** remove or keep (the default).
+- **Remedies:** spline or log for a continuous predictor, and "exclude one" for a redundant pair. They are offered when the evidence is borderline, not only on a failure, so they can be exercised on Framingham (diastolic BP, age, the smoker and cigarettes pair).
+- **Include or exclude a column:** a toggle per row in section 1. Columns the engine sets aside as ID, constant or free text have no toggle, because they cannot enter a regression.
 
 - The automatic choices are the default. At the defaults the result is the frozen Framingham result. An override re-runs the engine and replaces the result, and "back to the automatic choices" returns to it.
 - Every applied override is recorded: a decision-log entry with `automatic: false`, `roleSource: "user"`, the remedy marked `applied`, exclusions listed in `model.exclusions`, and the report says how many choices were changed.
@@ -66,6 +74,7 @@ Every override button in the report must work, **including on the Framingham sam
   - **A FastAPI service wraps the engine** and runs overrides and uploaded CSVs. Said chose FastAPI over running Python in the browser. It is not built yet. The upload zone says the engine is not connected.
 - Hosting is not decided (leaning Render). Whatever the host, the service must cope with a cold start (the page wakes it early and says so) and the memory that statsmodels and scikit-learn need.
 - The sample baseline is precomputed: `apps/web/public/samples/*.result.json`, loaded instantly. `framingham-small` is a deliberately refused result shown by "See what LogitLab refuses".
+- **There will be three example datasets** (Framingham plus two more, not chosen yet), so nothing may be written for Framingham alone. Each needs its CSV and a generated result, and every override must work on all of them.
 - **The contract** is `apps/web/src/lib/report/types.ts` and `packages/engine/logitlab_engine/validate.py`. Change both together, and bump `SCHEMA_VERSION` for anything not purely additive. Rules: proportions are 0 to 1, no NaN or Infinity (use `null`), verdicts are data, curves are about 100 points, anything the UI computes live ships its ingredients.
 - Generated files (`*.result.json`, `preview.generated.json`) are written by `packages/engine/scripts/build_fixture.py`. Never edit them by hand. The script validates the contract and runs the generated reproducible script against the CSV.
 - **Privacy is a public promise** ("processed in memory and never stored", no analytics, no cookies). The API must be stateless: no database, no files written, no logging of file contents or column names. Keep the copy true.
@@ -112,7 +121,6 @@ Every override button in the report must work, **including on the Framingham sam
 ## Pending decisions (delete as they are settled)
 
 - Hosting (Render or another) and where the FastAPI app lives (probably `apps/api`).
-- The exact option sets for each override: fill methods, which remedies show on the Framingham sample, an include/exclude control in section 1.
-- Whether to add a second sample dataset, since the audience is general analysts.
+- Which two datasets join Framingham as examples.
 
 @apps/web/AGENTS.md
