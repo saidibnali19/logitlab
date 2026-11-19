@@ -61,7 +61,7 @@ export const REPORT_SECTIONS = [
     short: "Takeaways", // fits the progress rail
     title: "Takeaways and export",
     description:
-      "A plain-English summary, plus a PDF report and a reproducible script.",
+      "A plain-English summary, plus a PDF report, a coefficients CSV and a reproducible script.",
   },
 ] as const;
 
