@@ -1,5 +1,6 @@
 "use client";
 
+import { SectionBar } from "@/components/layout/SectionBar";
 import { isComplete } from "@/lib/report/types";
 
 import { AssumptionChecks } from "./AssumptionChecks";
@@ -24,6 +25,7 @@ export function ReportSections() {
 
   return (
     <>
+      <SectionBar />
       <DataGlance data={result.dataGlance} rows={result.meta.rows} />
       <DataHygiene data={result.hygiene} />
       <ExploreData
