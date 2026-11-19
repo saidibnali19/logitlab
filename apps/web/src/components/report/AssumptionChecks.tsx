@@ -43,7 +43,8 @@ export function AssumptionChecks({
         {sensitivity ? (
           <div className="border-line space-y-6 border-t pt-8">
             <div>
-              <h3 className="text-title">Does it matter?</h3>
+              {/* One step above the section's other h3s, but below its h2: the divider marks the break. */}
+              <h3 className="text-xl font-semibold">Does it matter?</h3>
               <p className="text-ink-muted mt-1 max-w-2xl text-sm">
                 Each check refits the model a different way. If the answers
                 barely move, the results do not hinge on the choices above.
