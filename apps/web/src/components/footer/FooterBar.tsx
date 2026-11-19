@@ -26,8 +26,17 @@ export function FooterBar() {
         </nav>
       </div>
       <p className="text-ink-muted mx-auto max-w-5xl px-6 pb-6 text-center text-xs sm:text-left">
-        Sample data: the Framingham Heart Study, a publicly available,
-        de-identified dataset used here for academic research.
+        Sample data: the Framingham Heart Study, as shared on{" "}
+        <a
+          href={SITE.dataSource.url}
+          target="_blank"
+          rel="noreferrer"
+          className="hover:text-ink focus-visible:outline-focus rounded-sm underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-2"
+        >
+          {SITE.dataSource.name}
+        </a>
+        , a publicly available, de-identified dataset used here for academic
+        research.
       </p>
     </div>
   );

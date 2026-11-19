@@ -10,14 +10,15 @@ export function AboutProject() {
       <div className="text-ink-muted mt-4 max-w-2xl space-y-4">
         <p>
           LogitLab began with a final-year statistics project: a logistic
-          regression study of 10-year coronary heart disease risk in 4,238
-          Framingham participants, completed by Group 3, a team of five.
+          regression study of 10-year coronary heart disease risk in Framingham
+          participants, completed by Group 3, a team of five.
         </p>
         <p>
           That analysis was run by hand, one notebook step at a time. LogitLab
-          turns the same workflow into a tool for any binary outcome. It cleans
-          the data, tests the assumptions, fits the model and explains each
-          decision in plain English. It refuses analyses that would mislead.
+          turns the same workflow into software meant to work for any binary
+          outcome: it cleans the data, tests the assumptions, fits the model and
+          explains each decision in plain English. It refuses analyses that
+          would mislead. Version 1 shows it on one real example.
         </p>
       </div>
 

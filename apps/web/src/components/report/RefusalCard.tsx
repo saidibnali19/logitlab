@@ -27,8 +27,8 @@ export function RefusalCard({ refusal }: { refusal: Refusal | null }) {
             </p>
           ) : null}
           <p className="mt-4 text-sm">
-            LogitLab stops rather than show numbers it cannot stand behind. Fix
-            the issue, or use Start over to try another file.
+            LogitLab stops rather than show numbers it cannot stand behind. Use
+            Start over to go back and open the full example.
           </p>
         </div>
       </div>
