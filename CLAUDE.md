@@ -121,6 +121,7 @@ Every override button in the report must work, **including on the Framingham sam
 - **Colour: semantic tokens only** (`bg-surface`, `text-ink-muted`, `border-line`, `brand`, `pass`, `warn`, `refuse`, `chart-*`). Never raw palette classes (`slate-500`) or hex outside `src/styles/theme.css`. Each token holds `light-dark(light, dark)`, so components never use `dark:`. The build rewrites `light-dark()`, so the theme switches only at `<html data-theme>`, never per element.
 - One component per file, named function, props typed inline, a one-line `/** */` comment. Comments explain **why**, in plain English. Import with `@/`.
 - `"use client"` only for small interactive islands (toggles, sliders, navigation). Everything else renders without client code.
+- In-page `#hash` links are plain `<a>`, not `next/link`. `next/link` only scrolls and leaves keyboard focus on the link, so the next Tab stays in the header or rail. A plain anchor lets the browser focus the target (`<main>` and every report section have `tabIndex={-1}` for this), so the next Tab continues inside it. Use `<Link>` for real routes and external links.
 - Verdict maps live in `lib/verdict.ts` and number formatting in `lib/format.ts`. Reuse them.
 - Every chart sits in `ChartFigure` with a table fallback. Grids that only set columns at a breakpoint need `grid-cols-1` if a child has a minimum width, or the page widens on phones.
 - Shared component classes (`.card`, `.btn`, `.badge-*`, `.verdict-*`) are in `styles/components.css`. They cannot `@apply` each other.

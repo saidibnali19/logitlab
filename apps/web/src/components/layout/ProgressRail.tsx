@@ -11,7 +11,6 @@ import { sectionLevels } from "@/lib/report/status";
 import type { Level } from "@/lib/report/types";
 import { useActiveSection } from "@/lib/use-active-section";
 import { verdictWord } from "@/lib/verdict";
-import Link from "next/link";
 
 /**
  * Section links down the left edge, each with the engine's verdict as a dot.
@@ -60,7 +59,8 @@ function Rail({ levels }: { levels: Record<SectionId, Level | null> }) {
                   {label}
                 </span>
               ) : (
-                <Link
+                // A plain anchor on purpose: the browser then moves keyboard focus to the section, so the next Tab continues inside it. next/link only scrolls.
+                <a
                   href={`#${section.id}`}
                   title={section.title}
                   aria-current={section.id === active ? "location" : undefined}
@@ -71,7 +71,7 @@ function Rail({ levels }: { levels: Record<SectionId, Level | null> }) {
                   }`}
                 >
                   {label}
-                </Link>
+                </a>
               )}
             </li>
           );

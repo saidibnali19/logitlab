@@ -27,10 +27,11 @@ export function SiteHeader() {
             aria-hidden="true"
             className="bg-line hidden h-5 w-px sm:block"
           />
-          <Link href={SITE.aboutHref} className="nav-link whitespace-nowrap">
+          {/* A plain anchor on purpose: the browser moves keyboard focus on to the About section, so the next Tab continues there. next/link only scrolls. */}
+          <a href={SITE.aboutHref} className="nav-link whitespace-nowrap">
             <span className="sm:hidden">About</span>
             <span className="hidden sm:inline">About the project</span>
-          </Link>
+          </a>
           <span
             aria-hidden="true"
             className="bg-line hidden h-5 w-px sm:block"
