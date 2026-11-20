@@ -5,18 +5,17 @@ import { Hero } from "@/components/hero/Hero";
 import { ReportOutline } from "@/components/report/ReportOutline";
 import { ReportSections } from "@/components/report/ReportSections";
 import { ReportGate } from "@/components/report/ReportGate";
-import Link from "next/link";
 
 export default function Home() {
   return (
     <>
-      {/* Off screen until it takes focus: the first thing a keyboard visitor can reach. */}
-      <Link
+      {/* Off screen until it takes focus: the first thing a keyboard visitor can reach. A plain anchor on purpose: the browser moves focus to <main> itself, while next/link only scrolls and leaves focus on the link. */}
+      <a
         href="#main"
         className="btn btn-primary sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-50 focus:px-5 focus:py-2.5"
       >
         Skip to content
-      </Link>
+      </a>
       <SiteHeader />
       <ProgressRail />
       <main id="main" tabIndex={-1} className="outline-none">
