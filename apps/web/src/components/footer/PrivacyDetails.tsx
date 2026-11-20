@@ -21,8 +21,8 @@ export function PrivacyDetails() {
           cookies.
         </li>
         <li>
-          The one thing the site remembers is your light or dark choice, kept in
-          your browser.
+          The one thing the site remembers is your light or dark theme choice,
+          kept in your browser.
         </li>
         <li>
           Version 2 is planned to analyse an uploaded file in memory and never

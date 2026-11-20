@@ -11,6 +11,7 @@ import { sectionLevels } from "@/lib/report/status";
 import type { Level } from "@/lib/report/types";
 import { useActiveSection } from "@/lib/use-active-section";
 import { verdictWord } from "@/lib/verdict";
+import Link from "next/link";
 
 /**
  * Section links down the left edge, each with the engine's verdict as a dot.
@@ -59,7 +60,7 @@ function Rail({ levels }: { levels: Record<SectionId, Level | null> }) {
                   {label}
                 </span>
               ) : (
-                <a
+                <Link
                   href={`#${section.id}`}
                   title={section.title}
                   aria-current={section.id === active ? "location" : undefined}
@@ -70,7 +71,7 @@ function Rail({ levels }: { levels: Record<SectionId, Level | null> }) {
                   }`}
                 >
                   {label}
-                </a>
+                </Link>
               )}
             </li>
           );

@@ -5,17 +5,18 @@ import { Hero } from "@/components/hero/Hero";
 import { ReportOutline } from "@/components/report/ReportOutline";
 import { ReportSections } from "@/components/report/ReportSections";
 import { ReportGate } from "@/components/report/ReportGate";
+import Link from "next/link";
 
 export default function Home() {
   return (
     <>
       {/* Off screen until it takes focus: the first thing a keyboard visitor can reach. */}
-      <a
+      <Link
         href="#main"
         className="btn btn-primary sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-50 focus:px-5 focus:py-2.5"
       >
         Skip to content
-      </a>
+      </Link>
       <SiteHeader />
       <ProgressRail />
       <main id="main" tabIndex={-1} className="outline-none">

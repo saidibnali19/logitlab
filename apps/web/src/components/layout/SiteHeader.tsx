@@ -13,7 +13,7 @@ export function SiteHeader() {
         </Link>
         {/* Tighter on phones: the dividers go and the labels shorten, so the whole row fits. */}
         <nav aria-label="Primary" className="flex items-center gap-3 sm:gap-5">
-          <a
+          <Link
             href={SITE.githubUrl}
             target="_blank"
             rel="noreferrer"
@@ -22,15 +22,15 @@ export function SiteHeader() {
           >
             <GithubIcon className="size-4" />
             <span className="hidden sm:inline">GitHub Repo</span>
-          </a>
+          </Link>
           <span
             aria-hidden="true"
             className="bg-line hidden h-5 w-px sm:block"
           />
-          <a href={SITE.aboutHref} className="nav-link whitespace-nowrap">
+          <Link href={SITE.aboutHref} className="nav-link whitespace-nowrap">
             <span className="sm:hidden">About</span>
             <span className="hidden sm:inline">About the project</span>
-          </a>
+          </Link>
           <span
             aria-hidden="true"
             className="bg-line hidden h-5 w-px sm:block"
