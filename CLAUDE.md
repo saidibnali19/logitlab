@@ -14,7 +14,7 @@ What that means in the code today:
 - No switched-off controls and no upload zone. The hero has a static "Version 2" card instead of a file input.
 - The decision log shows each `alternative` as plain text ("Alternative considered: …"), and `CheckCard` shows `remedies` as plain text. They never become buttons in version 1.
 - One line says what version 2 adds: `SITE.v2Line` in `apps/web/src/lib/site.ts`. Use it word for word wherever the UI or README mentions version 2.
-- Privacy copy describes what version 1 does: no file is read, nothing is sent, no cookies or analytics, and the light or dark choice is kept in the browser. "Processed in memory and never stored" is version 2's promise and is labelled as such.
+- Privacy copy describes what version 1 does: no file is read, nothing is sent, no cookies or analytics, and the light or dark theme choice is kept in the browser. "Processed in memory and never stored" is version 2's promise and is labelled as such.
 - Every number on the page comes from the result file. Do not hard-code a count in copy (Group 3's report says 4,238 records, the example has 4,240 rows).
 
 ## The problem it solves

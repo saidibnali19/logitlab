@@ -110,7 +110,7 @@ docs/screenshots/     the images in this README
 
 ## Privacy
 
-Version 1 reads no files: there is no upload, and nothing you enter or choose is sent anywhere. There are no accounts, no database, no analytics and no tracking cookies. The one thing the site remembers is your light or dark choice, kept in your browser.
+Version 1 reads no files: there is no upload, and nothing you enter or choose is sent anywhere. There are no accounts, no database, no analytics and no tracking cookies. The one thing the site remembers is your light or dark theme choice, kept in your browser.
 
 Version 2 is planned to analyse an uploaded file in memory and never store it.
 
